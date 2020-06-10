@@ -76,14 +76,20 @@ export default {
       border: none;
       border-radius: $border-radius;
       color: white;
+      cursor: pointer;
       font-family: $font-family;
       font-weight: 500;
       padding: 8px;
+      transition: $transition;
 
       @media (max-width: $tablet) {
         font-size: 18px;
         padding: 15px;
         width: 100%;
+      }
+
+      &:hover {
+        background: $elevation-5-color;
       }
     }
 
