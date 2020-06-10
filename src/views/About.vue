@@ -57,7 +57,7 @@ export default {
 h3 {
   font-size: 24px;
   font-weight: 600;
-  margin: 50px 0 25px;
+  margin-bottom: 25px;
 
   @media (max-width: $tablet) {
     font-size: 22px;
