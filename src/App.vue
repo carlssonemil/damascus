@@ -5,7 +5,7 @@
         <div class="icon-container">
           <img src="./assets/damascus.png">
         </div>
-        <p><span>Damascus</span><span>.gg</span></p>
+        <p><span>Damascus</span></p>
       </router-link>
       <div>
         <router-link to="/about">About</router-link>
@@ -118,10 +118,6 @@ nav {
         span:first-child {
           display: none;
         }
-      }
-
-      span:last-child {
-        opacity: .5;
       }
     }
   }
