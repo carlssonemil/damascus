@@ -50,45 +50,13 @@ export default {
   watch: {
     damascusProgress(newValue) {
       if (newValue === 100) {
-        const DURATION = 10000,
-              LENGTH   = 120;
-
-        new Confetti({
-          width    : document.body.clientWidth,
-          height   : window.innerHeight,
-          length   : LENGTH,
-          duration : DURATION
-        });
-
-        this.damascusCompleted = true;
-        setTimeout(() => {
-          this.damascusCompleted = false;
-
-          let canvas = document.querySelector('canvas');
-          canvas.parentNode.removeChild(canvas);
-        }, DURATION);
+        this.handleCompleted('damascus');
       }
     },
 
     totalProgress(newValue) {
       if (newValue === 100) {
-        const DURATION = 10000,
-              LENGTH   = 120;
-
-        new Confetti({
-          width    : document.body.clientWidth,
-          height   : window.innerHeight,
-          length   : LENGTH,
-          duration : DURATION
-        });
-
-        this.allCompleted = true;
-        setTimeout(() => {
-          this.allCompleted = false;
-
-          let canvas = document.querySelector('canvas');
-          canvas.parentNode.removeChild(canvas);
-        }, DURATION);
+        this.handleCompleted('all');
       }
     }
   },
@@ -105,6 +73,29 @@ export default {
       });
 
       return this.roundToTwoDecimals((completed / camos) * 100);
+    },
+
+    handleCompleted(stage) {
+      const DURATION = 10000,
+              LENGTH   = 120;
+
+      new Confetti({
+        width    : document.body.clientWidth,
+        height   : window.innerHeight,
+        length   : LENGTH,
+        duration : DURATION
+      });
+
+      document.body.style.overflowY = 'hidden';
+      if (stage === 'all') this.allCompleted = true;
+      if (stage === 'damascus') this.damascusCompleted = true;
+      setTimeout(() => {
+        if (stage === 'all') this.allCompleted = false;
+        if (stage === 'damascus') this.damascusCompleted = false;
+        document.body.style.overflowY = 'visible';
+        let canvas = document.querySelector('canvas');
+        canvas.parentNode.removeChild(canvas);
+      }, DURATION);
     },
 
     roundToTwoDecimals(num) {
