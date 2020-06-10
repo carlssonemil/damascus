@@ -108,6 +108,7 @@ export default {
     }
 
     i {
+      pointer-events: none;
       position: absolute;
       right: 4px;
       top: 50%;
