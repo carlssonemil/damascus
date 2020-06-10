@@ -6,9 +6,9 @@ module.exports = {
       entry: 'src/main.js',
       template: 'public/index.html',
       filename: 'index.html',
-      title: 'Damascus.gg – Modern Warfare camouflage tracker',
+      title: 'Damascus – Modern Warfare camouflage tracker',
       description: 'Keep track of your progress to the sought after Damascus camouflage with this easy-to-use tracker.',
-      url: 'https://damascus.gg/',
+      url: 'https://damascus.now.sh/',
       image: 'meta-image.png'
     }
   }
