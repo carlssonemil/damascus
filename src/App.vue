@@ -164,7 +164,7 @@ footer {
 
   @media (max-width: $tablet) {
     font-size: 14px;
-    padding: 25px 0;
+    padding: 30px 0;
   }
 
   &:hover {
