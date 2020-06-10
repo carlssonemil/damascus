@@ -154,6 +154,7 @@ main {
 }
 
 footer {
+  cursor: default;
   display: flex;
   justify-content: space-between;
   opacity: .35;

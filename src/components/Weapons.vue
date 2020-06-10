@@ -65,6 +65,8 @@ export default {
   width: 100%;
 
   .category {
+    cursor: default;
+    
     + .category {
       margin-top: 75px;
 
