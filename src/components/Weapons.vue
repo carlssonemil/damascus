@@ -4,7 +4,10 @@
       <h2>{{ title }}s</h2>
       <transition-group name="fade" tag="div" class="weapons">
         <div class="weapon" v-for="weapon in category" :key="weapon.alias">
-          <div class="name" :class="{ completed: Object.values(weapon.progress).every(Boolean) }">{{ weapon.name }}</div>
+          <div class="name" 
+               :class="{ completed: Object.values(weapon.progress).every(Boolean) }" 
+               @dblclick="toggleWeaponComplete(weapon, Object.values(weapon.progress).every(Boolean))"
+               v-tippy="{ content: `Double-click to ${ Object.values(weapon.progress).every(Boolean) ? 'reset' : 'complete' } weapon` }">{{ weapon.name }}</div>
           <div class="progress">
             <div class="camo" 
                 v-for="(completed, camo) in weapon.progress" 
@@ -34,6 +37,10 @@ export default {
   methods: {
     toggleComplete(weapon, camo, current) {
       this.$store.dispatch('toggleCompleted', { weapon, camo, current });
+    },
+
+    toggleWeaponComplete(weapon, current) {
+      this.$store.dispatch('toggleWeaponCompleted', { weapon, current });
     },
 
     camoTooltip(category, camo, weapon) {
@@ -93,11 +100,13 @@ export default {
           align-items: center;
           background: $elevation-3-color;
           border-radius: $border-radius;
+          cursor: pointer;
           display: flex;
           font-weight: 600;
           justify-content: center;
           padding: 25px;
           transition: $transition;
+          user-select: none;
 
           @media (max-width: $tablet) {
             font-size: 24px;

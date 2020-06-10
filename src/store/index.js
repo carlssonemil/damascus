@@ -644,6 +644,11 @@ export default new Vuex.Store({
       state.weapons.find(w => w.name === weapon.name).progress[camo] = !current;
     },
 
+    TOGGLE_WEAPON_COMPLETED(state, { weapon, current }) {
+      let selectedWeapon = state.weapons.find(w => w.name === weapon.name);
+      Object.keys(selectedWeapon.progress).forEach(camo => selectedWeapon.progress[camo] = !current);
+    },
+
     RESET_PROGRESS(state) {
       state.weapons.forEach(weapon => Object.keys(weapon.progress).forEach(camo => weapon.progress[camo] = false));
     },
@@ -687,6 +692,11 @@ export default new Vuex.Store({
 
     toggleCompleted(context, { weapon, camo, current }) {
       context.commit('TOGGLE_COMPLETED', { weapon, camo, current });
+      context.dispatch('storeData');
+    },
+
+    toggleWeaponCompleted(context, { weapon, current }) {
+      context.commit('TOGGLE_WEAPON_COMPLETED', { weapon, current });
       context.dispatch('storeData');
     },
 
