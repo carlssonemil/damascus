@@ -251,7 +251,7 @@ export default new Vuex.Store({
           category: 'Assault Rifle',
           alias: 'India',
           name: 'RAM-7',
-          required: true,
+          required: false,
           progress: {
             ...defaultProgress
           }
@@ -413,7 +413,7 @@ export default new Vuex.Store({
           category: 'Light Machine Gun',
           alias: 'Echo',
           name: 'Holger-26',
-          required: true,
+          required: false,
           progress: {
             ...defaultProgress
           }
