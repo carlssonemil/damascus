@@ -81,7 +81,7 @@ export default {
       cursor: pointer;
       font-family: $font-family;
       font-weight: 500;
-      padding: 8px 24px 8px 8px;
+      padding: 8px 28px 8px 8px;
       transition: $transition;
 
       @media (max-width: $tablet) {
@@ -109,7 +109,7 @@ export default {
 
     i {
       position: absolute;
-      right: 0;
+      right: 4px;
       top: 50%;
       transform: translateY(-50%);
     }
