@@ -8,6 +8,7 @@
           {{ category }}
         </option>
       </select>
+      <eva-icon name="chevron-down" fill="white"></eva-icon>
     </div>
 
     <div class="checkbox">
@@ -72,6 +73,7 @@ export default {
     }
 
     select {
+      appearance: none;
       background: $elevation-4-color;
       border: none;
       border-radius: $border-radius;
@@ -79,7 +81,7 @@ export default {
       cursor: pointer;
       font-family: $font-family;
       font-weight: 500;
-      padding: 8px;
+      padding: 8px 24px 8px 8px;
       transition: $transition;
 
       @media (max-width: $tablet) {
@@ -103,6 +105,13 @@ export default {
       @media (max-width: $tablet) {
         font-size: 16px;
       }
+    }
+
+    i {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
     }
   }
 
