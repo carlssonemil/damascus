@@ -106,7 +106,13 @@ export default new Vuex.Store({
           'Submachine Gun': '50 Mounted Kills',
           'Shotgun': '225 Kills while using all attachments',
           'Light Machine Gun': '45 Mounted Kills',
-          'Marksman Rifle': '50 Longshot Kills',
+          'Marksman Rifle': {
+            'EBR-14': '50 Longshot Kills',
+            'MK2 Carbine': '50 Longshot Kills',
+            'Kar98k': '50 Longshot Kills',
+            'Crossbow': '50 Longshot Kills',
+            'SKS': '25 Double Kills'
+          },
           'Sniper Rifle': '50 Longshot Kills',
           'Melee': {
             'Riot Shield': '25 2-streaks',
