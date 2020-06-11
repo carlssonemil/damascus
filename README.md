@@ -3,7 +3,7 @@
 
 Damascus is a Modern Warfare (2019) camouflage tracker to easily manage your progress towards the *Damascus* camouflage, and *Gold* completion of all camouflages.
 
-Built with [Vue](https://vuejs.org/).
+Built with [Vue](https://vuejs.org/), hosted on [Vercel](https://vercel.com/) and analytics by [Plausible](https://plausible.io/).
 
 ## Features
 

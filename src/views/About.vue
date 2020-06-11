@@ -13,7 +13,7 @@
       </div>
 
       <h4>Open source</h4>
-      <p>Built with <a href="https://vuejs.org/">Vue</a>, the code to this site is available on <a href="https://github.com/carlssonemil/damascus">GitHub</a>.</p>
+      <p>Built with <a href="https://vuejs.org/">Vue</a>, hosted on <a href="https://vercel.com/">Vercel</a> and analytics by <a href="https://plausible.io/">Plausible</a>. The code to this site is available on <a href="https://github.com/carlssonemil/damascus">GitHub</a>.</p>
     </div>
   </transition>
 </template>
