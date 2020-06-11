@@ -321,6 +321,18 @@ export default new Vuex.Store({
           }
         },
         {
+          category: 'Assault Rifle',
+          alias: 'Kilo',
+          name: 'CR-56 AMAX',
+          required: false,
+          progress: {
+            ...defaultProgress
+          },
+          mastery: {
+            ...defaultMastery
+          }
+        },
+        {
           category: 'Submachine Gun',
           alias: 'Alpha',
           name: 'AUG',
@@ -396,6 +408,18 @@ export default new Vuex.Store({
           category: 'Submachine Gun',
           alias: 'Golf',
           name: 'Striker 45',
+          required: false,
+          progress: {
+            ...defaultProgress
+          },
+          mastery: {
+            ...defaultMastery
+          }
+        },
+        {
+          category: 'Submachine Gun',
+          alias: 'Hotel',
+          name: 'Fennec',
           required: false,
           progress: {
             ...defaultProgress
