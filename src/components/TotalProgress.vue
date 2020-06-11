@@ -14,7 +14,7 @@
       <div class="bars" v-show="totalProgress > 0 && show">
         <div class="progress total" v-if="totalProgress < 100">
           <div class="bar" :style="{ width: totalProgress + '%' }"></div>
-          <label>Total progress: <span>{{ totalProgress }}%</span></label>
+          <label>Total progress (excluding mastery): <span>{{ totalProgress }}%</span></label>
         </div>
 
         <div class="progress mastery" 
