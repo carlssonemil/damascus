@@ -110,7 +110,7 @@ export default new Vuex.Store({
             'Combat Knife': '25 Double Kills'
           },
           'Handgun': '25 Double Kills',
-          'Launcher': '50 Destroys while using Spotter perk'
+          'Launcher': '50 Equipment, killstreaks, vehicles destroyed'
         }
       },
       {
