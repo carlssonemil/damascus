@@ -687,6 +687,18 @@ export default new Vuex.Store({
           }
         },
         {
+          category: 'Melee',
+          alias: 'Charlie',
+          name: 'Kali Sticks',
+          required: false,
+          progress: {
+            ...defaultProgress
+          },
+          mastery: {
+            ...defaultMastery
+          }
+        },
+        {
           category: 'Handgun',
           alias: 'Alpha',
           name: 'X16',
