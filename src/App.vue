@@ -253,6 +253,12 @@ button, .button {
   }
 
   .vue-notification-wrapper {
+    box-shadow: 0px 5px 10px 0px rgba(black, .5);
+    border-radius: $border-radius;
+
+    + .vue-notification-wrapper {
+      margin-top: 10px;
+    }
 
     .notification {
       align-items: center;
