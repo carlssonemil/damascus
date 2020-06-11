@@ -119,7 +119,7 @@ export default new Vuex.Store({
             'Combat Knife': '25 Double Kills'
           },
           'Handgun': '25 Double Kills',
-          'Launcher': '50 Equipment, killstreaks, vehicles destroyed'
+          'Launcher': '50 Equipment, killstreaks, or vehicles destroyed'
         }
       },
       {
@@ -147,7 +147,7 @@ export default new Vuex.Store({
           'Sniper Rifle': '25 Double Kills',
           'Melee': '10 Buzzkills',
           'Handgun': '25 Kills shortly after reload',
-          'Launcher': '50 Streaks destroyed while using Cold Blooded perk'
+          'Launcher': '50 Killstreaks destroyed'
         }
       },
       {
