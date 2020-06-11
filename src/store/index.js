@@ -904,6 +904,11 @@ export default new Vuex.Store({
       context.dispatch('storeData');
     },
 
+    setFilters(context, filters) {
+      context.commit('SET_FILTERS', filters);
+      context.dispatch('storeData');
+    },
+
     toggleCompleted(context, { weapon, camo, current }) {
       context.commit('TOGGLE_COMPLETED', { weapon, camo, current });
       context.dispatch('storeData');

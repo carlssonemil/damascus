@@ -29,13 +29,13 @@ export default {
 
   computed: {
     filters() {
-      return this.$store.state.filters;
+      return { ...this.$store.state.filters };
     }
   },
 
   methods: {
     filterChange() {
-      this.$store.dispatch('storeData');
+      this.$store.dispatch('setFilters', this.filters);
     }
   }
 }
