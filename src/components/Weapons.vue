@@ -22,6 +22,20 @@
               </div>
             </div>
           </div>
+          <div class="mastery" v-if="Object.values(weapon.progress).every(Boolean)">
+            <div class="camo" 
+                v-for="(completed, camo) in weapon.mastery" 
+                :key="camo" 
+                @click="toggleComplete(weapon, camo, completed)" 
+                :content="camoTooltip(title, camo, weapon)" 
+                v-tippy="{ placement: 'bottom' }">
+              <div class="inner" :class="{ completed }">
+                <eva-icon class="completed" name="checkmark" fill="#10ac84"></eva-icon>
+                <eva-icon v-if="completed" class="remove" name="close" fill="#ee5253"></eva-icon>
+                <p>{{ camo }}</p>
+              </div>
+            </div>
+          </div>
         </div>
       </transition-group>
     </div>
@@ -140,11 +154,12 @@ export default {
               justify-content: center;
               overflow: hidden;
               position: relative;
+              transition: $transition;
               width: 100%;
 
               &:hover {
                 @media (min-width: $tablet) {
-                  img {
+                  img, p {
                     opacity: .25;
                   }
 
@@ -162,7 +177,7 @@ export default {
                   }
                 }
 
-                img {
+                img, p {
                   opacity: .25;
                 }
 
@@ -195,6 +210,29 @@ export default {
                 position: relative;
                 width: 100%;
                 z-index: 1;
+              }
+
+              p {
+                font-size: 14px;
+              }
+            }
+          }
+        }
+
+        .mastery {
+          @extend .progress;
+          grid-template-columns: 1fr;
+
+          .camo {
+            .inner {
+              padding: 5px;
+
+              &.completed {
+                background: $yellow;
+
+                p {
+                  color: black;
+                }
               }
             }
           }

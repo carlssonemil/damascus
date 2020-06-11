@@ -16,6 +16,9 @@ const defaultProgress = {
   'Reptile': false,
   'Skulls': false
 }
+const defaultMastery = {
+  'Obsidian': false
+}
 const defaultFilters = {
   category: null,
   hideNonRequired: true,
@@ -171,6 +174,28 @@ export default new Vuex.Store({
           'Handgun': '25 3-streaks',
           'Launcher': '50 vehicles destroyed'
         }
+      },
+      {
+        name: 'Obsidian',
+        requirements: {
+          'Assault Rifle': 'Kill 15 enemies in a match 200 times',
+          'Submachine Gun': 'Kill 15 enemies in a match 150 times',
+          'Shotgun': 'Kill 15 enemies in a match 150 times',
+          'Light Machine Gun': 'Kill 15 enemies in a match 150 times',
+          'Marksman Rifle': 'Kill 15 enemies in a match 150 times',
+          'Sniper Rifle': 'Kill 15 enemies in a match 125 times',
+          'Melee': {
+            'Riot Shield': 'Kill 750 Enemies',
+            'Combat Knife': 'Kill 10 enemies in a match 125 times'
+          },
+          'Handgun': 'Kill 15 enemies in a match 100 times',
+          'Launcher': {
+            'RPG-7': 'Kill 5 enemies in a match 150 times',
+            'PILA': 'Destroy a vehicle or Killstreak 100 times',
+            'Strela-P': 'Destroy a vehicle or Killstreak 100 times',
+            'JOKR': 'Destroy a vehicle or Killstreak 100 times'
+          }
+        }
       }
     ],
     defaults: {
@@ -182,6 +207,9 @@ export default new Vuex.Store({
           required: true,
           progress: {
             ...defaultProgress
+          },
+          mastery: {
+            ...defaultMastery
           }
         },
         {
@@ -191,6 +219,9 @@ export default new Vuex.Store({
           required: true,
           progress: {
             ...defaultProgress
+          },
+          mastery: {
+            ...defaultMastery
           }
         },
         {
@@ -200,6 +231,9 @@ export default new Vuex.Store({
           required: true,
           progress: {
             ...defaultProgress
+          },
+          mastery: {
+            ...defaultMastery
           }
         },
         {
@@ -209,6 +243,9 @@ export default new Vuex.Store({
           required: true,
           progress: {
             ...defaultProgress
+          },
+          mastery: {
+            ...defaultMastery
           }
         },
         {
@@ -218,6 +255,9 @@ export default new Vuex.Store({
           required: true,
           progress: {
             ...defaultProgress
+          },
+          mastery: {
+            ...defaultMastery
           }
         },
         {
@@ -227,6 +267,9 @@ export default new Vuex.Store({
           required: true,
           progress: {
             ...defaultProgress
+          },
+          mastery: {
+            ...defaultMastery
           }
         },
         {
@@ -236,6 +279,9 @@ export default new Vuex.Store({
           required: true,
           progress: {
             ...defaultProgress
+          },
+          mastery: {
+            ...defaultMastery
           }
         },
         {
@@ -245,6 +291,9 @@ export default new Vuex.Store({
           required: true,
           progress: {
             ...defaultProgress
+          },
+          mastery: {
+            ...defaultMastery
           }
         },
         {
@@ -254,6 +303,9 @@ export default new Vuex.Store({
           required: false,
           progress: {
             ...defaultProgress
+          },
+          mastery: {
+            ...defaultMastery
           }
         },
         {
@@ -263,6 +315,9 @@ export default new Vuex.Store({
           required: false,
           progress: {
             ...defaultProgress
+          },
+          mastery: {
+            ...defaultMastery
           }
         },
         {
@@ -272,6 +327,9 @@ export default new Vuex.Store({
           required: true,
           progress: {
             ...defaultProgress
+          },
+          mastery: {
+            ...defaultMastery
           }
         },
         {
@@ -281,6 +339,9 @@ export default new Vuex.Store({
           required: true,
           progress: {
             ...defaultProgress
+          },
+          mastery: {
+            ...defaultMastery
           }
         },
         {
@@ -290,6 +351,9 @@ export default new Vuex.Store({
           required: true,
           progress: {
             ...defaultProgress
+          },
+          mastery: {
+            ...defaultMastery
           }
         },
         {
@@ -299,6 +363,9 @@ export default new Vuex.Store({
           required: true,
           progress: {
             ...defaultProgress
+          },
+          mastery: {
+            ...defaultMastery
           }
         },
         {
@@ -308,6 +375,9 @@ export default new Vuex.Store({
           required: true,
           progress: {
             ...defaultProgress
+          },
+          mastery: {
+            ...defaultMastery
           }
         },
         {
@@ -317,6 +387,9 @@ export default new Vuex.Store({
           required: true,
           progress: {
             ...defaultProgress
+          },
+          mastery: {
+            ...defaultMastery
           }
         },
         {
@@ -326,6 +399,9 @@ export default new Vuex.Store({
           required: false,
           progress: {
             ...defaultProgress
+          },
+          mastery: {
+            ...defaultMastery
           }
         },
         {
@@ -335,6 +411,9 @@ export default new Vuex.Store({
           required: true,
           progress: {
             ...defaultProgress
+          },
+          mastery: {
+            ...defaultMastery
           }
         },
         {
@@ -344,6 +423,9 @@ export default new Vuex.Store({
           required: true,
           progress: {
             ...defaultProgress
+          },
+          mastery: {
+            ...defaultMastery
           }
         },
         {
@@ -353,6 +435,9 @@ export default new Vuex.Store({
           required: true,
           progress: {
             ...defaultProgress
+          },
+          mastery: {
+            ...defaultMastery
           }
         },
         {
@@ -362,6 +447,9 @@ export default new Vuex.Store({
           required: true,
           progress: {
             ...defaultProgress
+          },
+          mastery: {
+            ...defaultMastery
           }
         },
         {
@@ -371,6 +459,9 @@ export default new Vuex.Store({
           required: false,
           progress: {
             ...defaultProgress
+          },
+          mastery: {
+            ...defaultMastery
           }
         },
         {
@@ -380,6 +471,9 @@ export default new Vuex.Store({
           required: true,
           progress: {
             ...defaultProgress
+          },
+          mastery: {
+            ...defaultMastery
           }
         },
         {
@@ -389,6 +483,9 @@ export default new Vuex.Store({
           required: true,
           progress: {
             ...defaultProgress
+          },
+          mastery: {
+            ...defaultMastery
           }
         },
         {
@@ -398,6 +495,9 @@ export default new Vuex.Store({
           required: true,
           progress: {
             ...defaultProgress
+          },
+          mastery: {
+            ...defaultMastery
           }
         },
         {
@@ -407,6 +507,9 @@ export default new Vuex.Store({
           required: true,
           progress: {
             ...defaultProgress
+          },
+          mastery: {
+            ...defaultMastery
           }
         },
         {
@@ -416,6 +519,9 @@ export default new Vuex.Store({
           required: false,
           progress: {
             ...defaultProgress
+          },
+          mastery: {
+            ...defaultMastery
           }
         },
         {
@@ -425,6 +531,9 @@ export default new Vuex.Store({
           required: false,
           progress: {
             ...defaultProgress
+          },
+          mastery: {
+            ...defaultMastery
           }
         },
         {
@@ -434,6 +543,9 @@ export default new Vuex.Store({
           required: true,
           progress: {
             ...defaultProgress
+          },
+          mastery: {
+            ...defaultMastery
           }
         },
         {
@@ -443,6 +555,9 @@ export default new Vuex.Store({
           required: true,
           progress: {
             ...defaultProgress
+          },
+          mastery: {
+            ...defaultMastery
           }
         },
         {
@@ -452,6 +567,9 @@ export default new Vuex.Store({
           required: true,
           progress: {
             ...defaultProgress
+          },
+          mastery: {
+            ...defaultMastery
           }
         },
         {
@@ -461,6 +579,9 @@ export default new Vuex.Store({
           required: false,
           progress: {
             ...defaultProgress
+          },
+          mastery: {
+            ...defaultMastery
           }
         },
         {
@@ -470,6 +591,9 @@ export default new Vuex.Store({
           required: false,
           progress: {
             ...defaultProgress
+          },
+          mastery: {
+            ...defaultMastery
           }
         },
         {
@@ -479,6 +603,9 @@ export default new Vuex.Store({
           required: true,
           progress: {
             ...defaultProgress
+          },
+          mastery: {
+            ...defaultMastery
           }
         },
         {
@@ -488,6 +615,9 @@ export default new Vuex.Store({
           required: true,
           progress: {
             ...defaultProgress
+          },
+          mastery: {
+            ...defaultMastery
           }
         },
         {
@@ -497,6 +627,9 @@ export default new Vuex.Store({
           required: true,
           progress: {
             ...defaultProgress
+          },
+          mastery: {
+            ...defaultMastery
           }
         },
         {
@@ -506,6 +639,9 @@ export default new Vuex.Store({
           required: true,
           progress: {
             ...defaultProgress
+          },
+          mastery: {
+            ...defaultMastery
           }
         },
         {
@@ -515,6 +651,9 @@ export default new Vuex.Store({
           required: true,
           progress: {
             ...defaultProgress
+          },
+          mastery: {
+            ...defaultMastery
           }
         },
         {
@@ -524,6 +663,9 @@ export default new Vuex.Store({
           required: true,
           progress: {
             ...defaultProgress
+          },
+          mastery: {
+            ...defaultMastery
           }
         },
         {
@@ -533,6 +675,9 @@ export default new Vuex.Store({
           required: true,
           progress: {
             ...defaultProgress
+          },
+          mastery: {
+            ...defaultMastery
           }
         },
         {
@@ -542,6 +687,9 @@ export default new Vuex.Store({
           required: true,
           progress: {
             ...defaultProgress
+          },
+          mastery: {
+            ...defaultMastery
           }
         },
         {
@@ -551,6 +699,9 @@ export default new Vuex.Store({
           required: true,
           progress: {
             ...defaultProgress
+          },
+          mastery: {
+            ...defaultMastery
           }
         },
         {
@@ -560,6 +711,9 @@ export default new Vuex.Store({
           required: true,
           progress: {
             ...defaultProgress
+          },
+          mastery: {
+            ...defaultMastery
           }
         },
         {
@@ -569,6 +723,9 @@ export default new Vuex.Store({
           required: false,
           progress: {
             ...defaultProgress
+          },
+          mastery: {
+            ...defaultMastery
           }
         },
         {
@@ -578,6 +735,9 @@ export default new Vuex.Store({
           required: true,
           progress: {
             ...defaultProgress
+          },
+          mastery: {
+            ...defaultMastery
           }
         },
         {
@@ -587,6 +747,9 @@ export default new Vuex.Store({
           required: true,
           progress: {
             ...defaultProgress
+          },
+          mastery: {
+            ...defaultMastery
           }
         },
         {
@@ -596,6 +759,9 @@ export default new Vuex.Store({
           required: true,
           progress: {
             ...defaultProgress
+          },
+          mastery: {
+            ...defaultMastery
           }
         },
         {
@@ -605,6 +771,9 @@ export default new Vuex.Store({
           required: true,
           progress: {
             ...defaultProgress
+          },
+          mastery: {
+            ...defaultMastery
           }
         }
       ],
@@ -629,8 +798,13 @@ export default new Vuex.Store({
       if (weapons) {
         weapons.forEach(weapon => {
           state.weapons.find(w => w.name === weapon.name).progress = {
-            ...state.weapons.find(w => w.name === weapon.name).progress,
+            ...defaultProgress,
             ...weapon.progress
+          };
+
+          state.weapons.find(w => w.name === weapon.name).mastery = {
+            ...defaultMastery,
+            ...weapon.mastery
           };
         });
       }
@@ -641,7 +815,13 @@ export default new Vuex.Store({
     },
 
     TOGGLE_COMPLETED(state, { weapon, camo, current }) {
-      state.weapons.find(w => w.name === weapon.name).progress[camo] = !current;
+      const masteryCamo = camo in defaultMastery;
+
+      if (masteryCamo) {
+        state.weapons.find(w => w.name === weapon.name).mastery[camo] = !current;
+      } else {
+        state.weapons.find(w => w.name === weapon.name).progress[camo] = !current;
+      }
     },
 
     TOGGLE_WEAPON_COMPLETED(state, { weapon, current }) {
@@ -653,6 +833,10 @@ export default new Vuex.Store({
       state.weapons.forEach(weapon => Object.keys(weapon.progress).forEach(camo => weapon.progress[camo] = false));
     },
 
+    RESET_MASTERY(state) {
+      state.weapons.forEach(weapon => Object.keys(weapon.mastery).forEach(camo => weapon.mastery[camo] = false));
+    },
+
     // DEBUG
     COMPLETE_DAMASCUS(state) {
       state.weapons.filter(weapon => weapon.required)
@@ -662,6 +846,10 @@ export default new Vuex.Store({
     COMPLETE_ALL(state) {
       state.weapons.forEach(weapon => Object.keys(weapon.progress)
                    .forEach(camo => weapon.progress[camo] = true));
+    },
+    COMPLETE_MASTERY(state) {
+      state.weapons.forEach(weapon => Object.keys(weapon.mastery)
+                   .forEach(camo => weapon.mastery[camo] = true));
     },
     COMPLETE_ALL_BUT_ONE(state) {
       state.weapons.forEach((weapon, weaponIndex) => Object.keys(weapon.progress)
@@ -682,12 +870,14 @@ export default new Vuex.Store({
       const data = JSON.parse(localStorage.getItem(token));
       const weapons = data ? data.weapons : null;
       context.commit('SET_PROGRESS', weapons);
+      context.dispatch('storeData');
     },
 
     getFilters(context) {
       const data = JSON.parse(localStorage.getItem(token));
       const filters = data ? data.filters : null;
       context.commit('SET_FILTERS', filters);
+      context.dispatch('storeData');
     },
 
     toggleCompleted(context, { weapon, camo, current }) {
@@ -702,6 +892,7 @@ export default new Vuex.Store({
 
     resetProgress(context) {
       context.commit('RESET_PROGRESS');
+      context.commit('RESET_MASTERY');
       context.dispatch('storeData');
       Vue.notify({
         type: 'success',
@@ -711,7 +902,10 @@ export default new Vuex.Store({
 
     clearLocalStorage(context) {
       localStorage.removeItem(token);
-      context.dispatch('resetProgress');
+
+      setTimeout(() => {
+        context.dispatch('resetProgress');
+      }, 500);
     },
 
     exportProgress() {
@@ -743,6 +937,10 @@ export default new Vuex.Store({
     },
     completeAll(context) {
       context.commit('COMPLETE_ALL');
+      context.dispatch('storeData');
+    },
+    async completeMastery(context) {
+      context.commit('COMPLETE_MASTERY');
       context.dispatch('storeData');
     },
     completeAllButOne(context) {

@@ -1,20 +1,30 @@
 <template>
   <div class="total-progress">
     <transition name="fade">
-      <div class="completed" :class="{ damascus: damascusCompleted && !allCompleted, allCompleted }" v-show="damascusCompleted || allCompleted">
+      <div class="completed" 
+           :class="{ damascus: damascusCompleted && !allCompleted, allCompleted, mastery: masteryCompleted }" 
+           v-show="damascusCompleted || allCompleted || masteryCompleted">
         <h2 v-if="allCompleted">All camouflages completed! 🥳</h2>
         <h2 v-if="damascusCompleted && !allCompleted">Damascus unlocked! 🥳</h2>
+        <h2 v-if="masteryCompleted">All mastery camouflages completed, you absolute madman. 😎</h2>
       </div>
     </transition>
 
     <transition name="slide">
       <div class="bars" v-show="totalProgress > 0 && show">
-        <div class="progress total">
+        <div class="progress total" v-if="totalProgress < 100">
           <div class="bar" :style="{ width: totalProgress + '%' }"></div>
           <label>Total progress: <span>{{ totalProgress }}%</span></label>
         </div>
 
-        <div class="progress damascus">
+        <div class="progress mastery" 
+             v-if="masteryProgress > 0 || totalProgress === 100"
+             :style="{ height: totalProgress === 100 ? '50px' : null }">
+          <div class="bar" :style="{ width: masteryProgress + '%' }"></div>
+          <label :style="{ fontSize: totalProgress === 100 ? '14px' : null }">Mastery progress: <span>{{ masteryProgress }}%</span></label>
+        </div>
+
+        <div class="progress damascus" v-if="totalProgress < 100">
           <div class="bar" :style="{ width: damascusProgress + '%' }"></div>
           <label>Damascus progress: <span>{{ damascusProgress }}%</span></label>
         </div>
@@ -33,7 +43,8 @@ export default {
     return {
       show: false,
       damascusCompleted: false,
-      allCompleted: false
+      allCompleted: false,
+      masteryCompleted: false
     }
   },
 
@@ -44,6 +55,10 @@ export default {
 
     totalProgress() {
       return this.calculateProgress([...this.$store.state.weapons]);
+    },
+
+    masteryProgress() {
+      return this.calculateMasteryProgress([...this.$store.state.weapons]);
     }
   },
 
@@ -58,6 +73,12 @@ export default {
       if (newValue === 100) {
         this.handleCompleted('all');
       }
+    },
+
+    masteryProgress(newValue) {
+      if (newValue === 100) {
+        this.handleCompleted('mastery');
+      }
     }
   },
 
@@ -69,6 +90,19 @@ export default {
       weapons.forEach(weapon => {
         Object.values(weapon.progress).forEach(progress => {
           if (progress) completed++;
+        });
+      });
+
+      return this.roundToTwoDecimals((completed / camos) * 100);
+    },
+
+    calculateMasteryProgress(weapons) {
+      let camos = weapons.length;
+      let completed = 0;
+
+      weapons.forEach(weapon => {
+        Object.values(weapon.mastery).forEach(mastery => {
+          if (mastery) completed++;
         });
       });
 
@@ -89,9 +123,11 @@ export default {
       document.body.style.overflowY = 'hidden';
       if (stage === 'all') this.allCompleted = true;
       if (stage === 'damascus') this.damascusCompleted = true;
+      if (stage === 'mastery') this.masteryCompleted = true;
       setTimeout(() => {
         if (stage === 'all') this.allCompleted = false;
         if (stage === 'damascus') this.damascusCompleted = false;
+        if (stage === 'mastery') this.masteryCompleted = false;
         document.body.style.overflowY = 'visible';
         let canvas = document.querySelector('canvas');
         canvas.parentNode.removeChild(canvas);
@@ -134,6 +170,14 @@ export default {
     background: $green;
   }
 
+  &.mastery {
+    background: $yellow;
+
+    h2 {
+      color: black;
+    }
+  }
+
   h2 {
     font-size: 28px;
     font-weight: 500;
@@ -160,7 +204,7 @@ export default {
     width: 100%;
 
     &.total {
-      background: $elevation-3-color;
+      background: $elevation-4-color;
       height: 25px;
 
       .bar {
@@ -178,6 +222,19 @@ export default {
 
       .bar {
         background: $purple;
+      }
+    }
+
+    &.mastery {
+      background: $elevation-3-color;
+      height: 25px;
+
+      .bar {
+        background: $yellow;
+      }
+
+      label {
+        font-size: 12px;
       }
     }
 
