@@ -58,7 +58,7 @@ export default {
     },
 
     camoTooltip(category, camo, weapon) {
-      if (category === 'Melee' && typeof this.$store.state.camos.find(c => c.name === camo).requirements[category] !== 'string') {
+      if (typeof this.$store.state.camos.find(c => c.name === camo).requirements[category] !== 'string') {
         return this.$store.state.camos.find(c => c.name === camo).requirements[category][weapon.name];
       } else {
         return this.$store.state.camos.find(c => c.name === camo).requirements[category];
