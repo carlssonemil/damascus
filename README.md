@@ -7,9 +7,11 @@ Built with [Vue](https://vuejs.org/), hosted on [Vercel](https://vercel.com/) an
 
 ## Features
 
-- Autosaving - Your progress is automatically saved and stored.
-- Responsive - Use it on your smartphone while gaming.
-- Export/Import - Export your progress to another device or browser.
+- Autosaving – Your progress is automatically saved and stored.
+- Responsive – Use it on your smartphone while gaming.
+- Export/Import – Export your progress to another device or browser.
+- Filterable – Easily switch between weapon categories.
+- Ad-free – No annoying ads cluttering the site.
 
 <br />
 
