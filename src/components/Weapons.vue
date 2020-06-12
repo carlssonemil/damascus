@@ -254,7 +254,14 @@ export default {
 
                 p {
                   color: black;
+                  opacity: 1;
                 }
+              }
+
+              i {
+                left: 5px;
+                transform: translate(0, -50%);
+                top: 50%;
               }
             }
           }
