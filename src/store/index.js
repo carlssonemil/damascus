@@ -993,6 +993,10 @@ export default new Vuex.Store({
     completeAllButOne(context) {
       context.commit('COMPLETE_ALL_BUT_ONE');
       context.dispatch('storeData');
+    },
+    resetMastery(context) {
+      context.commit('RESET_MASTERY');
+      context.dispatch('storeData');
     }
   },
   modules: {
