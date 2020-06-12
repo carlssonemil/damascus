@@ -4,6 +4,7 @@
       <h2>{{ title }}s</h2>
       <transition-group name="fade" tag="div" class="weapons">
         <div class="weapon" v-for="weapon in category" :key="weapon.alias">
+          <span class="required-circle" v-if="weapon.required"></span>
           <div class="name" 
                :class="{ completed: Object.values(weapon.progress).every(Boolean) }" 
                @dblclick="toggleWeaponComplete(weapon, Object.values(weapon.progress).every(Boolean))"
@@ -111,6 +112,27 @@ export default {
       }
 
       .weapon {
+        position: relative;
+
+        .required-circle {
+          $size: 10px;
+
+          background: $purple;
+          border-radius: $size;
+          height: $size;
+          left: 0;
+          position: absolute;
+          top: 0;
+          transform: translate(-40%, -40%);
+          width: $size;
+
+          @media (max-width: $tablet) {
+            $size: 15px;
+            border-radius: $size;
+            height: $size;
+            width: $size;
+          }
+        }
 
         .name {
           align-items: center;

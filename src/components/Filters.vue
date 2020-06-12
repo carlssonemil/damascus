@@ -20,6 +20,13 @@
       <input id="hideNonRequired" type="checkbox" v-model="filters.hideNonRequired" @change="filterChange()">
       <label for="hideNonRequired">Hide non required</label>
     </div>
+
+    <div class="symbols">
+      <div class="symbol damascus">
+        <span></span>
+        <p>Required for Damascus</p>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -63,6 +70,10 @@ export default {
       margin-left: 0;
       margin-top: 25px;
     }
+  }
+
+  > :nth-last-child(2) {
+    flex: 1 1 auto;
   }
 
   .select {
@@ -128,6 +139,45 @@ export default {
 
       @media (max-width: $tablet) {
         font-size: 18px;
+      }
+    }
+  }
+
+  .symbols {
+    cursor: default;
+
+    @media (max-width: $tablet) {
+      margin-top: 35px;
+    }
+
+    .symbol {
+      align-items: center;
+      display: flex;
+
+      &.damascus {
+        span {
+          $size: 10px;
+
+          background: $purple;
+          border-radius: $size;
+          display: block;
+          height: $size;
+          margin-right: 10px;
+          width: $size;
+
+          @media (max-width: $tablet) {
+            $size: 15px;
+
+            border-radius: $size;
+            height: $size;
+            width: $size;
+          }
+        }
+
+        p {
+          color: rgba(white, .35);
+          font-size: 14px;
+        }
       }
     }
   }
