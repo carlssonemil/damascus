@@ -21,7 +21,7 @@ const defaultMastery = {
 }
 const defaultFilters = {
   category: null,
-  hideNonRequired: true,
+  hideNonRequired: false,
   hideCompleted: false
 }
 
