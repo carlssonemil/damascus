@@ -906,20 +906,20 @@ export default new Vuex.Store({
     async getStoredData({ dispatch }) {
       await dispatch('getProgress');
       await dispatch('getFilters');
+
+      await dispatch('storeData');
     },
 
     getProgress(context) {
       const data = JSON.parse(localStorage.getItem(token));
       const weapons = data ? data.weapons : null;
       context.commit('SET_PROGRESS', weapons);
-      context.dispatch('storeData');
     },
 
     getFilters(context) {
       const data = JSON.parse(localStorage.getItem(token));
       const filters = data ? data.filters : null;
       context.commit('SET_FILTERS', filters);
-      context.dispatch('storeData');
     },
 
     setFilters(context, filters) {
