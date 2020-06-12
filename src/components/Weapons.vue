@@ -152,7 +152,8 @@ export default {
           }
 
           &.completed {
-            background: $green;
+            background: $yellow;
+            color: black;
           }
         }
 
@@ -248,15 +249,6 @@ export default {
           .camo {
             .inner {
               padding: 5px;
-
-              &.completed {
-                background: $yellow;
-
-                p {
-                  color: black;
-                  opacity: 1;
-                }
-              }
 
               i {
                 left: 5px;
