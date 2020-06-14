@@ -11,6 +11,11 @@ Vue.use(VueRouter)
     component: Home
   },
   {
+    path: '/reticles',
+    name: 'Reticles',
+    component: () => import(/* webpackChunkName: "reticles" */ '../views/Reticles.vue')
+  },
+  {
     path: '/about',
     name: 'About',
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')

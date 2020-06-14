@@ -1,28 +1,28 @@
 <template>
   <div class="filters">
-    <div class="select">
+    <div class="select" v-if="'category' in filters">
       <label for="category">Category</label>
       <select id="category" v-model="filters.category" @change="filterChange()">
         <option value="null">All</option>
-        <option v-for="(category, index) in Array.from(new Set($store.state.weapons.map(w => w.category)))" :key="index" :value="category">
+        <option v-for="(category, index) in categoryOptions" :key="index" :value="category">
           {{ category }}
         </option>
       </select>
       <eva-icon name="chevron-down" fill="white"></eva-icon>
     </div>
 
-    <div class="checkbox">
+    <div class="checkbox" v-if="'hideCompleted' in filters">
       <input id="hideCompleted" type="checkbox" v-model="filters.hideCompleted" @change="filterChange()">
       <label for="hideCompleted">Hide completed</label>
     </div>
 
-    <div class="checkbox">
+    <div class="checkbox" v-if="'hideNonRequired' in filters">
       <input id="hideNonRequired" type="checkbox" v-model="filters.hideNonRequired" @change="filterChange()">
       <label for="hideNonRequired">Hide non required</label>
     </div>
 
-    <div class="symbols">
-      <div class="symbol damascus">
+    <div class="symbols" v-if="showSymbols">
+      <div class="symbol damascus" v-if="showSymbols.includes('damascus')">
         <span></span>
         <p>Required for Damascus</p>
       </div>
@@ -34,15 +34,24 @@
 export default {
   name: 'filters',
 
+  props: ['type', 'showSymbols'],
+
   computed: {
     filters() {
-      return { ...this.$store.state.filters };
+      return { ...this.$store.state.filters[this.type] };
+    },
+
+    categoryOptions() {
+      return Array.from(new Set(this.$store.state[this.type].map(i => i.category)));
     }
   },
 
   methods: {
     filterChange() {
-      this.$store.dispatch('setFilters', this.filters);
+      let type = this.type;
+      let filters = this.filters;
+
+      this.$store.dispatch('setFilters', { type, filters });
     }
   }
 }
@@ -72,7 +81,7 @@ export default {
     }
   }
 
-  > :nth-last-child(2) {
+  > .checkbox:nth-last-of-type(2) {
     flex: 1 1 auto;
   }
 

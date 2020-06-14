@@ -1,7 +1,7 @@
 <template>
   <transition name="fade">
     <div class="home container" v-show="show">
-      <Filters />
+      <Filters :type="'weapons'" :showSymbols="['damascus']" />
       <Weapons :weapons="weapons" />
       <TotalProgress />
 
@@ -37,7 +37,7 @@ export default {
     weapons() {
       let weapons = this.$store.state.weapons;
 
-      let { hideNonRequired, hideCompleted, category } = this.$store.state.filters;
+      let { hideNonRequired, hideCompleted, category } = this.$store.state.filters.weapons;
 
       if (hideNonRequired) weapons = weapons.filter(w => w.required);
       if (hideCompleted) weapons = weapons.filter(w => !Object.values(w.progress).every(Boolean));

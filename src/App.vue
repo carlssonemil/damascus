@@ -8,7 +8,8 @@
         <p><span>Damascus</span></p>
       </router-link>
       <div>
-        <router-link to="/about">About</router-link>
+        <router-link to="/">Camouflages</router-link>
+        <router-link to="/reticles">Reticles</router-link>
         <router-link to="/settings">Settings</router-link>
       </div>
     </nav>
@@ -19,7 +20,11 @@
 
     <footer class="container">
       <div>Made by <a href="https://emilcarlsson.se/">Emil Carlsson</a></div>
-      <a href="https://github.com/carlssonemil/damascus">GitHub</a>
+      
+      <div>
+        <router-link to="/about">About</router-link>
+        <a href="https://github.com/carlssonemil/damascus">GitHub</a>
+      </div>
     </footer>
 
     <notifications position="top center">
@@ -178,6 +183,14 @@ footer {
     &:hover {
       opacity: 1;
       text-decoration: underline;
+    }
+
+    + a {
+      margin-left: 50px;
+
+      @media (max-width: $tablet) {
+        margin-left: 35px;
+      }
     }
   }
 }

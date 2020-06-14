@@ -8,6 +8,7 @@
     <button @click="$store.dispatch('completeAllButOne')">Complete 99%</button>
     <button @click="$store.dispatch('resetProgress')">Reset progress</button>
     <button @click="$store.dispatch('resetMastery')">Reset mastery</button>
+    <button @click="$store.dispatch('resetReticles')">Reset reticles</button>
     <button @click="$store.dispatch('clearLocalStorage')">Clear storage</button>
   </div>
 </template>

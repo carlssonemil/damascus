@@ -56,7 +56,7 @@ export default {
         },
         {
           name: 'Reset progress',
-          description: 'Reset your current camouflage progress.',
+          description: 'Reset your current camouflage & reticle progress.',
           warning: 'This action is irreversible.',
           action: 'resetProgress'
         }

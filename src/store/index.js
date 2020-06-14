@@ -3,7 +3,10 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
+// The LocalStorage token
 const token = process.env.NODE_ENV === 'production' ? 'damascus' : 'damascus-dev';
+
+// The default progress object
 const defaultProgress = {
   'Spray Paint': false,
   'Woodland': false,
@@ -16,18 +19,34 @@ const defaultProgress = {
   'Reptile': false,
   'Skulls': false
 }
+
+// The default mastery object
 const defaultMastery = {
   'Obsidian': false
 }
+
+// The default filters object
 const defaultFilters = {
-  category: null,
-  hideNonRequired: false,
-  hideCompleted: false
+  weapons: {
+    category: null,
+    hideNonRequired: false,
+    hideCompleted: false
+  },
+  reticles: {
+    category: null,
+    hideCompleted: false
+  }
 }
 
 export default new Vuex.Store({
   state: {
+    // Weapons
     weapons: [],
+
+    // Reticles
+    reticles: [],
+
+    // Camouflages
     camos: [
       {
         name: 'Spray Paint',
@@ -204,6 +223,13 @@ export default new Vuex.Store({
         }
       }
     ],
+
+    // Filters
+    filters: {
+      ...defaultFilters
+    },
+
+    // Default values
     defaults: {
       weapons: [
         {
@@ -824,13 +850,370 @@ export default new Vuex.Store({
       },
       filters: {
         ...defaultFilters
-      }
-    },
-    filters: {
-      ...defaultFilters
-    },
-    settings: {
-      storeInLocalStorage: true
+      },
+      reticles: [
+        // ACOG Reticles
+        {
+          category: 'ACOG Reticle',
+          name: 'Cross Dot',
+          requirement: 'Get 200 kills using the Scout Combat Optic',
+          completed: false,
+        },
+        {
+          category: 'ACOG Reticle',
+          name: 'Angle Eye',
+          requirement: 'Get 50 headshots using the Scout Combat Optic',
+          completed: false,
+        },
+        {
+          category: 'ACOG Reticle',
+          name: 'T Pose',
+          requirement: 'Get 200 kills using the VLK 3.0x Optic',
+          completed: false,
+        },
+        {
+          category: 'ACOG Reticle',
+          name: 'Double Cross',
+          requirement: 'Get 50 headshots using the VLK 3.0x Optic',
+          completed: false,
+        },
+        {
+          category: 'ACOG Reticle',
+          name: 'Green Cross',
+          requirement: 'Get 200 kills using the Cronen C480 Pro Optic',
+          completed: false,
+        },
+        {
+          category: 'ACOG Reticle',
+          name: 'Redeye',
+          requirement: 'Get 50 headshots using the Cronen C480 Pro Optic',
+          completed: false,
+        },
+        {
+          category: 'ACOG Reticle',
+          name: 'Blue V',
+          requirement: 'Get 3 kills in a single life 50 times using any ACOG Optic',
+          completed: false,
+        },
+
+        // Holo Reticles
+        {
+          category: 'Holo Reticle',
+          name: 'Downward Curve',
+          requirement: 'Get 200 kills using the Corp Combat Holo Sight',
+          completed: false,
+        },
+        {
+          category: 'Holo Reticle',
+          name: 'Witch',
+          requirement: 'Get 50 headshots using the Corp Combat Holo Sight',
+          completed: false,
+        },
+        {
+          category: 'Holo Reticle',
+          name: 'Islet',
+          requirement: 'Get 200 kills using the APX5 Holographic Sight',
+          completed: false,
+        },
+        {
+          category: 'Holo Reticle',
+          name: 'Summoner',
+          requirement: 'Get 50 headshots using the APX5 Holographic Sight',
+          completed: false,
+        },
+        {
+          category: 'Holo Reticle',
+          name: 'Orbit',
+          requirement: 'Get 200 kills using the PBX Holo 7 Sight',
+          completed: false,
+        },
+        {
+          category: 'Holo Reticle',
+          name: 'Close Quarters',
+          requirement: 'Get 50 headshots using the PBX Holo 7 Sight',
+          completed: false,
+        },
+        {
+          category: 'Holo Reticle',
+          name: 'Sunrise',
+          requirement: 'Get 200 kills using any Holo Sight',
+          completed: false,
+        },
+        {
+          category: 'Holo Reticle',
+          name: 'Evil Eye',
+          requirement: 'Get 50 headshots using the any Holo Sight',
+          completed: false,
+        },
+        {
+          category: 'Holo Reticle',
+          name: 'Blue Dot',
+          requirement: 'Get 3 kills without dying 150 times using any Holo Sight',
+          completed: false,
+        },
+
+        // Hybrid Reticles
+        {
+          category: 'Hybrid Reticle',
+          name: 'Chevron Tactical',
+          requirement: 'Get 200 kills using the 4.0x Flip Hybrid Sight',
+          completed: false,
+        },
+        {
+          category: 'Hybrid Reticle',
+          name: 'Confine',
+          requirement: 'Get 50 headshots using the 4.0x Flip Hybrid Sight',
+          completed: false,
+        },
+        {
+          category: 'Hybrid Reticle',
+          name: 'Heroic',
+          requirement: 'Get 200 kills using the Integral Hybrid Sight',
+          completed: false,
+        },
+        {
+          category: 'Hybrid Reticle',
+          name: 'Apotheosis',
+          requirement: 'Get 50 headshots using the Integral Hybrid Sight',
+          completed: false,
+        },
+        {
+          category: 'Hybrid Reticle',
+          name: 'Central Focus',
+          requirement: 'Get 200 kills using the Canted Hybrid Sight',
+          completed: false,
+        },
+        {
+          category: 'Hybrid Reticle',
+          name: 'Target Line',
+          requirement: 'Get 50 headshots using the Canted Hybrid Sight',
+          completed: false,
+        },
+        {
+          category: 'Hybrid Reticle',
+          name: 'Elegance',
+          requirement: 'Get 3 kills without dying 50 times using any Hybrid Sight',
+          completed: false,
+        },
+
+        // Reflex Reticles
+        {
+          category: 'Reflex Reticle',
+          name: 'Carrot',
+          requirement: 'Get 200 kills using the Operator Reflex Sight',
+          completed: false,
+        },
+        {
+          category: 'Reflex Reticle',
+          name: 'Add Point',
+          requirement: 'Get 50 headshots using the Operator Reflex Sight',
+          completed: false,
+        },
+        {
+          category: 'Reflex Reticle',
+          name: 'Sunspot',
+          requirement: 'Get 200 kills using the Aim-Op Reflex Sight',
+          completed: false,
+        },
+        {
+          category: 'Reflex Reticle',
+          name: 'Golden Bell',
+          requirement: 'Get 50 headshots using the Aim-Op Reflex Sight',
+          completed: false,
+        },
+        {
+          category: 'Reflex Reticle',
+          name: 'Standard Fare',
+          requirement: 'Get 200 kills using the Viper Reflex Sight',
+          completed: false,
+        },
+        {
+          category: 'Reflex Reticle',
+          name: 'Perfect Balance',
+          requirement: 'Get 50 headshots using the Viper Reflex Sight',
+          completed: false,
+        },
+        {
+          category: 'Reflex Reticle',
+          name: 'Division',
+          requirement: 'Get 200 kills using the Monocle Reflex Sight',
+          completed: false,
+        },
+        {
+          category: 'Reflex Reticle',
+          name: 'Flare',
+          requirement: 'Get 50 headshots using the Monocle Reflex Sight',
+          completed: false,
+        },
+        {
+          category: 'Reflex Reticle',
+          name: 'Green V',
+          requirement: 'Get 3 kills in a single life 50 times using any Reflex Sight',
+          completed: false,
+        },
+        {
+          category: 'Reflex Reticle',
+          name: 'Blue Dot',
+          requirement: 'Get 500 kills using any Reflex Sight.',
+          completed: false,
+        },
+
+        // Sniper Reticles       
+        {
+          category: 'Sniper Reticle',
+          name: 'Crossthread',
+          requirement: 'Get 200 kills using the Sniper Scope',
+          completed: false,
+        },
+        {
+          category: 'Sniper Reticle',
+          name: 'Pinpoint',
+          requirement: 'Get 50 headshots using the Sniper Scope',
+          completed: false,
+        },
+        {
+          category: 'Sniper Reticle',
+          name: 'One Breath',
+          requirement: 'Get 3 kills without dying using the Sniper Scope',
+          completed: false,
+        },
+        {
+          category: 'Sniper Reticle',
+          name: 'Hangman',
+          requirement: 'Get 100 longshot kills using the Sniper Scope',
+          completed: false,
+        },
+        {
+          category: 'Sniper Reticle',
+          name: 'Drop Angle',
+          requirement: 'Get 150 mounted kills using the Sniper Scope',
+          completed: false,
+        },
+        {
+          category: 'Sniper Reticle',
+          name: 'Circle Pit',
+          requirement: 'Get 200 kills using the Variable Zoom Scope',
+          completed: false,
+        },
+        {
+          category: 'Sniper Reticle',
+          name: 'Cover Shot',
+          requirement: 'Get 50 headshots using the Variable Zoom Scope',
+          completed: false,
+        },
+        {
+          category: 'Sniper Reticle',
+          name: 'Top Notch',
+          requirement: 'Get 3 kills without dying using the Variable Zoom Scope',
+          completed: false,
+        },
+        {
+          category: 'Sniper Reticle',
+          name: 'Marksman',
+          requirement: 'Get 100 longshot kills using the Variable Zoom Scope',
+          completed: false,
+        },
+        {
+          category: 'Sniper Reticle',
+          name: 'Grid Line',
+          requirement: 'Get 150 mounted kills using the Variable Zoom Scope',
+          completed: false,
+        },
+        {
+          category: 'Sniper Reticle',
+          name: 'Critical',
+          requirement: 'Get 500 kills using any Sniper Optic',
+          completed: false,
+        },
+
+        // Thermal Hybrid Reticles
+        {
+          category: 'Thermal Hybrid Reticle',
+          name: 'Dark Horizon',
+          requirement: 'Get 200 kills using the Thermal Hybrid Scope',
+          completed: false,
+        },
+        {
+          category: 'Thermal Hybrid Reticle',
+          name: 'Stealth Bomber',
+          requirement: 'Get 50 headshots using the Thermal Hybrid Scope',
+          completed: false,
+        },
+        {
+          category: 'Thermal Hybrid Reticle',
+          name: 'Spectre',
+          requirement: 'Get 50 double kills using the Thermal Hybrid Scope',
+          completed: false,
+        },
+        {
+          category: 'Thermal Hybrid Reticle',
+          name: 'Tracker',
+          requirement: 'Get 150 mounted kills using the Thermal Hybrid Scope',
+          completed: false,
+        },
+        {
+          category: 'Thermal Hybrid Reticle',
+          name: 'Quadrants',
+          requirement: 'Get 150 longshot kills using the Thermal Hybrid Scope',
+          completed: false,
+        },
+        {
+          category: 'Thermal Hybrid Reticle',
+          name: 'All-Seeing',
+          requirement: 'Get 3 kills without dying 25 times using the Thermal Hybrid Scope',
+          completed: false,
+        },
+        {
+          category: 'Thermal Hybrid Reticle',
+          name: 'Pearl',
+          requirement: 'Get 500 kills using the Thermal Hybrid Scope',
+          completed: false,
+        },
+
+        // Thermal Reticles
+        {
+          category: 'Thermal Reticle',
+          name: 'Weave',
+          requirement: 'Get 200 kills using the Solozero NVG Enhanced Scope',
+          completed: false,
+        },
+        {
+          category: 'Thermal Reticle',
+          name: 'Drop Pad',
+          requirement: 'Get 50 headshots using the Solozero NVG Enhanced Scope',
+          completed: false,
+        },
+        {
+          category: 'Thermal Reticle',
+          name: 'Cerberus',
+          requirement: 'Get 200 kills using the Merc Thermal Optic Scope',
+          completed: false,
+        },
+        {
+          category: 'Thermal Reticle',
+          name: 'Zip Pad',
+          requirement: 'Get 50 headshots using the Merc Thermal Optic Scope',
+          completed: false,
+        },
+        {
+          category: 'Thermal Reticle',
+          name: 'Wright Sight',
+          requirement: 'Get 200 kills using the Thermal Dual Power Scope',
+          completed: false,
+        },
+        {
+          category: 'Thermal Reticle',
+          name: 'Optical Illusion',
+          requirement: 'Get 50 headshots using the Thermal Dual Power Scope',
+          completed: false,
+        },
+        {
+          category: 'Thermal Reticle',
+          name: 'Beasts of Prey',
+          requirement: 'Get 3 kills without dying 50 times using any Thermal Scope',
+          completed: false,
+        },
+      ]
     }
   },
   mutations: {
@@ -852,8 +1235,26 @@ export default new Vuex.Store({
       }
     },
 
-    SET_FILTERS(state, filters) {
-      state.filters = filters || state.defaults.filters;
+    SET_RETICLES(state, reticles) {
+      state.reticles = state.defaults.reticles;
+
+      if (reticles) {
+        reticles.forEach(reticle => {
+          state.reticles.find(r => r.name === reticle.name).completed = reticle.completed;
+        });
+      }
+    },
+
+    SET_FILTERS(state, { type, filters }) {
+      if (type === null) {
+        // Handle updates to default filter object
+        if (!('weapons' in filters)) {
+          filters = null;
+        }
+        state.filters = filters || state.defaults.filters;
+      } else {
+        state.filters[type] = filters || state.defaults.filters[type];
+      }
     },
 
     TOGGLE_COMPLETED(state, { weapon, camo, current }) {
@@ -871,12 +1272,20 @@ export default new Vuex.Store({
       Object.keys(selectedWeapon.progress).forEach(camo => selectedWeapon.progress[camo] = !current);
     },
 
+    TOGGLE_RETICLE_COMPLETED(state, { reticle }) {
+      state.reticles.find(r => r.name === reticle.name).completed = !reticle.completed;
+    },
+
     RESET_PROGRESS(state) {
       state.weapons.forEach(weapon => Object.keys(weapon.progress).forEach(camo => weapon.progress[camo] = false));
     },
 
     RESET_MASTERY(state) {
       state.weapons.forEach(weapon => Object.keys(weapon.mastery).forEach(camo => weapon.mastery[camo] = false));
+    },
+
+    RESET_RETICLES(state) {
+      state.reticles.forEach(reticle => reticle.completed = false);
     },
 
     // DEBUG
@@ -906,6 +1315,7 @@ export default new Vuex.Store({
     async getStoredData({ dispatch }) {
       await dispatch('getProgress');
       await dispatch('getFilters');
+      await dispatch('getReticles');
 
       await dispatch('storeData');
     },
@@ -919,7 +1329,13 @@ export default new Vuex.Store({
     getFilters(context) {
       const data = JSON.parse(localStorage.getItem(token));
       const filters = data ? data.filters : null;
-      context.commit('SET_FILTERS', filters);
+      context.commit('SET_FILTERS', { type: null, filters });
+    },
+
+    getReticles(context) {
+      const data = JSON.parse(localStorage.getItem(token));
+      const reticles = data ? data.reticles : null;
+      context.commit('SET_RETICLES', reticles);
     },
 
     setFilters(context, filters) {
@@ -937,9 +1353,15 @@ export default new Vuex.Store({
       context.dispatch('storeData');
     },
 
+    toggleReticleCompleted(context, { reticle, current }) {
+      context.commit('TOGGLE_RETICLE_COMPLETED', { reticle, current });
+      context.dispatch('storeData');
+    },
+
     resetProgress(context) {
       context.commit('RESET_PROGRESS');
       context.commit('RESET_MASTERY');
+      context.commit('RESET_RETICLES');
       context.dispatch('storeData');
       Vue.notify({
         type: 'success',
@@ -973,7 +1395,8 @@ export default new Vuex.Store({
     storeData() {
       localStorage.setItem(token, JSON.stringify({
         weapons: this.state.weapons,
-        filters: this.state.filters
+        filters: this.state.filters,
+        reticles: this.state.reticles
       }));
     },
 
@@ -997,7 +1420,11 @@ export default new Vuex.Store({
     resetMastery(context) {
       context.commit('RESET_MASTERY');
       context.dispatch('storeData');
-    }
+    },
+    resetReticles(context) {
+      context.commit('RESET_RETICLES');
+      context.dispatch('storeData');
+    },
   },
   modules: {
   }
