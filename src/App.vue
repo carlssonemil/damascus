@@ -10,7 +10,10 @@
       <div>
         <router-link to="/">Camouflages</router-link>
         <router-link to="/reticles">Reticles</router-link>
-        <router-link to="/settings">Settings</router-link>
+        <router-link to="/master-challenges" class="coming-soon"><span>Master Challenges</span></router-link>
+        <router-link to="/settings" class="icon" content="Settings" v-tippy="{ placement: 'bottom' }">
+          <eva-icon name="settings-2-outline" fill="white"></eva-icon>
+        </router-link>
       </div>
     </nav>
 
@@ -104,9 +107,14 @@ nav {
     display: flex;
     font-size: 26px;
     font-weight: 600;
+    opacity: .85;
 
     @media (max-width: $tablet) {
       font-size: 18px;
+    }
+
+    &.router-link-exact-active {
+      opacity: .85;
     }
 
     &:hover {
@@ -142,7 +150,7 @@ nav {
   }
 
   a {
-    opacity: .85;
+    opacity: .5;
     text-decoration: none;
     transition: $transition;
 
@@ -156,13 +164,44 @@ nav {
         text-decoration: underline;
       }
     }
+
+    &.router-link-exact-active {
+      opacity: 1;
+    }
+
+    &.coming-soon {
+      opacity: 1;
+      pointer-events: none;
+      position: relative;
+
+      span {
+        opacity: .5;
+      }
+
+      &::after {
+        bottom: 0;
+        color: $blue;
+        content: 'Coming soon!';
+        font-size: 10px;
+        left: 50%;
+        position: absolute;
+        text-align: center;
+        transform: translate(-50%, calc(100% + 4px));
+        width: 100%;
+      }
+    }
   }
 
-  > div a + a {
+  > div {
+    align-items: center;
+    display: flex;
+
+    a + a {
     margin-left: 50px;
 
-    @media (max-width: $tablet) {
-      margin-left: 35px;
+      @media (max-width: $tablet) {
+        margin-left: 35px;
+      }
     }
   }
 }
