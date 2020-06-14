@@ -77,6 +77,10 @@ export default {
     grid-template-columns: repeat(5, 1fr);
     width: 100%;
 
+    @media (max-width: $tablet) {
+      grid-template-columns: 1fr;
+    }
+
     .reticle {
       background: $elevation-1-color;
       border: 2px solid transparent;
