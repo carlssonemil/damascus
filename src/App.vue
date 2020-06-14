@@ -19,7 +19,7 @@
     </nav>
 
     <transition name="fade">
-      <nav class="mobile active" v-if="mobileNav">
+      <nav class="mobile" v-if="mobileNav">
         <div class="header">
           <router-link to="/" class="logo">
             <div class="icon-container">
