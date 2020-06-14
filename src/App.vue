@@ -15,7 +15,32 @@
           <eva-icon name="settings-2-outline" fill="white"></eva-icon>
         </router-link>
       </div>
+      <eva-icon class="mobile-nav-toggle" name="menu" fill="white" @click="mobileNav = !mobileNav"></eva-icon>
     </nav>
+
+    <transition name="fade">
+      <nav class="mobile active" v-if="mobileNav">
+        <div class="header">
+          <router-link to="/" class="logo">
+            <div class="icon-container">
+              <img src="./assets/damascus.png">
+            </div>
+            <p><span>Damascus</span></p>
+          </router-link>
+          <eva-icon name="close" fill="white" @click="mobileNav = !mobileNav"></eva-icon>
+        </div>
+        <div>
+          <router-link to="/">Camouflages</router-link>
+          <router-link to="/reticles">Reticles</router-link>
+          <router-link to="/master-challenges" class="coming-soon"><span>Master Challenges</span></router-link>
+        </div>
+        <div class="footer">
+          <router-link to="/settings">Settings</router-link>
+          <router-link to="/about">About</router-link>
+          <a href="https://github.com/carlssonemil/damascus">GitHub</a>
+        </div>
+      </nav>
+    </transition>
 
     <main>
       <router-view/>
@@ -53,7 +78,14 @@ export default {
 
   data() {
     return {
-      production: process.env.NODE_ENV === 'production'
+      production: process.env.NODE_ENV === 'production',
+      mobileNav: true
+    }
+  },
+
+  watch: {
+    $route() {
+      this.mobileNav = false;
     }
   },
 
@@ -141,10 +173,6 @@ nav {
 
       @media (max-width: $mobile) {
         margin-left: 10px;
-
-        span:first-child {
-          display: none;
-        }
       }
     }
   }
@@ -196,11 +224,94 @@ nav {
     align-items: center;
     display: flex;
 
+    @media (max-width: $tablet) {
+      display: none;
+    }
+
     a + a {
     margin-left: 50px;
 
       @media (max-width: $tablet) {
         margin-left: 35px;
+      }
+    }
+  }
+
+  .mobile-nav-toggle {
+    display: none;
+
+    @media (max-width: $tablet) {
+      display: block;
+    }
+  }
+}
+
+nav.mobile {
+  background: $elevation-1-color;
+  display: none;
+  height: 100%;
+  padding: 30px 5%;
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+
+  @media (max-width: $tablet) {
+    &.active {
+      align-items: flex-start;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  a + a {
+    margin-left: 0;
+  }
+
+  .header {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
+    width: 100%;
+  }
+
+  > div:not([class]) {
+    align-items: flex-start;
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    height: 100%;
+
+    a {
+      font-size: 20px;
+      opacity: 1;
+      text-decoration: none;
+
+      + a {
+        margin-top: 30px;
+      }
+
+      &.coming-soon {
+        &::after {
+          left: 0;
+          text-align: left;
+          transform: translate(0%, calc(100% + 4px));
+        }
+      }
+    }
+  }
+
+  .footer {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+
+    a {
+      font-size: 16px;
+
+      + a {
+        margin-top: 25px;
       }
     }
   }
