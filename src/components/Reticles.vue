@@ -7,7 +7,7 @@
              v-for="(reticle, index) in category" 
              :key="reticle.name"
              :class="{ completed: reticle.completed, locked: reticleIsLocked(index, reticle.completed, category) }"
-              @click="toggleReticleComplete(reticle, reticleIsLocked(index, category))" 
+              @click="toggleReticleComplete(reticle, reticleIsLocked(index, reticle.completed, category))" 
               :content="reticle.requirement" 
               v-tippy="{ placement: 'bottom' }">
           <div class="image">
