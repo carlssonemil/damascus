@@ -79,7 +79,7 @@ export default {
   data() {
     return {
       production: process.env.NODE_ENV === 'production',
-      mobileNav: true
+      mobileNav: false
     }
   },
 
@@ -247,21 +247,15 @@ nav {
 }
 
 nav.mobile {
+  align-items: flex-start;
   background: $elevation-1-color;
-  display: none;
+  display: flex;
+  flex-direction: column;
   height: 100%;
   padding: 30px 5%;
   position: fixed;
   width: 100%;
   z-index: 100;
-
-  @media (max-width: $tablet) {
-    &.active {
-      align-items: flex-start;
-      display: flex;
-      flex-direction: column;
-    }
-  }
 
   a + a {
     margin-left: 0;
