@@ -1273,7 +1273,7 @@ export default new Vuex.Store({
     },
 
     TOGGLE_RETICLE_COMPLETED(state, { reticle }) {
-      state.reticles.find(r => r.name === reticle.name).completed = !reticle.completed;
+      state.reticles.find(r => r.category === reticle.category && r.name === reticle.name).completed = !reticle.completed;
     },
 
     RESET_PROGRESS(state) {
