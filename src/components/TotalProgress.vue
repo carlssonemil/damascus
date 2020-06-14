@@ -250,6 +250,7 @@ export default {
       position: absolute;
       transform: translate(-50%, -50%);
       top: 50%;
+      white-space: nowrap;
 
       span {
         font-weight: 600;
