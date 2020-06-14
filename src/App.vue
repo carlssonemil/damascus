@@ -35,11 +35,25 @@
         </div>
       </template>
     </notifications>
+
+    <Debug v-if="!production" />
   </div>
 </template>
 
 <script>
+import Debug from '@/components/Debug.vue'
+
 export default {
+  components: {
+    Debug
+  },
+
+  data() {
+    return {
+      production: process.env.NODE_ENV === 'production'
+    }
+  },
+
   async beforeCreate() {
     await this.$store.dispatch('getStoredData');
   }

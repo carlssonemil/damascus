@@ -4,14 +4,11 @@
       <Filters :type="'weapons'" :showSymbols="['damascus']" />
       <Weapons :weapons="weapons" />
       <TotalProgress />
-
-      <Debug v-if="!production" />
     </div>
   </transition>
 </template>
 
 <script>
-import Debug from '@/components/Debug.vue'
 import Filters from '@/components/Filters.vue'
 import TotalProgress from '@/components/TotalProgress.vue'
 import Weapons from '@/components/Weapons.vue'
@@ -20,7 +17,6 @@ export default {
   name: 'Home',
 
   components: {
-    Debug,
     Filters,
     TotalProgress,
     Weapons
@@ -28,8 +24,7 @@ export default {
 
   data() {
     return {
-      show: false,
-      production: process.env.NODE_ENV === 'production'
+      show: false
     }
   },
 
