@@ -137,6 +137,7 @@ export default {
 
           &.required-weapon {
             border-left: 5px solid $purple;
+            padding: 25px 25px 25px 20px; // to maintain text center alignment with the extra thick border
           }
         }
 
