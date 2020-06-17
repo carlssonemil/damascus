@@ -411,6 +411,66 @@ button, .button {
   }
 }
 
+.checkbox {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+
+  input[type="checkbox"] {
+    $size: 16px;
+
+    appearance: none;
+    border: 1px solid $elevation-8-color;
+    border-radius: $border-radius;
+    color: white;
+    cursor: pointer;
+    height: $size;
+    outline: 0;
+    position: relative;
+    transition: $transition;
+    width: $size;
+
+    &::before {
+      $check-size: 8px;
+
+      border-style: solid;
+      border-color: white;
+      border-width: 0 2px 2px 0;
+      content: '';
+      display: block;
+      height: $check-size;
+      left: calc(50% - #{ $check-size / 2 });
+      opacity: 0;
+      position: absolute;
+      top: 50%;
+      transform: rotate(45deg) translate(-50%, -50%);
+      width: $check-size / 2;
+    }
+
+    &:checked {
+      background: $blue;
+      border-color: $blue;
+      color: white;
+
+      &::before {
+        opacity: 1;
+      }
+    }
+  }
+
+  label, input {
+    cursor: pointer;
+  }
+
+  label {
+    margin-left: 5px;
+
+    @media (max-width: $tablet) {
+      font-size: 18px;
+    }
+  }
+}
+
 // Vue Notifications
 .vue-notification-group {
   left: 50% !important;

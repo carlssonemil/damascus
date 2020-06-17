@@ -136,22 +136,6 @@ export default {
     }
   }
 
-  .checkbox {
-    cursor: pointer;
-
-    label, input {
-      cursor: pointer;
-    }
-
-    label {
-      margin-left: 5px;
-
-      @media (max-width: $tablet) {
-        font-size: 18px;
-      }
-    }
-  }
-
   .symbols {
     cursor: default;
 
