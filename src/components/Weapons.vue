@@ -4,9 +4,8 @@
       <h2>{{ title }}s</h2>
       <transition-group name="fade" tag="div" class="weapons">
         <div class="weapon" v-for="weapon in category" :key="weapon.alias">
-          <span class="required-circle" v-if="weapon.required"></span>
           <div class="name" 
-               :class="{ completed: Object.values(weapon.progress).every(Boolean) }" 
+               :class="{ completed: Object.values(weapon.progress).every(Boolean), 'required': weapon.required }" 
                @dblclick="toggleWeaponComplete(weapon, Object.values(weapon.progress).every(Boolean))"
                v-tippy="{ content: `Double-click to ${ Object.values(weapon.progress).every(Boolean) ? 'reset' : 'complete' } weapon` }">{{ weapon.name }}</div>
           <div class="progress">
@@ -112,26 +111,6 @@ export default {
       .weapon {
         position: relative;
 
-        .required-circle {
-          $size: 10px;
-
-          background: $purple;
-          border-radius: $size;
-          height: $size;
-          left: 0;
-          position: absolute;
-          top: 0;
-          transform: translate(-40%, -40%);
-          width: $size;
-
-          @media (max-width: $tablet) {
-            $size: 15px;
-            border-radius: $size;
-            height: $size;
-            width: $size;
-          }
-        }
-
         .name {
           align-items: center;
           background: $elevation-3-color;
@@ -152,6 +131,15 @@ export default {
           &.completed {
             background: $yellow;
             color: black;
+          }
+
+          &.required {
+            border-left: 5px solid $purple;
+            padding: 25px 25px 25px 20px; // to maintain text center alignment with the extra thick border
+
+            @media (max-width: $tablet) {
+              padding: 15% 15% 15% calc(15% - 5px) // to maintain text center alignment with the extra thick border
+            }
           }
         }
 
