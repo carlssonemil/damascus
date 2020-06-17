@@ -55,23 +55,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-h3 {
-  font-size: 24px;
-  font-weight: 600;
-  margin-bottom: 25px;
-
-  @media (max-width: $tablet) {
-    font-size: 22px;
-    margin: 20px 0 25px;
-  }
-}
-
-h4 {
-  font-size: 20px;
-  font-weight: 600;
-  margin: 50px 0 25px;
-}
-
 p {
   font-size: 18px;
 

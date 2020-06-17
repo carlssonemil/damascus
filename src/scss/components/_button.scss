@@ -1,0 +1,38 @@
+button, .button {
+  background: white;
+  border-radius: $border-radius;
+  border: none;
+  color: black;
+  cursor: pointer;
+  font-family: $font-family;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.4;
+  padding: 8px 16px;
+  transition: $transition;
+
+  &:hover {
+    opacity: .85;
+  }
+
+  @media (max-width: $mobile) {
+    display: block;
+    font-size: 16px;
+    padding: 12px 20px;
+    width: 100%;
+  }
+
+  &.warning {
+    background: $red;
+    color: white;
+  }
+
+  &.disabled {
+    color: rgba(black, 0.5);
+    pointer-events: none;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}

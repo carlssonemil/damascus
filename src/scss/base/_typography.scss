@@ -1,0 +1,37 @@
+a {
+  color: white;
+  text-decoration: none;
+  transition: $transition;
+
+  @media (max-width: $tablet) {
+    font-size: 14px;
+  }
+
+  &:hover {
+    @media (min-width: $tablet) {
+      opacity: 1;
+      text-decoration: underline;
+    }
+  }
+}
+
+h3 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 25px;
+
+  @media (max-width: $tablet) {
+    font-size: 22px;
+    margin: 20px 0 25px;
+  }
+}
+
+h4 {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 50px 0 25px;
+}
+
+p {
+  line-height: 1.4;
+}

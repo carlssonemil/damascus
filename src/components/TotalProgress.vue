@@ -256,11 +256,4 @@ export default {
     }
   }
 }
-
-.slide-enter-active, .slide-leave-active {
-  transition: all .75s ease;
-}
-.slide-enter, .slide-leave-to {
-  transform: translateY(100%);
-}
 </style>
