@@ -65,8 +65,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/scss/variables';
-
 .home {
   @media (min-width: $tablet) {
     padding-bottom: 250px;

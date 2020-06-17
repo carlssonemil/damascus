@@ -47,8 +47,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/scss/variables';
-
 .category {
   cursor: default;
   

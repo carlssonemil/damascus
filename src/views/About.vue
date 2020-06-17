@@ -55,8 +55,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/scss/variables';
-
 h3 {
   font-size: 24px;
   font-weight: 600;

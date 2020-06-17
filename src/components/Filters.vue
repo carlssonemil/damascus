@@ -58,8 +58,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/scss/variables';
-
 .filters {
   align-items: center;
   display: flex;

@@ -20,8 +20,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/scss/variables';
-
 .debug {
   background: $elevation-6-color;
   border-radius: $border-radius;

@@ -119,8 +119,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/scss/variables';
-
 .settings {
   $border-color: $elevation-4-color;
   background-color: $elevation-2-color;

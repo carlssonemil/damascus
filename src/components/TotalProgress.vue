@@ -148,8 +148,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/scss/variables';
-
 .completed {
   align-items: center;
   display: flex;

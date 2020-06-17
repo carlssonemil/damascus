@@ -11,5 +11,12 @@ module.exports = {
       url: 'https://damascus.now.sh/',
       image: 'meta-image.png'
     }
+  },
+  css: {
+    loaderOptions: {
+      sass: {
+        prependData: `@import "@/scss/_variables.scss";`
+      }
+    }
   }
 }
