@@ -5,7 +5,7 @@
       <transition-group name="fade" tag="div" class="weapons">
         <div class="weapon" v-for="weapon in category" :key="weapon.alias">
           <div class="name" 
-               :class="{ completed: Object.values(weapon.progress).every(Boolean), 'required-weapon': weapon.required }" 
+               :class="{ completed: Object.values(weapon.progress).every(Boolean), 'required': weapon.required }" 
                @dblclick="toggleWeaponComplete(weapon, Object.values(weapon.progress).every(Boolean))"
                v-tippy="{ content: `Double-click to ${ Object.values(weapon.progress).every(Boolean) ? 'reset' : 'complete' } weapon` }">{{ weapon.name }}</div>
           <div class="progress">
@@ -135,9 +135,13 @@ export default {
             color: black;
           }
 
-          &.required-weapon {
+          &.required {
             border-left: 5px solid $purple;
             padding: 25px 25px 25px 20px; // to maintain text center alignment with the extra thick border
+
+            @media (max-width: $tablet) {
+              padding: 15% 15% 15% calc(15% - 5px) // to maintain text center alignment with the extra thick border
+            }
           }
         }
 
