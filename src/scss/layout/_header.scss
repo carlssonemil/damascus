@@ -55,6 +55,7 @@ nav {
   }
 
   a {
+    color: $text-color;
     opacity: .5;
     text-decoration: none;
     transition: $transition;
