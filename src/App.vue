@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" :style="{ overflowY: mobileNav ? 'hidden' : null }">
     <nav class="container">
       <router-link to="/" class="logo">
         <div class="icon-container">
