@@ -2,11 +2,12 @@
   <div class="total-progress">
     <transition name="fade">
       <div class="completed" 
-           :class="{ damascus: damascusCompleted && !allCompleted, allCompleted, mastery: masteryCompleted }" 
-           v-show="damascusCompleted || allCompleted || masteryCompleted">
-        <h2 v-if="allCompleted">All camouflages completed! 🥳</h2>
+           :class="{ damascus: damascusCompleted && !allCompleted, allCompleted, mastery: masteryCompleted, challenges: challengesCompleted }" 
+           v-show="damascusCompleted || allCompleted || masteryCompleted || challengesCompleted">
+        <h2 v-if="allCompleted">You completed everything, you absolute madman! 🥳</h2>
         <h2 v-if="damascusCompleted && !allCompleted">Damascus unlocked! 🥳</h2>
-        <h2 v-if="masteryCompleted">All mastery camouflages completed, you absolute madman. 😎</h2>
+        <h2 v-if="masteryCompleted && !allCompleted">All mastery camouflages completed, you absolute madman. 😎</h2>
+        <h2 v-if="challengesCompleted && !allCompleted">All Master Challenges completed!<br/>That's what's called a pro gamer move! 🤩</h2>
       </div>
     </transition>
 
@@ -14,19 +15,24 @@
       <div class="bars" v-show="totalProgress > 0 && show">
         <div class="progress total" v-if="totalProgress < 100">
           <div class="bar" :style="{ width: totalProgress + '%' }"></div>
-          <label>Total progress (excluding mastery): <span>{{ totalProgress }}%</span></label>
+          <label>Total progress: <span>{{ totalProgress }}%</span></label>
         </div>
 
         <div class="progress mastery" 
-             v-if="masteryProgress > 0 || totalProgress === 100"
+             v-if="masteryProgress > 0 && totalProgress < 100"
              :style="{ height: totalProgress === 100 ? '50px' : null }">
           <div class="bar" :style="{ width: masteryProgress + '%' }"></div>
           <label :style="{ fontSize: totalProgress === 100 ? '14px' : null }">Mastery progress: <span>{{ masteryProgress }}%</span></label>
         </div>
 
-        <div class="progress damascus" v-if="totalProgress < 100">
+        <div class="progress damascus" v-if="view === 'Camouflages' && totalProgress < 100">
           <div class="bar" :style="{ width: damascusProgress + '%' }"></div>
           <label>Damascus progress: <span>{{ damascusProgress }}%</span></label>
+        </div>
+
+        <div class="progress challenges" v-if="view === 'Challenges' && totalProgress < 100">
+          <div class="bar" :style="{ width: challengesProgress + '%' }"></div>
+          <label>Master Challenges progress: <span>{{ challengesProgress }}%</span></label>
         </div>
       </div>
     </transition>
@@ -39,26 +45,36 @@ import Confetti from '@/confetti';
 export default {
   name: 'TotalProgress',
 
+  props: ['view'],
+
   data() {
     return {
       show: false,
       damascusCompleted: false,
       allCompleted: false,
-      masteryCompleted: false
+      masteryCompleted: false,
+      challengesCompleted: false
     }
   },
 
   computed: {
-    damascusProgress() {
-      return this.calculateProgress([...this.$store.state.weapons].filter(weapon => weapon.required));
+    totalProgress() {
+      return this.calculateTotalProgress([...this.$store.state.weapons]);
     },
 
-    totalProgress() {
-      return this.calculateProgress([...this.$store.state.weapons]);
+    damascusProgress() {
+      let { completed, total } = this.calculateProgress([...this.$store.state.weapons], 'progress', 10, true);
+      return this.roundToTwoDecimals((completed / total) * 100);
     },
 
     masteryProgress() {
-      return this.calculateMasteryProgress([...this.$store.state.weapons]);
+      let { completed, total } = this.calculateProgress([...this.$store.state.weapons], 'mastery', 1);
+      return this.roundToTwoDecimals((completed / total) * 100);
+    },
+
+    challengesProgress() {
+      let { completed, total } = this.calculateProgress([...this.$store.state.weapons], 'challenges', 8);
+      return this.roundToTwoDecimals((completed / total) * 100);
     }
   },
 
@@ -79,34 +95,46 @@ export default {
       if (newValue === 100) {
         this.handleCompleted('mastery');
       }
+    },
+
+    challengesProgress(newValue) {
+      if (newValue === 100) {
+        this.handleCompleted('challenges');
+      }
     }
   },
 
   methods: {
-    calculateProgress(weapons) {
-      let camos = weapons.length * 10;
-      let completed = 0;
+    calculateTotalProgress(weapons) {
+      let damascus = this.calculateProgress(weapons, 'progress', 10);
+      let mastery = this.calculateProgress(weapons, 'mastery', 1);
+      let challenges = this.calculateProgress(weapons, 'challenges', 8);
 
-      weapons.forEach(weapon => {
-        Object.values(weapon.progress).forEach(progress => {
-          if (progress) completed++;
-        });
-      });
+      let completed = damascus.completed + mastery.completed + challenges.completed;
+      let total = damascus.total + mastery.total + challenges.total;
 
-      return this.roundToTwoDecimals((completed / camos) * 100);
+      return this.roundToTwoDecimals((completed / total) * 100);
     },
 
-    calculateMasteryProgress(weapons) {
-      let camos = weapons.length;
+    calculateProgress(weapons, type, multiplier, filterRequired) {
+      if (filterRequired) {
+        weapons = weapons.filter(weapon => weapon.required);
+      }
+
+      let total = weapons.length * multiplier;
       let completed = 0;
 
       weapons.forEach(weapon => {
-        Object.values(weapon.mastery).forEach(mastery => {
-          if (mastery) completed++;
+        Object.values(weapon[type]).forEach(progress => {
+          if (type === 'challenges') {
+            if (progress.completed) completed++;
+          } else {
+            if (progress) completed++;
+          }
         });
       });
 
-      return this.roundToTwoDecimals((completed / camos) * 100);
+      return { completed, total };
     },
 
     handleCompleted(stage) {
@@ -124,10 +152,12 @@ export default {
       if (stage === 'all') this.allCompleted = true;
       if (stage === 'damascus') this.damascusCompleted = true;
       if (stage === 'mastery') this.masteryCompleted = true;
+      if (stage === 'challenges') this.challengesCompleted = true;
       setTimeout(() => {
         if (stage === 'all') this.allCompleted = false;
         if (stage === 'damascus') this.damascusCompleted = false;
         if (stage === 'mastery') this.masteryCompleted = false;
+        if (stage === 'challenges') this.challengesCompleted = false;
         document.body.style.overflowY = 'visible';
         let canvas = document.querySelector('canvas');
         canvas.parentNode.removeChild(canvas);
@@ -142,7 +172,7 @@ export default {
   mounted() {
     setTimeout(() => {
       this.show = true;
-    }, 1500);
+    }, 500);
   }
 }
 </script>
@@ -168,6 +198,10 @@ export default {
     background: $green;
   }
 
+  &.challenges {
+    background: $red;
+  }
+
   &.mastery {
     background: $yellow;
 
@@ -179,6 +213,7 @@ export default {
   h2 {
     font-size: 28px;
     font-weight: 500;
+    line-height: 2;
     text-align: center;
 
     @media (max-width: $tablet) {
@@ -220,6 +255,14 @@ export default {
 
       .bar {
         background: $purple;
+      }
+    }
+
+    &.challenges {
+      @extend .damascus;
+
+      .bar {
+        background: $red;
       }
     }
 
