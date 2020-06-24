@@ -24,7 +24,7 @@
               <div class="inner" :class="{ completed }">
                 <eva-icon class="completed" name="checkmark" fill="#10ac84"></eva-icon>
                 <eva-icon v-if="completed" class="remove" name="close" fill="#ee5253"></eva-icon>
-                <img :src="require(`../assets/${ convertToKebabCase(camo) }.png`)" :alt="camo">
+                <img :src="require(`../assets/camouflages/${ convertToKebabCase(camo) }.png`)" :alt="camo">
               </div>
             </div>
           </div>
