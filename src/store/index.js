@@ -1929,15 +1929,42 @@ export default new Vuex.Store({
       context.dispatch('storeData');
     },
 
-    resetProgress(context) {
+    resetAll(context) {
       context.commit('RESET_PROGRESS');
       context.commit('RESET_MASTERY');
       context.commit('RESET_RETICLES');
       context.commit('RESET_CHALLENGES');
+      Vue.notify({
+        type: 'success',
+        title: 'All progress successfully reset!'
+      });
+    },
+
+    resetProgress(context) {
+      context.commit('RESET_PROGRESS');
+      context.commit('RESET_MASTERY');
       context.dispatch('storeData');
       Vue.notify({
         type: 'success',
-        title: 'Progress successfully reset!'
+        title: 'Camouflage progress successfully reset!'
+      });
+    },
+
+    resetReticles(context) {
+      context.commit('RESET_RETICLES');
+      context.dispatch('storeData');
+      Vue.notify({
+        type: 'success',
+        title: 'Reticle progress successfully reset!'
+      });
+    },
+
+    resetChallenges(context) {
+      context.commit('RESET_CHALLENGES');
+      context.dispatch('storeData');
+      Vue.notify({
+        type: 'success',
+        title: 'Master Challenges progress successfully reset!'
       });
     },
 
@@ -1995,14 +2022,6 @@ export default new Vuex.Store({
     },
     resetMastery(context) {
       context.commit('RESET_MASTERY');
-      context.dispatch('storeData');
-    },
-    resetChallenges(context) {
-      context.commit('RESET_CHALLENGES');
-      context.dispatch('storeData');
-    },
-    resetReticles(context) {
-      context.commit('RESET_RETICLES');
       context.dispatch('storeData');
     },
   },

@@ -15,7 +15,7 @@
           <button v-if="setting.action !== 'importProgress'"
                   :class="{ warning: setting.warning }" 
                   @click="handleAction(setting)"
-                  >{{ setting.name }}</button>
+                  >{{ setting.button ? setting.button : setting.name }}</button>
 
           <label v-else for="import" class="button" :class="{ disabled: uploading, uploading }">
             <span>{{ setting.name }}</span>
@@ -55,10 +55,32 @@ export default {
           action: 'importProgress'
         },
         {
-          name: 'Reset progress',
-          description: 'Reset your current camouflage & reticle progress.',
+          name: 'Reset camouflage progress',
+          description: 'Reset your current camouflage progress.',
           warning: 'This action is irreversible.',
-          action: 'resetProgress'
+          action: 'resetProgress',
+          button: 'Reset progress'
+        },
+        {
+          name: 'Reset reticle progress',
+          description: 'Reset your current reticles progress.',
+          warning: 'This action is irreversible.',
+          action: 'resetReticles',
+          button: 'Reset progress'
+        },
+        {
+          name: 'Reset Master Challenges progress',
+          description: 'Reset your current Master Challenges progress.',
+          warning: 'This action is irreversible.',
+          action: 'resetChallenges',
+          button: 'Reset progress'
+        },
+        {
+          name: 'Reset all progress',
+          description: 'Reset your current camouflage, reticle & Master Challenges progress.',
+          warning: 'This action is irreversible.',
+          action: 'resetAll',
+          button: 'Reset progress'
         }
       ]
     }
@@ -146,8 +168,9 @@ export default {
     }
 
     h3 {
+      font-size: 22px;
       font-weight: 600;
-      margin-bottom: 15px;
+      margin-bottom: 20px;
     }
 
     span.warning {
