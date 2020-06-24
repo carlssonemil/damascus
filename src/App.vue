@@ -32,7 +32,7 @@
         <div>
           <router-link to="/">Camouflages</router-link>
           <router-link to="/reticles">Reticles</router-link>
-          <router-link to="/master-challenges" class="coming-soon"><span>Master Challenges</span></router-link>
+          <router-link to="/challenges">Master Challenges</router-link>
         </div>
         <div class="footer">
           <router-link to="/settings">Settings</router-link>
