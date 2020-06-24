@@ -10,7 +10,7 @@
       <div>
         <router-link to="/">Camouflages</router-link>
         <router-link to="/reticles">Reticles</router-link>
-        <router-link to="/master-challenges" class="coming-soon"><span>Master Challenges</span></router-link>
+        <router-link to="/challenges">Master Challenges</router-link>
         <router-link to="/settings" class="icon" content="Settings" v-tippy="{ placement: 'bottom' }">
           <eva-icon name="settings-2-outline" fill="white"></eva-icon>
         </router-link>

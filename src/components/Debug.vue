@@ -5,9 +5,11 @@
     <button @click="$store.dispatch('completeDamascus')">Complete Damascus</button>
     <button @click="$store.dispatch('completeAll')">Complete all</button>
     <button @click="$store.dispatch('completeMastery')">Complete mastery</button>
+    <button @click="$store.dispatch('completeChallenges')">Complete challenges</button>
     <button @click="$store.dispatch('completeAllButOne')">Complete 99%</button>
     <button @click="$store.dispatch('resetProgress')">Reset progress</button>
     <button @click="$store.dispatch('resetMastery')">Reset mastery</button>
+    <button @click="$store.dispatch('resetChallenges')">Reset challenges</button>
     <button @click="$store.dispatch('resetReticles')">Reset reticles</button>
     <button @click="$store.dispatch('clearLocalStorage')">Clear storage</button>
   </div>

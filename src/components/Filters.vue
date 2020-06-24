@@ -42,7 +42,11 @@ export default {
     },
 
     categoryOptions() {
-      return Array.from(new Set(this.$store.state[this.type].map(i => i.category)));
+      if (this.type === 'challenges') {
+        return Array.from(new Set(this.$store.state.weapons.map(i => i.category)));
+      } else {
+        return Array.from(new Set(this.$store.state[this.type].map(i => i.category)));
+      }
     }
   },
 

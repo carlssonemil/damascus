@@ -25,6 +25,201 @@ const defaultMastery = {
   'Obsidian': false
 }
 
+// The default challenges progress
+const defaultChallenges = (category, weapon) => {
+  switch (category) {
+    case 'Assault Rifle':
+    case 'Submachine Gun':
+    case 'Shotgun':
+    case 'Light Machine Gun':
+    case 'Marksman Rifle':
+    case 'Sniper Rifle':
+    case 'Handgun':
+      return [
+        {
+          category: 'Kill',
+          level: 'Gold',
+          completed: false
+        },
+        {
+          category: 'Kill',
+          level: 'Damascus',
+          completed: false
+        },
+        {
+          category: 'Headshot',
+          level: 'Platinum',
+          completed: false
+        },
+        {
+          category: 'Headshot',
+          level: 'Obsidian',
+          completed: false
+        },
+        {
+          category: 'Skill',
+          level: 'Gold',
+          completed: false
+        },
+        {
+          category: 'Skill',
+          level: 'Platinum',
+          completed: false
+        },
+        {
+          category: 'Skill',
+          level: 'Damascus',
+          completed: false
+        },
+        {
+          category: 'Skill',
+          level: 'Obsidian',
+          completed: false
+        }
+      ];
+
+    case 'Melee':
+      if (weapon === 'Combat Knife' || weapon === 'Kali Sticks') {
+        return [
+          {
+            category: 'Kill',
+            level: 'Gold',
+            completed: false
+          },
+          {
+            category: 'Kill',
+            level: 'Damascus',
+            completed: false
+          },
+          {
+            category: 'Double Kill',
+            level: 'Platinum',
+            completed: false
+          },
+          {
+            category: 'Double Kill',
+            level: 'Obsidian',
+            completed: false
+          },
+          {
+            category: 'Skill',
+            level: 'Gold',
+            completed: false
+          },
+          {
+            category: 'Skill',
+            level: 'Platinum',
+            completed: false
+          },
+          {
+            category: 'Skill',
+            level: 'Damascus',
+            completed: false
+          },
+          {
+            category: 'Skill',
+            level: 'Obsidian',
+            completed: false
+          }
+        ];
+      } else if (weapon === 'Riot Shield') {
+        return [
+          {
+            category: 'Kill',
+            level: 'Gold',
+            completed: false
+          },
+          {
+            category: 'Kill',
+            level: 'Damascus',
+            completed: false
+          },
+          {
+            category: 'Survival',
+            level: 'Platinum',
+            completed: false
+          },
+          {
+            category: 'Survival',
+            level: 'Obsidian',
+            completed: false
+          },
+          {
+            category: 'Skill',
+            level: 'Gold',
+            completed: false
+          },
+          {
+            category: 'Skill',
+            level: 'Platinum',
+            completed: false
+          },
+          {
+            category: 'Skill',
+            level: 'Damascus',
+            completed: false
+          },
+          {
+            category: 'Skill',
+            level: 'Obsidian',
+            completed: false
+          }
+        ];
+      } else {
+        console.error(`Parameter 'weapon' with value '${weapon}' was not found.`);
+        break;
+      }
+
+    case 'Launcher':
+      return [
+        {
+          category: 'Vehicle Destruction',
+          level: 'Gold',
+          completed: false
+        },
+        {
+          category: 'Vehicle Destruction',
+          level: 'Damascus',
+          completed: false
+        },
+        {
+          category: 'Double Kill',
+          level: 'Platinum',
+          completed: false
+        },
+        {
+          category: 'Double Kill',
+          level: 'Obsidian',
+          completed: false
+        },
+        {
+          category: 'Skill',
+          level: 'Gold',
+          completed: false
+        },
+        {
+          category: 'Skill',
+          level: 'Platinum',
+          completed: false
+        },
+        {
+          category: 'Skill',
+          level: 'Damascus',
+          completed: false
+        },
+        {
+          category: 'Skill',
+          level: 'Obsidian',
+          completed: false
+        }
+      ];
+
+    default:
+      console.error(`Parameter 'category' with value '${category}' was not found.`);
+      break;
+  }
+}
+
 // The default filters object
 const defaultFilters = {
   weapons: {
@@ -33,6 +228,10 @@ const defaultFilters = {
     hideCompleted: false
   },
   reticles: {
+    category: null,
+    hideCompleted: false
+  },
+  challenges: {
     category: null,
     hideCompleted: false
   }
@@ -224,6 +423,187 @@ export default new Vuex.Store({
       }
     ],
 
+    // Challenges
+    challenges: [
+      // Kill
+      {
+        category: 'Kill',
+        levels: {
+          'Gold': {
+            'Assault Rifle': 'Get 500 Kills',
+            'Submachine Gun': 'Get 500 Kills',
+            'Shotgun': 'Get 500 Kills',
+            'Light Machine Gun': 'Get 500 Kills',
+            'Marksman Rifle': 'Get 500 Kills',
+            'Sniper Rifle': 'Get 500 Kills',
+            'Melee': {
+              'Combat Knife': 'Get 500 Kills',
+              'Riot Shield': 'Get 500 Kills',
+              'Kali Sticks': 'Get 500 Kills'
+            },
+            'Handgun': 'Get 500 Kills'
+          },
+          'Damascus': {
+            'Assault Rifle': 'Get 2000 Kills',
+            'Submachine Gun': 'Get 2000 Kills',
+            'Shotgun': 'Get 2000 Kills',
+            'Light Machine Gun': 'Get 2000 Kills',
+            'Marksman Rifle': 'Get 2000 Kills',
+            'Sniper Rifle': 'Get 2000 Kills',
+            'Melee': {
+              'Combat Knife': 'Get 2000 Kills',
+              'Riot Shield': 'Get 1250 Kills',
+              'Kali Sticks': 'Get 2000 Kills'
+            },
+            'Handgun': 'Get 2000 Kills'
+          }
+        }
+      },
+
+      // Vehicle Destruction
+      {
+        category: 'Vehicle Destruction',
+        levels: {
+          'Gold': {
+            'Launcher': 'Destroy 200 Vehicles or Killstreaks'
+          },
+          'Damascus': {
+            'Launcher': 'Destroy 800 Vehicles or Killstreaks'
+          }
+        }
+      },
+
+      // Headshot
+      {
+        category: 'Headshot',
+        levels: {
+          'Platinum': {
+            'Assault Rifle': 'Get 250 Headshots',
+            'Submachine Gun': 'Get 250 Headshots',
+            'Shotgun': 'Get 250 Headshots',
+            'Light Machine Gun': 'Get 250 Headshots',
+            'Marksman Rifle': 'Get 250 Headshots',
+            'Sniper Rifle': 'Get 250 Headshots',
+            'Handgun': 'Get 250 Headshots'
+          },
+          'Obsidian': {
+            'Assault Rifle': 'Get 750 Headshots',
+            'Submachine Gun': 'Get 750 Headshots',
+            'Shotgun': 'Get 750 Headshots',
+            'Light Machine Gun': 'Get 750 Headshots',
+            'Marksman Rifle': 'Get 750 Headshots',
+            'Sniper Rifle': 'Get 750 Headshots',
+            'Handgun': 'Get 750 Headshots'
+          }
+        }
+      },
+
+      // Survival
+      {
+        category: 'Survival',
+        levels: {
+          'Platinum': {
+            'Melee': {
+              'Riot Shield': 'Get 2 kills without dying 100 times'
+            },
+          },
+          'Obsidian': {
+            'Melee': {
+              'Riot Shield': 'Get 2 kills without dying 200 times'
+            },
+          }
+        }
+      },
+
+      // Double Kill
+      {
+        category: 'Double Kill',
+        levels: {
+          'Platinum': {
+            'Melee': {
+              'Combat Knife': 'Get a Double kill 100 times',
+              'Kali Sticks': 'Get a Double kill 100 times'
+            },
+            'Launcher': 'Get a Double kill 75 times'
+          },
+          'Obsidian': {
+            'Melee': {
+              'Combat Knife': 'Get a Double kill 300 times',
+              'Kali Sticks': 'Get a Double kill 300 times'
+            },
+            'Launcher': 'Get a Double kill 325 times'
+          }
+        }
+      },
+
+      // Skill
+      {
+        category: 'Skill',
+        levels: {
+          'Gold': {
+            'Assault Rifle': 'Get 75 Aiming Down Sight kills with the No Stock attachment option selected',
+            'Submachine Gun': 'Get 50 Kills while Aiming Down Sights and using a Laser attachment',
+            'Shotgun': 'Get 50 Aiming Down Sight kills with the No Stock attachment option selected',
+            'Light Machine Gun': 'Get 50 Aiming Down Sight kills with the No Stock attachment option selected',
+            'Marksman Rifle': 'Get 5 Longshot kills while using the Scout Combat Optic',
+            'Sniper Rifle': 'Get 5 Longshot kills while using the Scout Combat Optic',
+            'Melee': {
+              'Combat Knife': 'Get 50 Kills while behind the enemy',
+              'Riot Shield': 'Get 50 Kills while behind the enemy',
+              'Kali Sticks': 'Get 50 Kills while behind the enemy'
+            },
+            'Handgun': 'Get 50 Kills using the Akimbo weapon perk and a Reflex Optic',
+            'Launcher': 'Destroy 20 Aerial Vehicles'
+          },
+          'Platinum': {
+            'Assault Rifle': 'Get 50 Kills while sliding',
+            'Submachine Gun': 'Get 50 Kills while sliding',
+            'Shotgun': 'Get 75 Kills while sliding',
+            'Light Machine Gun': 'Get 25 Kills while sliding',
+            'Marksman Rifle': 'Get 75 Quickscope kills',
+            'Sniper Rifle': 'Get 75 Quickscope kills',
+            'Melee': {
+              'Combat Knife': 'Get 25 Kills while sliding',
+              'Riot Shield': 'Get 25 Buzzkills (End Enemy Streaks)',
+              'Kali Sticks': 'Get 25 Kills while sliding'
+            },
+            'Handgun': 'Get 30 Kills while sliding',
+            'Launcher': 'Get 10 Buzzkills (End Enemy Streaks)'
+          },
+          'Damascus': {
+            'Assault Rifle': 'Get 75 Kills while crouching',
+            'Submachine Gun': 'Get 25 Kills while in smoke',
+            'Shotgun': 'Get 50 Kills while using a Scout Combat Optic',
+            'Light Machine Gun': 'Get 25 Hipfire Kills',
+            'Marksman Rifle': 'Get 10 Hipfire kills',
+            'Sniper Rifle': 'Get 10 Hipfire kills',
+            'Melee': {
+              'Combat Knife': 'Get 75 Kills while in smoke',
+              'Riot Shield': 'Get 75 Kills while in smoke',
+              'Kali Sticks': 'Get 75 Kills while in smoke'
+            },
+            'Handgun': 'Get 75 Kills while in smoke',
+            'Launcher': 'Get 20 Longshot Kills'
+          },
+          'Obsidian': {
+            'Assault Rifle': 'Using 4 Attachments, get 25 Point Blank Headshot kills',
+            'Submachine Gun': 'Using 3 Attachments, get 5 Headshot Kills while sliding',
+            'Shotgun': 'Using 4 Attachments, get 10 Headshot kills while in smoke',
+            'Light Machine Gun': 'Using 3 Attachments, get 25 Headshot kills while crouching',
+            'Marksman Rifle': 'Using 2 Attachments, get 25 Mounted Longshot Kills',
+            'Sniper Rifle': 'Using 2 Attachments, get 25 Mounted Longshot Kills',
+            'Melee': {
+              'Combat Knife': 'Get 10 Double Kills while using the Tracker Perk',
+              'Riot Shield': 'Get 3 Kills without dying and while using the Tracker Perk 10 times',
+              'Kali Sticks': 'Get 10 Double Kills while using the Tracker Perk'
+            },
+            'Handgun': 'Using 3 Attachments, get 75 Point Blank Headshot kills',
+            'Launcher': 'Get 10 Double Kills while using the Tracker Perk'
+          },
+        }
+      },
+    ],
+
     // Filters
     filters: {
       ...defaultFilters
@@ -242,6 +622,9 @@ export default new Vuex.Store({
           },
           mastery: {
             ...defaultMastery
+          },
+          challenges: {
+            ...defaultChallenges('Assault Rifle')
           }
         },
         {
@@ -254,6 +637,9 @@ export default new Vuex.Store({
           },
           mastery: {
             ...defaultMastery
+          },
+          challenges: {
+            ...defaultChallenges('Assault Rifle')
           }
         },
         {
@@ -266,6 +652,9 @@ export default new Vuex.Store({
           },
           mastery: {
             ...defaultMastery
+          },
+          challenges: {
+            ...defaultChallenges('Assault Rifle')
           }
         },
         {
@@ -278,6 +667,9 @@ export default new Vuex.Store({
           },
           mastery: {
             ...defaultMastery
+          },
+          challenges: {
+            ...defaultChallenges('Assault Rifle')
           }
         },
         {
@@ -290,6 +682,9 @@ export default new Vuex.Store({
           },
           mastery: {
             ...defaultMastery
+          },
+          challenges: {
+            ...defaultChallenges('Assault Rifle')
           }
         },
         {
@@ -302,6 +697,9 @@ export default new Vuex.Store({
           },
           mastery: {
             ...defaultMastery
+          },
+          challenges: {
+            ...defaultChallenges('Assault Rifle')
           }
         },
         {
@@ -314,6 +712,9 @@ export default new Vuex.Store({
           },
           mastery: {
             ...defaultMastery
+          },
+          challenges: {
+            ...defaultChallenges('Assault Rifle')
           }
         },
         {
@@ -326,6 +727,9 @@ export default new Vuex.Store({
           },
           mastery: {
             ...defaultMastery
+          },
+          challenges: {
+            ...defaultChallenges('Assault Rifle')
           }
         },
         {
@@ -338,6 +742,9 @@ export default new Vuex.Store({
           },
           mastery: {
             ...defaultMastery
+          },
+          challenges: {
+            ...defaultChallenges('Assault Rifle')
           }
         },
         {
@@ -350,6 +757,9 @@ export default new Vuex.Store({
           },
           mastery: {
             ...defaultMastery
+          },
+          challenges: {
+            ...defaultChallenges('Assault Rifle')
           }
         },
         {
@@ -362,6 +772,9 @@ export default new Vuex.Store({
           },
           mastery: {
             ...defaultMastery
+          },
+          challenges: {
+            ...defaultChallenges('Assault Rifle')
           }
         },
         {
@@ -374,6 +787,9 @@ export default new Vuex.Store({
           },
           mastery: {
             ...defaultMastery
+          },
+          challenges: {
+            ...defaultChallenges('Submachine Gun')
           }
         },
         {
@@ -386,6 +802,9 @@ export default new Vuex.Store({
           },
           mastery: {
             ...defaultMastery
+          },
+          challenges: {
+            ...defaultChallenges('Submachine Gun')
           }
         },
         {
@@ -398,6 +817,9 @@ export default new Vuex.Store({
           },
           mastery: {
             ...defaultMastery
+          },
+          challenges: {
+            ...defaultChallenges('Submachine Gun')
           }
         },
         {
@@ -410,6 +832,9 @@ export default new Vuex.Store({
           },
           mastery: {
             ...defaultMastery
+          },
+          challenges: {
+            ...defaultChallenges('Submachine Gun')
           }
         },
         {
@@ -422,6 +847,9 @@ export default new Vuex.Store({
           },
           mastery: {
             ...defaultMastery
+          },
+          challenges: {
+            ...defaultChallenges('Submachine Gun')
           }
         },
         {
@@ -434,6 +862,9 @@ export default new Vuex.Store({
           },
           mastery: {
             ...defaultMastery
+          },
+          challenges: {
+            ...defaultChallenges('Submachine Gun')
           }
         },
         {
@@ -446,6 +877,9 @@ export default new Vuex.Store({
           },
           mastery: {
             ...defaultMastery
+          },
+          challenges: {
+            ...defaultChallenges('Submachine Gun')
           }
         },
         {
@@ -458,6 +892,9 @@ export default new Vuex.Store({
           },
           mastery: {
             ...defaultMastery
+          },
+          challenges: {
+            ...defaultChallenges('Submachine Gun')
           }
         },
         {
@@ -470,6 +907,9 @@ export default new Vuex.Store({
           },
           mastery: {
             ...defaultMastery
+          },
+          challenges: {
+            ...defaultChallenges('Shotgun')
           }
         },
         {
@@ -482,6 +922,9 @@ export default new Vuex.Store({
           },
           mastery: {
             ...defaultMastery
+          },
+          challenges: {
+            ...defaultChallenges('Shotgun')
           }
         },
         {
@@ -494,6 +937,9 @@ export default new Vuex.Store({
           },
           mastery: {
             ...defaultMastery
+          },
+          challenges: {
+            ...defaultChallenges('Shotgun')
           }
         },
         {
@@ -506,6 +952,9 @@ export default new Vuex.Store({
           },
           mastery: {
             ...defaultMastery
+          },
+          challenges: {
+            ...defaultChallenges('Shotgun')
           }
         },
         {
@@ -518,6 +967,9 @@ export default new Vuex.Store({
           },
           mastery: {
             ...defaultMastery
+          },
+          challenges: {
+            ...defaultChallenges('Shotgun')
           }
         },
         {
@@ -530,6 +982,9 @@ export default new Vuex.Store({
           },
           mastery: {
             ...defaultMastery
+          },
+          challenges: {
+            ...defaultChallenges('Light Machine Gun')
           }
         },
         {
@@ -542,6 +997,9 @@ export default new Vuex.Store({
           },
           mastery: {
             ...defaultMastery
+          },
+          challenges: {
+            ...defaultChallenges('Light Machine Gun')
           }
         },
         {
@@ -554,6 +1012,9 @@ export default new Vuex.Store({
           },
           mastery: {
             ...defaultMastery
+          },
+          challenges: {
+            ...defaultChallenges('Light Machine Gun')
           }
         },
         {
@@ -566,6 +1027,9 @@ export default new Vuex.Store({
           },
           mastery: {
             ...defaultMastery
+          },
+          challenges: {
+            ...defaultChallenges('Light Machine Gun')
           }
         },
         {
@@ -578,6 +1042,9 @@ export default new Vuex.Store({
           },
           mastery: {
             ...defaultMastery
+          },
+          challenges: {
+            ...defaultChallenges('Light Machine Gun')
           }
         },
         {
@@ -590,6 +1057,9 @@ export default new Vuex.Store({
           },
           mastery: {
             ...defaultMastery
+          },
+          challenges: {
+            ...defaultChallenges('Light Machine Gun')
           }
         },
         {
@@ -602,6 +1072,9 @@ export default new Vuex.Store({
           },
           mastery: {
             ...defaultMastery
+          },
+          challenges: {
+            ...defaultChallenges('Marksman Rifle')
           }
         },
         {
@@ -614,6 +1087,9 @@ export default new Vuex.Store({
           },
           mastery: {
             ...defaultMastery
+          },
+          challenges: {
+            ...defaultChallenges('Marksman Rifle')
           }
         },
         {
@@ -626,6 +1102,9 @@ export default new Vuex.Store({
           },
           mastery: {
             ...defaultMastery
+          },
+          challenges: {
+            ...defaultChallenges('Marksman Rifle')
           }
         },
         {
@@ -638,6 +1117,9 @@ export default new Vuex.Store({
           },
           mastery: {
             ...defaultMastery
+          },
+          challenges: {
+            ...defaultChallenges('Marksman Rifle')
           }
         },
         {
@@ -650,6 +1132,9 @@ export default new Vuex.Store({
           },
           mastery: {
             ...defaultMastery
+          },
+          challenges: {
+            ...defaultChallenges('Marksman Rifle')
           }
         },
         {
@@ -662,6 +1147,9 @@ export default new Vuex.Store({
           },
           mastery: {
             ...defaultMastery
+          },
+          challenges: {
+            ...defaultChallenges('Sniper Rifle')
           }
         },
         {
@@ -674,6 +1162,9 @@ export default new Vuex.Store({
           },
           mastery: {
             ...defaultMastery
+          },
+          challenges: {
+            ...defaultChallenges('Sniper Rifle')
           }
         },
         {
@@ -686,6 +1177,9 @@ export default new Vuex.Store({
           },
           mastery: {
             ...defaultMastery
+          },
+          challenges: {
+            ...defaultChallenges('Sniper Rifle')
           }
         },
         {
@@ -698,6 +1192,9 @@ export default new Vuex.Store({
           },
           mastery: {
             ...defaultMastery
+          },
+          challenges: {
+            ...defaultChallenges('Melee', 'Riot Shield')
           }
         },
         {
@@ -710,6 +1207,9 @@ export default new Vuex.Store({
           },
           mastery: {
             ...defaultMastery
+          },
+          challenges: {
+            ...defaultChallenges('Melee', 'Combat Knife')
           }
         },
         {
@@ -722,6 +1222,9 @@ export default new Vuex.Store({
           },
           mastery: {
             ...defaultMastery
+          },
+          challenges: {
+            ...defaultChallenges('Melee', 'Kali Sticks')
           }
         },
         {
@@ -734,6 +1237,9 @@ export default new Vuex.Store({
           },
           mastery: {
             ...defaultMastery
+          },
+          challenges: {
+            ...defaultChallenges('Handgun')
           }
         },
         {
@@ -746,6 +1252,9 @@ export default new Vuex.Store({
           },
           mastery: {
             ...defaultMastery
+          },
+          challenges: {
+            ...defaultChallenges('Handgun')
           }
         },
         {
@@ -758,6 +1267,9 @@ export default new Vuex.Store({
           },
           mastery: {
             ...defaultMastery
+          },
+          challenges: {
+            ...defaultChallenges('Handgun')
           }
         },
         {
@@ -770,6 +1282,9 @@ export default new Vuex.Store({
           },
           mastery: {
             ...defaultMastery
+          },
+          challenges: {
+            ...defaultChallenges('Handgun')
           }
         },
         {
@@ -782,6 +1297,9 @@ export default new Vuex.Store({
           },
           mastery: {
             ...defaultMastery
+          },
+          challenges: {
+            ...defaultChallenges('Handgun')
           }
         },
         {
@@ -794,6 +1312,9 @@ export default new Vuex.Store({
           },
           mastery: {
             ...defaultMastery
+          },
+          challenges: {
+            ...defaultChallenges('Handgun')
           }
         },
         {
@@ -806,6 +1327,9 @@ export default new Vuex.Store({
           },
           mastery: {
             ...defaultMastery
+          },
+          challenges: {
+            ...defaultChallenges('Launcher')
           }
         },
         {
@@ -818,6 +1342,9 @@ export default new Vuex.Store({
           },
           mastery: {
             ...defaultMastery
+          },
+          challenges: {
+            ...defaultChallenges('Launcher')
           }
         },
         {
@@ -830,6 +1357,9 @@ export default new Vuex.Store({
           },
           mastery: {
             ...defaultMastery
+          },
+          challenges: {
+            ...defaultChallenges('Launcher')
           }
         },
         {
@@ -842,6 +1372,9 @@ export default new Vuex.Store({
           },
           mastery: {
             ...defaultMastery
+          },
+          challenges: {
+            ...defaultChallenges('Launcher')
           }
         }
       ],
@@ -1231,6 +1764,11 @@ export default new Vuex.Store({
             ...defaultMastery,
             ...weapon.mastery
           };
+
+          state.weapons.find(w => w.name === weapon.name).challenges = {
+            ...defaultChallenges(weapon.category, weapon.name),
+            ...weapon.challenges
+          };
         });
       }
     },
@@ -1248,9 +1786,14 @@ export default new Vuex.Store({
     SET_FILTERS(state, { type, filters }) {
       if (type === null) {
         // Handle updates to default filter object
-        if (!('weapons' in filters)) {
-          filters = null;
+        if (filters) {
+          Object.keys(state.defaults.filters).forEach(key => {
+            if (!(key in filters)) {
+              filters = null;
+            }
+          });
         }
+
         state.filters = filters || state.defaults.filters;
       } else {
         state.filters[type] = filters || state.defaults.filters[type];
@@ -1267,9 +1810,24 @@ export default new Vuex.Store({
       }
     },
 
-    TOGGLE_WEAPON_COMPLETED(state, { weapon, current }) {
+    TOGGLE_CHALLENGE_COMPLETED(state, { weapon, challenge }) {
+      let challenges = state.weapons.find(w => w.name === weapon.name).challenges;
+
+      Object.keys(challenges).forEach(c => {
+        if (challenges[c].category === challenge.category && challenges[c].level === challenge.level) {
+          challenges[c].completed = !challenge.completed;
+        }
+      });
+    },
+
+    TOGGLE_WEAPON_COMPLETED(state, { weapon, current, mode }) {
       let selectedWeapon = state.weapons.find(w => w.name === weapon.name);
-      Object.keys(selectedWeapon.progress).forEach(camo => selectedWeapon.progress[camo] = !current);
+
+      if (mode === 'Camouflages') {
+        Object.keys(selectedWeapon.progress).forEach(camo => selectedWeapon.progress[camo] = !current);
+      } else if (mode === 'Challenges') {
+        Object.keys(selectedWeapon.challenges).forEach(challenge => selectedWeapon.challenges[challenge].completed = !current);
+      }
     },
 
     TOGGLE_RETICLE_COMPLETED(state, { reticle }) {
@@ -1282,6 +1840,10 @@ export default new Vuex.Store({
 
     RESET_MASTERY(state) {
       state.weapons.forEach(weapon => Object.keys(weapon.mastery).forEach(camo => weapon.mastery[camo] = false));
+    },
+
+    RESET_CHALLENGES(state) {
+      state.weapons.forEach(weapon => Object.keys(weapon.challenges).forEach(challenge => weapon.challenges[challenge].completed = false));
     },
 
     RESET_RETICLES(state) {
@@ -1301,6 +1863,10 @@ export default new Vuex.Store({
     COMPLETE_MASTERY(state) {
       state.weapons.forEach(weapon => Object.keys(weapon.mastery)
                    .forEach(camo => weapon.mastery[camo] = true));
+    },
+    COMPLETE_CHALLENGES(state) {
+      state.weapons.forEach(weapon => Object.keys(weapon.challenges)
+                   .forEach(challenge => weapon.challenges[challenge].completed = true));
     },
     COMPLETE_ALL_BUT_ONE(state) {
       state.weapons.forEach((weapon, weaponIndex) => Object.keys(weapon.progress)
@@ -1348,8 +1914,13 @@ export default new Vuex.Store({
       context.dispatch('storeData');
     },
 
-    toggleWeaponCompleted(context, { weapon, current }) {
-      context.commit('TOGGLE_WEAPON_COMPLETED', { weapon, current });
+    toggleChallengeCompleted(context, { weapon, challenge }) {
+      context.commit('TOGGLE_CHALLENGE_COMPLETED', { weapon, challenge });
+      context.dispatch('storeData');
+    },
+
+    toggleWeaponCompleted(context, { weapon, current, mode }) {
+      context.commit('TOGGLE_WEAPON_COMPLETED', { weapon, current, mode });
       context.dispatch('storeData');
     },
 
@@ -1362,6 +1933,7 @@ export default new Vuex.Store({
       context.commit('RESET_PROGRESS');
       context.commit('RESET_MASTERY');
       context.commit('RESET_RETICLES');
+      context.commit('RESET_CHALLENGES');
       context.dispatch('storeData');
       Vue.notify({
         type: 'success',
@@ -1409,8 +1981,12 @@ export default new Vuex.Store({
       context.commit('COMPLETE_ALL');
       context.dispatch('storeData');
     },
-    async completeMastery(context) {
+    completeMastery(context) {
       context.commit('COMPLETE_MASTERY');
+      context.dispatch('storeData');
+    },
+    completeChallenges(context) {
+      context.commit('COMPLETE_CHALLENGES');
       context.dispatch('storeData');
     },
     completeAllButOne(context) {
@@ -1419,6 +1995,10 @@ export default new Vuex.Store({
     },
     resetMastery(context) {
       context.commit('RESET_MASTERY');
+      context.dispatch('storeData');
+    },
+    resetChallenges(context) {
+      context.commit('RESET_CHALLENGES');
       context.dispatch('storeData');
     },
     resetReticles(context) {

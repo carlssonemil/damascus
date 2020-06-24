@@ -5,10 +5,16 @@
       <transition-group name="fade" tag="div" class="weapons">
         <div class="weapon" v-for="weapon in category" :key="weapon.alias">
           <div class="name" 
-               :class="{ completed: Object.values(weapon.progress).every(Boolean), 'required': weapon.required }" 
-               @dblclick="toggleWeaponComplete(weapon, Object.values(weapon.progress).every(Boolean))"
-               v-tippy="{ content: `Double-click to ${ Object.values(weapon.progress).every(Boolean) ? 'reset' : 'complete' } weapon` }">{{ weapon.name }}</div>
-          <div class="progress">
+               :class="{ 
+                 completed: completed(weapon, mode), 
+                 required: weapon.required && mode === 'Camouflages',
+                 challenge: mode === 'Challenges'
+                }" 
+               @dblclick="toggleWeaponComplete(weapon, completed(weapon, mode), mode)"
+               v-tippy="{ content: `Double-click to ${ completed(weapon, mode) ? 'reset' : 'complete' } weapon` }">{{ weapon.name }}</div>
+          
+          <!-- Camouflages Progress -->
+          <div class="progress" v-if="mode === 'Camouflages'">
             <div class="camo" 
                 v-for="(completed, camo) in weapon.progress" 
                 :key="camo" 
@@ -22,7 +28,9 @@
               </div>
             </div>
           </div>
-          <div class="mastery" v-if="Object.values(weapon.progress).every(Boolean)">
+
+          <!-- Mastery Camouflages Progress -->
+          <div class="mastery" v-if="completed(weapon, mode) && mode === 'Camouflages'">
             <div class="camo" 
                 v-for="(completed, camo) in weapon.mastery" 
                 :key="camo" 
@@ -36,6 +44,22 @@
               </div>
             </div>
           </div>
+
+          <!-- Challenges Progress -->
+          <div class="challenges" v-if="mode === 'Challenges'">
+            <div class="challenge"
+                v-for="challenge in weapon.challenges"
+                :key="`${challenge.category}-${challenge.level}`"
+                @click="toggleChallengeComplete(weapon, challenge)"
+                :content="challengeTooltip(title, challenge, weapon)"
+                v-tippy="{ placement: 'bottom' }">
+              <div class="inner" :class="{ completed: challenge.completed }">
+                <eva-icon class="completed" name="checkmark" fill="#10ac84"></eva-icon>
+                <eva-icon v-if="challenge.completed" class="remove" name="close" fill="#ee5253"></eva-icon>
+                <img :src="require(`../assets/challenges/${ convertToKebabCase(challenge.category) }-${ convertToKebabCase(challenge.level) }.png`)" :alt="challenge.challenge">
+              </div>
+            </div>
+          </div>
         </div>
       </transition-group>
     </div>
@@ -46,15 +70,27 @@
 export default {
   name: 'weapons',
 
-  props: ['title', 'weapons'],
+  props: ['title', 'weapons', 'mode'],
 
   methods: {
+    completed(weapon, mode) {
+      if (mode === 'Camouflages') {
+        return Object.values(weapon.progress).every(Boolean);
+      } else if (mode === 'Challenges') {
+        return Object.keys(weapon.challenges).map(challenge => weapon.challenges[challenge].completed).every(Boolean);
+      }
+    },
+
     toggleComplete(weapon, camo, current) {
       this.$store.dispatch('toggleCompleted', { weapon, camo, current });
     },
 
-    toggleWeaponComplete(weapon, current) {
-      this.$store.dispatch('toggleWeaponCompleted', { weapon, current });
+    toggleWeaponComplete(weapon, current, mode) {
+      this.$store.dispatch('toggleWeaponCompleted', { weapon, current, mode });
+    },
+
+    toggleChallengeComplete(weapon, challenge) {
+      this.$store.dispatch('toggleChallengeCompleted', { weapon, challenge });
     },
 
     camoTooltip(category, camo, weapon) {
@@ -62,6 +98,14 @@ export default {
         return this.$store.state.camos.find(c => c.name === camo).requirements[category][weapon.name];
       } else {
         return this.$store.state.camos.find(c => c.name === camo).requirements[category];
+      }
+    },
+
+    challengeTooltip(category, challenge, weapon) {
+      if (typeof this.$store.state.challenges.find(c => c.category === challenge.category).levels[challenge.level][category] !== 'string') {
+        return this.$store.state.challenges.find(c => c.category === challenge.category).levels[challenge.level][category][weapon.name];
+      } else {
+        return `${challenge.category} - ${challenge.level}: ${this.$store.state.challenges.find(c => c.category === challenge.category).levels[challenge.level][category]}`;
       }
     },
 
@@ -131,6 +175,11 @@ export default {
           &.completed {
             background: $yellow;
             color: black;
+
+            &.challenge {
+              background: $green;
+              color: white;
+            }
           }
 
           &.required {
@@ -240,6 +289,21 @@ export default {
                 left: 5px;
                 transform: translate(0, -50%);
                 top: 50%;
+              }
+            }
+          }
+        }
+
+        .challenges {
+          @extend .progress;
+          grid-template-columns: repeat(4, 1fr);
+
+          .challenge {
+            @extend .camo;
+
+            .inner {
+              img {
+                transform: scale(1.4);
               }
             }
           }

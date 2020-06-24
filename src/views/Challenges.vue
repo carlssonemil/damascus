@@ -1,9 +1,9 @@
 <template>
   <transition name="fade">
-    <div class="home container" v-show="show">
-      <Filters :type="'weapons'" :showSymbols="['damascus']" />
-      <Weapons :weapons="weapons" :mode="'Camouflages'" />
-      <TotalProgress :view="'Camouflages'" />
+    <div class="challenges container" v-show="show">
+      <Filters :type="'challenges'" />
+      <Weapons :weapons="weapons" :mode="'Challenges'" />
+      <TotalProgress :view="'Challenges'" />
     </div>
   </transition>
 </template>
@@ -32,10 +32,9 @@ export default {
     weapons() {
       let weapons = this.$store.state.weapons;
 
-      let { hideNonRequired, hideCompleted, category } = this.$store.state.filters.weapons;
+      let { hideCompleted, category } = this.$store.state.filters.challenges;
 
-      if (hideNonRequired) weapons = weapons.filter(w => w.required);
-      if (hideCompleted) weapons = weapons.filter(w => !Object.values(w.progress).every(Boolean));
+      if (hideCompleted) weapons = weapons.filter(w => !Object.keys(w.challenges).map(challenge => w.challenges[challenge].completed).every(Boolean));
       if (category && category !== 'null') weapons = weapons.filter(w => w.category === category);
 
       return this.groupBy(weapons, weapon => weapon.category);
@@ -65,7 +64,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.home {
+.challenges {
   @media (min-width: $tablet) {
     padding-bottom: 250px;
   }
