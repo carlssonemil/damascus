@@ -13,9 +13,16 @@
   opacity: 0;
 }
 
-.slide-enter-active, .slide-leave-active {
+.slideup-enter-active, .slideup-leave-active {
   transition: all .75s ease;
 }
-.slide-enter, .slide-leave-to {
+.slideup-enter, .slideup-leave-to {
   transform: translateY(100%);
+}
+
+.slidedown-enter-active, .slidedown-leave-active {
+  transition: all .75s ease;
+}
+.slidedown-enter, .slidedown-leave-to {
+  transform: translateY(-100%);
 }

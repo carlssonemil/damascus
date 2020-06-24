@@ -11,7 +11,7 @@
       </div>
     </transition>
 
-    <transition name="slide">
+    <transition name="slideup">
       <div class="bars" v-show="totalProgress > 0 && show">
         <div class="progress total" v-if="totalProgress < 100">
           <div class="bar" :style="{ width: totalProgress + '%' }"></div>
