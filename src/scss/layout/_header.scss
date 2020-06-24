@@ -178,12 +178,30 @@ nav.mobile {
     display: flex;
     flex-direction: column;
     text-align: left;
+    width: 100%;
 
     a {
       font-size: 16px;
 
       + a {
         margin-top: 25px;
+      }
+
+      &.button {
+        align-items: center;
+        background: $purple;
+        color: white;
+        display: flex;
+        justify-content: center;
+        margin-top: 35px;
+        opacity: 1;
+        width: 100%;
+
+        i {
+          margin-right: 10px;
+          position: relative;
+          top: 2px;
+        }
       }
     }
   }

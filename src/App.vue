@@ -1,5 +1,12 @@
 <template>
   <div id="app" :style="{ overflowY: mobileNav ? 'hidden' : null }">
+    <transition name="slidedown">
+      <div class="notice" v-if="showNotice">
+        <p>If you like this site, show your appreciation by <a href="https://www.buymeacoffee.com/emilcarlsson">buying me a beer</a> 🍺</p>
+        <eva-icon name="close" fill="white" width="16" height="16" @click="showNotice = false"></eva-icon>
+      </div>
+    </transition>
+
     <nav class="container">
       <router-link to="/" class="logo">
         <div class="icon-container">
@@ -38,6 +45,8 @@
           <router-link to="/settings">Settings</router-link>
           <router-link to="/about">About</router-link>
           <a href="https://github.com/carlssonemil/damascus">GitHub</a>
+
+          <a href="https://www.buymeacoffee.com/emilcarlsson" class="button">Support me by buying me a beer 🍺</a>
         </div>
       </nav>
     </transition>
@@ -79,7 +88,8 @@ export default {
   data() {
     return {
       production: process.env.NODE_ENV === 'production',
-      mobileNav: false
+      mobileNav: false,
+      showNotice: false
     }
   },
 
@@ -91,6 +101,12 @@ export default {
 
   async beforeCreate() {
     await this.$store.dispatch('getStoredData');
+  },
+
+  mounted() {
+    setTimeout(() => {
+      this.showNotice = true;
+    }, 15000);
   }
 }
 </script>
