@@ -1778,7 +1778,7 @@ export default new Vuex.Store({
 
       if (reticles) {
         reticles.forEach(reticle => {
-          state.reticles.find(r => r.name === reticle.name).completed = reticle.completed;
+          state.reticles.find(r => r.category === reticle.category && r.name === reticle.name).completed = reticle.completed;
         });
       }
     },
@@ -1831,6 +1831,7 @@ export default new Vuex.Store({
     },
 
     TOGGLE_RETICLE_COMPLETED(state, { reticle }) {
+      console.log(reticle);
       state.reticles.find(r => r.category === reticle.category && r.name === reticle.name).completed = !reticle.completed;
     },
 
