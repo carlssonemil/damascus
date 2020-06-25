@@ -188,14 +188,11 @@ nav.mobile {
       }
 
       &.button {
-        align-items: center;
         background: $purple;
         color: white;
-        display: flex;
-        justify-content: center;
-        line-height: 22px;
         margin-top: 35px;
         opacity: 1;
+        text-align: center;
         width: 100%;
 
         i {
