@@ -1183,6 +1183,21 @@ export default new Vuex.Store({
           }
         },
         {
+          category: 'Sniper Rifle',
+          alias: 'Delta',
+          name: 'Rytek AMR',
+          required: false,
+          progress: {
+            ...defaultProgress
+          },
+          mastery: {
+            ...defaultMastery
+          },
+          challenges: {
+            ...defaultChallenges('Sniper Rifle')
+          }
+        },
+        {
           category: 'Melee',
           alias: 'Alpha',
           name: 'Riot Shield',
