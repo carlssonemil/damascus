@@ -334,7 +334,8 @@ export default new Vuex.Store({
           'Sniper Rifle': '50 Longshot Kills',
           'Melee': {
             'Riot Shield': '25 2-streaks',
-            'Combat Knife': '25 Double Kills'
+            'Combat Knife': '25 Double Kills',
+            'Kali Sticks': '25 Double Kills'
           },
           'Handgun': '25 Double Kills',
           'Launcher': '50 Equipment, killstreaks, or vehicles destroyed'
@@ -393,7 +394,8 @@ export default new Vuex.Store({
           'Sniper Rifle': '25 3-streaks',
           'Melee': {
             'Riot Shield': '25 3-streaks',
-            'Combat Knife': '10 3-streaks'
+            'Combat Knife': '10 3-streaks',
+            'Kali Sticks': '10 3-streaks'
           },
           'Handgun': '25 3-streaks',
           'Launcher': '50 vehicles destroyed'
@@ -422,7 +424,8 @@ export default new Vuex.Store({
           'Sniper Rifle': 'Kill 15 enemies in a match 125 times',
           'Melee': {
             'Riot Shield': 'Kill 750 Enemies',
-            'Combat Knife': 'Kill 10 enemies in a match 125 times'
+            'Combat Knife': 'Kill 10 enemies in a match 125 times',
+            'Kali Sticks': 'Kill 10 enemies in a match 125 times'
           },
           'Handgun': 'Kill 15 enemies in a match 100 times',
           'Launcher': {
