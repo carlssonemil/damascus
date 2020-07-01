@@ -402,7 +402,19 @@ export default new Vuex.Store({
       {
         name: 'Obsidian',
         requirements: {
-          'Assault Rifle': 'Kill 15 enemies in a match 200 times',
+          'Assault Rifle': {
+            'Kilo 141': 'Kill 15 enemies in a match 200 times',
+            'FAL': 'Kill 15 enemies in a match 200 times',
+            'M4A1': 'Kill 15 enemies in a match 200 times',
+            'FR 5.56': 'Kill 15 enemies in a match 200 times',
+            'Oden': 'Kill 15 enemies in a match 200 times',
+            'M13': 'Kill 15 enemies in a match 200 times',
+            'FN Scar 17': 'Kill 15 enemies in a match 200 times',
+            'AK-47': 'Kill 15 enemies in a match 200 times',
+            'RAM-7': 'Kill 15 enemies in a match 150 times',
+            'Grau 5.56': 'Kill 15 enemies in a match 200 times',
+            'CR-56 AMAX': 'Kill 15 enemies in a match 200 times'
+          },
           'Submachine Gun': 'Kill 15 enemies in a match 150 times',
           'Shotgun': 'Kill 15 enemies in a match 150 times',
           'Light Machine Gun': 'Kill 15 enemies in a match 150 times',
