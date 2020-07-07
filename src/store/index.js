@@ -308,7 +308,13 @@ export default new Vuex.Store({
         requirements: {
           'Assault Rifle': '100 Longshot Kills',
           'Submachine Gun': '50 Longshot Kills',
-          'Shotgun': '50 Headshot Kills',
+          'Shotgun': {
+            'Model 680': '50 Headshot Kills',
+            'R9-0': '50 Headshot Kills',
+            '725': '50 Longshot Kills',
+            'Origin 12': '50 Headshot Kills',
+            'VLK Rogue': '50 Headshot Kills'
+          },
           'Light Machine Gun': '45 Longshot Kills',
           'Marksman Rifle': '150 Kills while using all attachments',
           'Sniper Rifle': '150 Kills while using all attachments',
