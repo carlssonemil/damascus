@@ -13,7 +13,10 @@
 
     <transition name="slideup">
       <div class="bars" v-show="totalProgress > 0 && show">
-        <div class="progress total" v-if="totalProgress < 100">
+        <div class="progress total"
+             v-if="totalProgress < 100"
+             :content="'Camouflages (including Obsidian) and Master Challenges'"
+             v-tippy="{ maxWidth: 500 }">
           <div class="bar" :style="{ width: totalProgress + '%' }"></div>
           <label>Total progress: <span>{{ totalProgress }}%</span></label>
         </div>
