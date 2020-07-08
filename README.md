@@ -15,17 +15,11 @@ Built with [Vue](https://vuejs.org/), hosted on [Vercel](https://vercel.com/) an
 
 <br />
 
-## Development setup
-```bash
-# Install dependencies
-$ npm install
+## Bug reports & feature requests
+If you've found a bug or want to request a feature, feel free to [open an issue](https://github.com/carlssonemil/damascus/issues/new). Try to be as descriptive as possible.
 
-# Compiles and hot-reloads for development
-$ npm run serve
-
-# Compiles and minifies for production
-$ npm run build
-```
+## Contributing
+Want to contribute to this project? Read our [contributing guidelines](https://github.com/carlssonemil/damascus/blob/master/CONTRIBUTING.md).
 
 ## License
 
