@@ -13,8 +13,6 @@ Built with [Vue](https://vuejs.org/), hosted on [Vercel](https://vercel.com/) an
 - Filterable – Easily switch between weapon categories.
 - Ad-free – No annoying ads cluttering the site.
 
-<br />
-
 ## Bug reports & feature requests
 If you've found a bug or want to request a feature, feel free to [open an issue](https://github.com/carlssonemil/damascus/issues/new). Try to be as descriptive as possible.
 
