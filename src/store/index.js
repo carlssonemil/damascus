@@ -1745,7 +1745,7 @@ export default new Vuex.Store({
         {
           category: 'Sniper Reticle',
           name: 'Top Notch',
-          requirement: 'Get 3 kills without dying using the Variable Zoom Scope',
+          requirement: 'Kill 3 enemies without dying 25 times while using the Variable Zoom Scope',
           completed: false,
         },
         {
