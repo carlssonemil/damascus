@@ -1,25 +1,31 @@
 <template>
-  <transition-group name="fade" tag="div">
-    <div class="category" v-for="(category, title, index) in reticles" :key="title" :data-index="index">
-      <h2>{{ title }}s</h2>
-      <transition-group name="fade" tag="div" class="reticles">
-        <div class="reticle" 
-             v-for="(reticle, index) in category" 
-             :key="reticle.name"
-             :class="{ completed: reticle.completed, locked: reticleIsLocked(index, reticle.completed, category) }"
-              @click="toggleReticleComplete(reticle, reticleIsLocked(index, reticle.completed, category))" 
-              :content="reticle.requirement" 
-              v-tippy="{ placement: 'bottom' }">
-          <div class="image">
-            <img :src="require(`../assets/reticles/${ convertToKebabCase(reticle.name) }.png`)" :alt="reticle.name">
+  <div>
+    <transition-group name="fade" tag="div">
+      <div class="category" v-for="(category, title, index) in reticles" :key="title" :data-index="index">
+        <h2>{{ title }}s</h2>
+        <transition-group name="fade" tag="div" class="reticles">
+          <div class="reticle" 
+              v-for="(reticle, index) in category" 
+              :key="reticle.name"
+              :class="{ completed: reticle.completed, locked: reticleIsLocked(index, reticle.completed, category) }"
+                @click="toggleReticleComplete(reticle, reticleIsLocked(index, reticle.completed, category))" 
+                :content="reticle.requirement" 
+                v-tippy="{ placement: 'bottom' }">
+            <div class="image">
+              <img :src="require(`../assets/reticles/${ convertToKebabCase(reticle.name) }.png`)" :alt="reticle.name">
+            </div>
+            <div class="name">
+              <p>{{ reticle.name }}</p>
+            </div>
           </div>
-          <div class="name">
-            <p>{{ reticle.name }}</p>
-          </div>
-        </div>
-      </transition-group>
+        </transition-group>
+      </div>
+    </transition-group>
+
+    <div v-if="Object.keys(reticles).length === 0" class="finished-placeholder">
+      <p>You've unlocked all reticles 👏</p>
     </div>
-  </transition-group>
+  </div>
 </template>
 
 <script>
@@ -124,6 +130,22 @@ export default {
         text-align: center;
         transition: $transition;
       }
+    }
+  }
+}
+
+.finished-placeholder {
+  color: darken(white, 50%);
+  margin-top: 10vh;
+  text-align: center;
+  width: 100%;
+
+  p {
+    font-size: 22px;
+    line-height: 1.7;
+
+    @media (max-width: $tablet) {
+      font-size: 24px;
     }
   }
 }

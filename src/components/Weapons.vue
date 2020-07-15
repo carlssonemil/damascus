@@ -1,69 +1,76 @@
 <template>
-  <transition-group name="fade" tag="div" class="container">
-    <div class="category" v-for="(category, title, index) in weapons" :key="title" :data-index="index">
-      <h2>{{ title }}s</h2>
-      <transition-group name="fade" tag="div" class="weapons">
-        <div class="weapon" v-for="weapon in category" :key="weapon.alias">
-          <div class="name" 
-               :class="{ 
-                 completed: completed(weapon, mode), 
-                 required: weapon.required && mode === 'Camouflages',
-                 challenge: mode === 'Challenges'
-                }" 
-               @dblclick="toggleWeaponComplete(weapon, completed(weapon, mode), mode)"
-               v-tippy="{ content: `Double-click to ${ completed(weapon, mode) ? 'reset' : 'complete' } weapon` }">{{ weapon.name }}</div>
-          
-          <!-- Camouflages Progress -->
-          <div class="progress" v-if="mode === 'Camouflages'">
-            <div class="camo" 
-                v-for="(completed, camo) in weapon.progress" 
-                :key="camo" 
-                @click="toggleComplete(weapon, camo, completed)" 
-                :content="camoTooltip(title, camo, weapon)" 
-                v-tippy="{ placement: 'bottom' }">
-              <div class="inner" :class="{ completed }">
-                <eva-icon class="completed" name="checkmark" fill="#10ac84"></eva-icon>
-                <eva-icon v-if="completed" class="remove" name="close" fill="#ee5253"></eva-icon>
-                <img :src="require(`../assets/camouflages/${ convertToKebabCase(camo) }.png`)" :alt="camo">
+  <div>
+    <transition-group name="fade" tag="div" class="container">
+      <div class="category" v-for="(category, title, index) in weapons" :key="title" :data-index="index">
+        <h2>{{ title }}s</h2>
+        <transition-group name="fade" tag="div" class="weapons">
+          <div class="weapon" v-for="weapon in category" :key="weapon.alias">
+            <div class="name" 
+                :class="{ 
+                  completed: completed(weapon, mode), 
+                  required: weapon.required && mode === 'Camouflages',
+                  challenge: mode === 'Challenges'
+                  }" 
+                @dblclick="toggleWeaponComplete(weapon, completed(weapon, mode), mode)"
+                v-tippy="{ content: `Double-click to ${ completed(weapon, mode) ? 'reset' : 'complete' } weapon` }">{{ weapon.name }}</div>
+            
+            <!-- Camouflages Progress -->
+            <div class="progress" v-if="mode === 'Camouflages'">
+              <div class="camo" 
+                  v-for="(completed, camo) in weapon.progress" 
+                  :key="camo" 
+                  @click="toggleComplete(weapon, camo, completed)" 
+                  :content="camoTooltip(title, camo, weapon)" 
+                  v-tippy="{ placement: 'bottom' }">
+                <div class="inner" :class="{ completed }">
+                  <eva-icon class="completed" name="checkmark" fill="#10ac84"></eva-icon>
+                  <eva-icon v-if="completed" class="remove" name="close" fill="#ee5253"></eva-icon>
+                  <img :src="require(`../assets/camouflages/${ convertToKebabCase(camo) }.png`)" :alt="camo">
+                </div>
               </div>
             </div>
-          </div>
 
-          <!-- Mastery Camouflages Progress -->
-          <div class="mastery" v-if="completed(weapon, mode) && mode === 'Camouflages'">
-            <div class="camo" 
-                v-for="(completed, camo) in weapon.mastery" 
-                :key="camo" 
-                @click="toggleComplete(weapon, camo, completed)" 
-                :content="camoTooltip(title, camo, weapon)" 
-                v-tippy="{ placement: 'bottom' }">
-              <div class="inner" :class="{ completed }">
-                <eva-icon class="completed" name="checkmark" fill="#10ac84"></eva-icon>
-                <eva-icon v-if="completed" class="remove" name="close" fill="#ee5253"></eva-icon>
-                <p>{{ camo }}</p>
+            <!-- Mastery Camouflages Progress -->
+            <div class="mastery" v-if="completed(weapon, mode) && mode === 'Camouflages'">
+              <div class="camo" 
+                  v-for="(completed, camo) in weapon.mastery" 
+                  :key="camo" 
+                  @click="toggleComplete(weapon, camo, completed)" 
+                  :content="camoTooltip(title, camo, weapon)" 
+                  v-tippy="{ placement: 'bottom' }">
+                <div class="inner" :class="{ completed }">
+                  <eva-icon class="completed" name="checkmark" fill="#10ac84"></eva-icon>
+                  <eva-icon v-if="completed" class="remove" name="close" fill="#ee5253"></eva-icon>
+                  <p>{{ camo }}</p>
+                </div>
               </div>
             </div>
-          </div>
 
-          <!-- Challenges Progress -->
-          <div class="challenges" v-if="mode === 'Challenges'">
-            <div class="challenge"
-                v-for="challenge in weapon.challenges"
-                :key="`${challenge.category}-${challenge.level}`"
-                @click="toggleChallengeComplete(weapon, challenge)"
-                :content="challengeTooltip(title, challenge, weapon)"
-                v-tippy="{ placement: 'bottom' }">
-              <div class="inner" :class="{ completed: challenge.completed }">
-                <eva-icon class="completed" name="checkmark" fill="#10ac84"></eva-icon>
-                <eva-icon v-if="challenge.completed" class="remove" name="close" fill="#ee5253"></eva-icon>
-                <img :src="require(`../assets/challenges/${ convertToKebabCase(challenge.category) }-${ convertToKebabCase(challenge.level) }.png`)" :alt="challenge.challenge">
+            <!-- Challenges Progress -->
+            <div class="challenges" v-if="mode === 'Challenges'">
+              <div class="challenge"
+                  v-for="challenge in weapon.challenges"
+                  :key="`${challenge.category}-${challenge.level}`"
+                  @click="toggleChallengeComplete(weapon, challenge)"
+                  :content="challengeTooltip(title, challenge, weapon)"
+                  v-tippy="{ placement: 'bottom' }">
+                <div class="inner" :class="{ completed: challenge.completed }">
+                  <eva-icon class="completed" name="checkmark" fill="#10ac84"></eva-icon>
+                  <eva-icon v-if="challenge.completed" class="remove" name="close" fill="#ee5253"></eva-icon>
+                  <img :src="require(`../assets/challenges/${ convertToKebabCase(challenge.category) }-${ convertToKebabCase(challenge.level) }.png`)" :alt="challenge.challenge">
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </transition-group>
+        </transition-group>
+      </div>
+    </transition-group>
+
+    <div v-if="Object.keys(weapons).length === 0" class="finished-placeholder">
+      <p v-if="mode === 'Camouflages'">You've completed all camouflage challenges 👏</p>
+      <p v-if="mode === 'Challenges'">You've completed all mastery challenges 👏</p>
     </div>
-  </transition-group>
+  </div>
 </template>
 
 <script>
@@ -313,4 +320,19 @@ export default {
   }
 }
 
+.finished-placeholder {
+  color: darken(white, 50%);
+  margin-top: 10vh;
+  text-align: center;
+  width: 100%;
+
+  p {
+    font-size: 22px;
+    line-height: 1.7;
+
+    @media (max-width: $tablet) {
+      font-size: 24px;
+    }
+  }
+}
 </style>
