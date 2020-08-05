@@ -79,7 +79,7 @@ const defaultChallenges = (category, weapon) => {
       ];
 
     case 'Melee':
-      if (weapon === 'Combat Knife' || weapon === 'Kali Sticks') {
+      if (weapon === 'Combat Knife' || weapon === 'Kali Sticks' || weapon === 'Dual Kodachis') {
         return [
           {
             category: 'Kill',
@@ -260,6 +260,7 @@ export default new Vuex.Store({
             'MP7': '500 Kills',
             'Striker 45': '500 Kills',
             'Fennec': '250 Kills',
+            'ISO': '500 Kills'
           },
           'Shotgun': '400 Kills',
           'Light Machine Gun': '525 Kills',
@@ -283,6 +284,7 @@ export default new Vuex.Store({
             'MP7': '100 Headshot Kills',
             'Striker 45': '100 Headshot Kills',
             'Fennec': '50 Headshot Kills',
+            'ISO': '100 Headshot Kills'
           },
           'Shotgun': '75 Crouching Kills',
           'Light Machine Gun': '75 Headshot Kills',
@@ -306,6 +308,7 @@ export default new Vuex.Store({
             'MP7': '110 Crouching Kills',
             'Striker 45': '110 Crouching Kills',
             'Fennec': '40 Crouching Kills',
+            'ISO': '110 Crouching Kills'
           },
           'Shotgun': '75 Hipfire Kills',
           'Light Machine Gun': '65 Crouching Kills',
@@ -329,6 +332,7 @@ export default new Vuex.Store({
             'MP7': '100 Hipfire Kills',
             'Striker 45': '100 Hipfire Kills',
             'Fennec': '30 Hipfire Kills',
+            'ISO': '100 Hipfire Kills'
           },
           'Shotgun': '50 Point Blank Kills',
           'Light Machine Gun': '45 Hipfire Kills',
@@ -352,6 +356,7 @@ export default new Vuex.Store({
             'MP7': '50 Longshot Kills',
             'Striker 45': '50 Longshot Kills',
             'Fennec': '30 Longshot Kills',
+            'ISO': '50 Longshot Kills'
           },
           'Shotgun': {
             'Model 680': '50 Headshot Kills',
@@ -381,6 +386,7 @@ export default new Vuex.Store({
             'MP7': '50 Mounted Kills',
             'Striker 45': '50 Mounted Kills',
             'Fennec': '25 Double Kills',
+            'ISO': '50 Mounted Kills'
           },
           'Shotgun': '225 Kills while using all attachments',
           'Light Machine Gun': '45 Mounted Kills',
@@ -395,7 +401,8 @@ export default new Vuex.Store({
           'Melee': {
             'Riot Shield': '25 2-streaks',
             'Combat Knife': '25 Double Kills',
-            'Kali Sticks': '25 Double Kills'
+            'Kali Sticks': '25 Double Kills',
+            'Dual Kodachis': '25 Double Kills'
           },
           'Handgun': '25 Double Kills',
           'Launcher': '50 Equipment, killstreaks, or vehicles destroyed'
@@ -414,6 +421,7 @@ export default new Vuex.Store({
             'MP7': '250 Kills while using all attachments',
             'Striker 45': '250 Kills while using all attachments',
             'Fennec': '110 Kills w/ 5 Attachments',
+            'ISO': '250 Kills while using all attachments'
           },
           'Shotgun': '25 Double Kills',
           'Light Machine Gun': '180 Kills while using all attachments',
@@ -437,6 +445,7 @@ export default new Vuex.Store({
             'MP7': '40 Kills shortly after reload',
             'Striker 45': '40 Kills shortly after reload',
             'Fennec': '25 Kills shortly after reload',
+            'ISO': '40 Kills shortly after reload'
           },
           'Shotgun': '30 Kills shortly after reload',
           'Light Machine Gun': '30 Double Kills',
@@ -473,7 +482,8 @@ export default new Vuex.Store({
           'Melee': {
             'Riot Shield': '25 3-streaks',
             'Combat Knife': '10 3-streaks',
-            'Kali Sticks': '10 3-streaks'
+            'Kali Sticks': '10 3-streaks',
+            'Dual Kodachis': '10 3-streaks'
           },
           'Handgun': '25 3-streaks',
           'Launcher': '50 vehicles destroyed'
@@ -493,7 +503,8 @@ export default new Vuex.Store({
             'AK-47': 'Kill 15 enemies in a match 200 times',
             'RAM-7': 'Kill 15 enemies in a match 150 times',
             'Grau 5.56': 'Kill 15 enemies in a match 200 times',
-            'CR-56 AMAX': 'Kill 15 enemies in a match 200 times'
+            'CR-56 AMAX': 'Kill 15 enemies in a match 200 times',
+            'AN-94': 'Kill 15 enemies in a match 200 times'
           },
           'Submachine Gun': 'Kill 15 enemies in a match 150 times',
           'Shotgun': 'Kill 15 enemies in a match 150 times',
@@ -503,7 +514,8 @@ export default new Vuex.Store({
           'Melee': {
             'Riot Shield': 'Kill 750 Enemies',
             'Combat Knife': 'Kill 10 enemies in a match 125 times',
-            'Kali Sticks': 'Kill 10 enemies in a match 125 times'
+            'Kali Sticks': 'Kill 10 enemies in a match 125 times',
+            'Dual Kodachis': 'Kill 10 enemies in a match 125 times'
           },
           'Handgun': 'Kill 15 enemies in a match 100 times',
           'Launcher': {
@@ -529,11 +541,7 @@ export default new Vuex.Store({
             'Light Machine Gun': 'Get 500 Kills',
             'Marksman Rifle': 'Get 500 Kills',
             'Sniper Rifle': 'Get 500 Kills',
-            'Melee': {
-              'Combat Knife': 'Get 500 Kills',
-              'Riot Shield': 'Get 500 Kills',
-              'Kali Sticks': 'Get 500 Kills'
-            },
+            'Melee': 'Get 500 Kills',
             'Handgun': 'Get 500 Kills'
           },
           'Damascus': {
@@ -546,7 +554,8 @@ export default new Vuex.Store({
             'Melee': {
               'Combat Knife': 'Get 2000 Kills',
               'Riot Shield': 'Get 1250 Kills',
-              'Kali Sticks': 'Get 2000 Kills'
+              'Kali Sticks': 'Get 2000 Kills',
+              'Dual Kodachis': 'Get 2000 Kills'
             },
             'Handgun': 'Get 2000 Kills'
           }
@@ -615,14 +624,16 @@ export default new Vuex.Store({
           'Platinum': {
             'Melee': {
               'Combat Knife': 'Get a Double kill 100 times',
-              'Kali Sticks': 'Get a Double kill 100 times'
+              'Kali Sticks': 'Get a Double kill 100 times',
+              'Dual Kodachis': 'Get a Double kill 100 times'
             },
             'Launcher': 'Get a Double kill 75 times'
           },
           'Obsidian': {
             'Melee': {
               'Combat Knife': 'Get a Double kill 300 times',
-              'Kali Sticks': 'Get a Double kill 300 times'
+              'Kali Sticks': 'Get a Double kill 300 times',
+              'Dual Kodachis': 'Get a Double kill 300 times'
             },
             'Launcher': 'Get a Double kill 325 times'
           }
@@ -640,11 +651,7 @@ export default new Vuex.Store({
             'Light Machine Gun': 'Get 50 Aiming Down Sight kills with the No Stock attachment option selected',
             'Marksman Rifle': 'Get 5 Longshot kills while using the Scout Combat Optic',
             'Sniper Rifle': 'Get 5 Longshot kills while using the Scout Combat Optic',
-            'Melee': {
-              'Combat Knife': 'Get 50 Kills while behind the enemy',
-              'Riot Shield': 'Get 50 Kills while behind the enemy',
-              'Kali Sticks': 'Get 50 Kills while behind the enemy'
-            },
+            'Melee': 'Get 50 Kills while behind the enemy',
             'Handgun': 'Get 50 Kills using the Akimbo weapon perk and a Reflex Optic',
             'Launcher': 'Destroy 20 Aerial Vehicles'
           },
@@ -658,7 +665,8 @@ export default new Vuex.Store({
             'Melee': {
               'Combat Knife': 'Get 25 Kills while sliding',
               'Riot Shield': 'Get 25 Buzzkills (End Enemy Streaks)',
-              'Kali Sticks': 'Get 25 Kills while sliding'
+              'Kali Sticks': 'Get 25 Kills while sliding',
+              'Dual Kodachis': 'Get 25 Kills while sliding'
             },
             'Handgun': 'Get 30 Kills while sliding',
             'Launcher': 'Get 10 Buzzkills (End Enemy Streaks)'
@@ -670,11 +678,7 @@ export default new Vuex.Store({
             'Light Machine Gun': 'Get 25 Hipfire Kills',
             'Marksman Rifle': 'Get 10 Hipfire kills',
             'Sniper Rifle': 'Get 10 Hipfire kills',
-            'Melee': {
-              'Combat Knife': 'Get 75 Kills while in smoke',
-              'Riot Shield': 'Get 75 Kills while in smoke',
-              'Kali Sticks': 'Get 75 Kills while in smoke'
-            },
+            'Melee': 'Get 75 Kills while in smoke',
             'Handgun': 'Get 75 Kills while in smoke',
             'Launcher': 'Get 20 Longshot Kills'
           },
@@ -688,7 +692,8 @@ export default new Vuex.Store({
             'Melee': {
               'Combat Knife': 'Get 10 Double Kills while using the Tracker Perk',
               'Riot Shield': 'Get 3 Kills without dying and while using the Tracker Perk 10 times',
-              'Kali Sticks': 'Get 10 Double Kills while using the Tracker Perk'
+              'Kali Sticks': 'Get 10 Double Kills while using the Tracker Perk',
+              'Dual Kodachis': 'Get 10 Double Kills while using the Tracker Perk'
             },
             'Handgun': 'Using 3 Attachments, get 75 Point Blank Headshot kills',
             'Launcher': 'Get 10 Double Kills while using the Tracker Perk'
@@ -871,6 +876,21 @@ export default new Vuex.Store({
           }
         },
         {
+          category: 'Assault Rifle',
+          alias: 'Lima',
+          name: 'AN-94',
+          required: false,
+          progress: {
+            ...defaultProgress
+          },
+          mastery: {
+            ...defaultMastery
+          },
+          challenges: {
+            ...defaultChallenges('Assault Rifle')
+          }
+        },
+        {
           category: 'Submachine Gun',
           alias: 'Alpha',
           name: 'AUG',
@@ -979,6 +999,21 @@ export default new Vuex.Store({
           category: 'Submachine Gun',
           alias: 'Hotel',
           name: 'Fennec',
+          required: false,
+          progress: {
+            ...defaultProgress
+          },
+          mastery: {
+            ...defaultMastery
+          },
+          challenges: {
+            ...defaultChallenges('Submachine Gun')
+          }
+        },
+        {
+          category: 'Submachine Gun',
+          alias: 'India',
+          name: 'ISO',
           required: false,
           progress: {
             ...defaultProgress
@@ -1333,6 +1368,21 @@ export default new Vuex.Store({
           },
           challenges: {
             ...defaultChallenges('Melee', 'Kali Sticks')
+          }
+        },
+        {
+          category: 'Melee',
+          alias: 'Delta',
+          name: 'Dual Kodachis',
+          required: false,
+          progress: {
+            ...defaultProgress
+          },
+          mastery: {
+            ...defaultMastery
+          },
+          challenges: {
+            ...defaultChallenges('Melee', 'Dual Kodachis')
           }
         },
         {
