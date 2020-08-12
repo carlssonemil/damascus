@@ -237,6 +237,37 @@ const defaultFilters = {
   }
 }
 
+function challengeReq(strings, count, attachCount) {
+  let attachPrefix = attachCount !== undefined ? `Using ${attachCount} Attachments, ` : '';
+  return `${attachPrefix}${strings[0]} ${count} ${strings[1]}`;
+}
+
+const challengeTypes = {
+  adsNoStock: ['Get', 'Aiming Down Sight kills with the No Stock attachment option selected'],
+  adsLaser: ['Get', 'Kills while Aiming Down Sights and using a Laser attachment'],
+  scoutLongshot: ['Get', 'Longshot kills while using the Scout Combat Optic'],
+  behindEnemy: ['Get', 'Kills while behind the enemy'],
+  akimboReflex: ['Get', 'Kills using the Akimbo weapon perk and a Reflex Optic'],
+  aerialVehicle: ['Destroy', 'Aerial Vehicles'],
+  sliding: ['Get', 'Kills while sliding'],
+  quickscope: ['Get', 'Quickscope kills'],
+  buzzkill: ['Get', 'Buzzkills (End Enemy Streaks)'],
+  crouching: ['Get', 'Kills while crouching'],
+  inSmoke: ['Get', 'Kills while in smoke'],
+  scoutOptic: ['Get', 'Kills while using a Scout Combat Optic'],
+  sniperScope: ['Get', 'Kills while using a sniper scope'], // not capitalised in-game
+  hipfire: ['Get', 'Hipfire Kills'],
+  longshot: ['Get', 'Longshot Kills'],
+  pointBlankHeadshot: ['Get', 'Point Blank Headshot Kills'],
+  slidingHeadshot: ['Get', 'Headshot Kills while sliding'],
+  inSmokeHeadshot: ['Get', 'Headshot kills while in smoke'],
+  crouchingHeadshot: ['Get', 'Headshot kills while crouching'],
+  mountedLongshot: ['Get', 'Mounted Longshot Kills'],
+  threeStreakTracker: ['Get', 'Kills without dying and while using the Tracker Perk 10 times'],
+  doubleKillTracker: ['Get', 'Double Kills while using the Tracker Perk'],
+
+}
+
 export default new Vuex.Store({
   state: {
     // Weapons
@@ -645,58 +676,112 @@ export default new Vuex.Store({
         category: 'Skill',
         levels: {
           'Gold': {
-            'Assault Rifle': 'Get 75 Aiming Down Sight kills with the No Stock attachment option selected',
-            'Submachine Gun': 'Get 50 Kills while Aiming Down Sights and using a Laser attachment',
-            'Shotgun': 'Get 50 Aiming Down Sight kills with the No Stock attachment option selected',
-            'Light Machine Gun': 'Get 50 Aiming Down Sight kills with the No Stock attachment option selected',
-            'Marksman Rifle': 'Get 5 Longshot kills while using the Scout Combat Optic',
-            'Sniper Rifle': 'Get 5 Longshot kills while using the Scout Combat Optic',
-            'Melee': 'Get 50 Kills while behind the enemy',
-            'Handgun': 'Get 50 Kills using the Akimbo weapon perk and a Reflex Optic',
-            'Launcher': 'Destroy 20 Aerial Vehicles'
+            'Assault Rifle': {
+              'Kilo 141':challengeReq(challengeTypes.adsNoStock, 75),
+              'FAL': challengeReq(challengeTypes.adsNoStock, 75),
+              'M4A1': challengeReq(challengeTypes.adsNoStock, 75),
+              'FR 5.56': challengeReq(challengeTypes.adsLaser, 75),
+              'Oden': challengeReq(challengeTypes.adsLaser, 75),
+              'M13': challengeReq(challengeTypes.adsNoStock, 75),
+              'FN Scar 17': challengeReq(challengeTypes.adsLaser, 75),
+              'AK-47': challengeReq(challengeTypes.adsNoStock, 75),
+              'RAM-7': challengeReq(challengeTypes.adsLaser, 75),
+              'Grau 5.56': challengeReq(challengeTypes.adsNoStock, 75),
+              'CR-56 AMAX': challengeReq(challengeTypes.adsNoStock, 75),
+              'AN-94': challengeReq(challengeTypes.adsNoStock, 75), // assumed
+            },
+            'Submachine Gun': {
+              'AUG': challengeReq(challengeTypes.adsLaser, 50),
+              'P90': challengeReq(challengeTypes.adsLaser, 50),
+              'MP5': challengeReq(challengeTypes.adsLaser, 50),
+              'Uzi': challengeReq(challengeTypes.adsNoStock, 50),
+              'PP19 Bizon': challengeReq(challengeTypes.adsNoStock, 50),
+              'MP7': challengeReq(challengeTypes.adsNoStock, 50),
+              'Striker 45': challengeReq(challengeTypes.adsLaser, 50),
+              'Fennec': challengeReq(challengeTypes.adsLaser, 50),
+              'ISO': challengeReq(challengeTypes.adsLaser, 50), // assumed
+            },
+            'Shotgun': {
+              'Model 680': challengeReq(challengeTypes.adsNoStock, 50),
+              'R9-0': challengeReq(challengeTypes.adsLaser, 50),
+              '725': challengeReq(challengeTypes.adsLaser, 50),
+              'Origin 12': challengeReq(challengeTypes.adsNoStock, 50),
+              'VLK Rogue': challengeReq(challengeTypes.adsNoStock, 50),
+            },
+            'Light Machine Gun': {
+              'PKM': challengeReq(challengeTypes.adsNoStock, 50),
+              'SA87': challengeReq(challengeTypes.adsLaser, 50),
+              'M91': challengeReq(challengeTypes.adsNoStock, 50),
+              'MG34': challengeReq(challengeTypes.adsNoStock, 50),
+              'Holger-26': challengeReq(challengeTypes.adsNoStock, 50),
+              'Bruen Mk9': challengeReq(challengeTypes.adsNoStock, 50),
+            },
+            'Marksman Rifle': challengeReq(challengeTypes.scoutLongshot, 5),
+            'Sniper Rifle': challengeReq(challengeTypes.scoutLongshot, 5),
+            'Melee':  challengeReq(challengeTypes.behindEnemy, 50),
+            'Handgun': challengeReq(challengeTypes.akimboReflex, 50),
+            'Launcher': challengeReq(challengeTypes.aerialVehicle, 20),
           },
           'Platinum': {
-            'Assault Rifle': 'Get 50 Kills while sliding',
-            'Submachine Gun': 'Get 50 Kills while sliding',
-            'Shotgun': 'Get 75 Kills while sliding',
-            'Light Machine Gun': 'Get 25 Kills while sliding',
-            'Marksman Rifle': 'Get 75 Quickscope kills',
-            'Sniper Rifle': 'Get 75 Quickscope kills',
-            'Melee': {
-              'Combat Knife': 'Get 25 Kills while sliding',
-              'Riot Shield': 'Get 25 Buzzkills (End Enemy Streaks)',
-              'Kali Sticks': 'Get 25 Kills while sliding',
-              'Dual Kodachis': 'Get 25 Kills while sliding'
+            'Assault Rifle': challengeReq(challengeTypes.sliding, 50),
+            'Submachine Gun': challengeReq(challengeTypes.sliding, 50),
+            'Shotgun': challengeReq(challengeTypes.sliding, 75),
+            'Light Machine Gun': challengeReq(challengeTypes.sliding, 25),
+            'Marksman Rifle': {
+              'EBR-14': challengeReq(challengeTypes.quickscope, 75),
+              'MK2 Carbine': challengeReq(challengeTypes.quickscope, 75),
+              'Kar98k': challengeReq(challengeTypes.quickscope, 75),
+              'Crossbow': challengeReq(challengeTypes.quickscope, 25),
+              'SKS': challengeReq(challengeTypes.quickscope, 75)
             },
-            'Handgun': 'Get 30 Kills while sliding',
-            'Launcher': 'Get 10 Buzzkills (End Enemy Streaks)'
+            'Sniper Rifle': challengeReq(challengeTypes.quickscope, 75),
+            'Melee': {
+              'Combat Knife': challengeReq(challengeTypes.sliding, 25),
+              'Riot Shield': challengeReq(challengeTypes.buzzkill, 25),
+              'Kali Sticks': challengeReq(challengeTypes.sliding, 25),
+              'Dual Kodachis': challengeReq(challengeTypes.sliding, 25), // assumed
+            },
+            'Handgun': challengeReq(challengeTypes.sliding, 30),
+            'Launcher': challengeReq(challengeTypes.buzzkill, 10),
           },
           'Damascus': {
-            'Assault Rifle': 'Get 75 Kills while crouching',
-            'Submachine Gun': 'Get 25 Kills while in smoke',
-            'Shotgun': 'Get 50 Kills while using a Scout Combat Optic',
-            'Light Machine Gun': 'Get 25 Hipfire Kills',
-            'Marksman Rifle': 'Get 10 Hipfire kills',
-            'Sniper Rifle': 'Get 10 Hipfire kills',
-            'Melee': 'Get 75 Kills while in smoke',
-            'Handgun': 'Get 75 Kills while in smoke',
-            'Launcher': 'Get 20 Longshot Kills'
+            'Assault Rifle': challengeReq(challengeTypes.crouching, 75),
+            'Submachine Gun': challengeReq(challengeTypes.inSmoke, 25),
+            'Shotgun': {
+              'Model 680': challengeReq(challengeTypes.scoutOptic, 75),
+              'R9-0': challengeReq(challengeTypes.scoutOptic, 75),
+              '725': challengeReq(challengeTypes.sniperScope, 75),
+              'Origin 12': challengeReq(challengeTypes.scoutOptic, 75),
+              'VLK Rogue': challengeReq(challengeTypes.scoutOptic, 75),
+            },
+            'Light Machine Gun': challengeReq(challengeTypes.hipfire, 25),
+            'Marksman Rifle': {
+              'EBR-14': challengeReq(challengeTypes.hipfire, 10),
+              'MK2 Carbine': challengeReq(challengeTypes.hipfire, 10),
+              'Kar98k': challengeReq(challengeTypes.hipfire, 10),
+              'Crossbow': challengeReq(challengeTypes.hipfire, 75),
+              'SKS': challengeReq(challengeTypes.hipfire, 75)
+            },
+            'Sniper Rifle': challengeReq(challengeTypes.hipfire, 10),
+            'Melee': challengeReq(challengeTypes.inSmoke, 75),
+            'Handgun': challengeReq(challengeTypes.inSmoke, 75),
+            'Launcher': challengeReq(challengeTypes.longshot, 20),
           },
           'Obsidian': {
-            'Assault Rifle': 'Using 4 Attachments, get 25 Point Blank Headshot kills',
-            'Submachine Gun': 'Using 3 Attachments, get 5 Headshot Kills while sliding',
-            'Shotgun': 'Using 4 Attachments, get 10 Headshot kills while in smoke',
-            'Light Machine Gun': 'Using 3 Attachments, get 25 Headshot kills while crouching',
-            'Marksman Rifle': 'Using 2 Attachments, get 25 Mounted Longshot Kills',
-            'Sniper Rifle': 'Using 2 Attachments, get 25 Mounted Longshot Kills',
+            'Assault Rifle': challengeReq(challengeTypes.pointBlankHeadshot, 25, 4),
+            'Submachine Gun': challengeReq(challengeTypes.slidingHeadshot, 5, 3),
+            'Shotgun': challengeReq(challengeTypes.inSmokeHeadshot, 10, 4),
+            'Light Machine Gun': challengeReq(challengeTypes.crouchingHeadshot, 25, 3),
+            'Marksman Rifle': challengeReq(challengeTypes.mountedLongshot, 25, 2),
+            'Sniper Rifle': challengeReq(challengeTypes.mountedLongshot, 25, 2),
             'Melee': {
-              'Combat Knife': 'Get 10 Double Kills while using the Tracker Perk',
-              'Riot Shield': 'Get 3 Kills without dying and while using the Tracker Perk 10 times',
-              'Kali Sticks': 'Get 10 Double Kills while using the Tracker Perk',
-              'Dual Kodachis': 'Get 10 Double Kills while using the Tracker Perk'
+              'Combat Knife': challengeReq(challengeTypes.doubleKillTracker, 10),
+              'Riot Shield': challengeReq(challengeTypes.threeStreakTracker, 10),
+              'Kali Sticks': challengeReq(challengeTypes.doubleKillTracker, 10),
+              'Dual Kodachis': challengeReq(challengeTypes.doubleKillTracker, 10)
             },
-            'Handgun': 'Using 3 Attachments, get 75 Point Blank Headshot kills',
-            'Launcher': 'Get 10 Double Kills while using the Tracker Perk'
+            'Handgun': challengeReq(challengeTypes.pointBlankHeadshot, 75, 3),
+            'Launcher': challengeReq(challengeTypes.doubleKillTracker, 10),
           },
         }
       },
@@ -1749,7 +1834,7 @@ export default new Vuex.Store({
           completed: false,
         },
 
-        // Sniper Reticles       
+        // Sniper Reticles
         {
           category: 'Sniper Reticle',
           name: 'Crossthread',
