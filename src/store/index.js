@@ -243,14 +243,15 @@ function challengeReq(strings, count, attachCount) {
 }
 
 const challengeTypes = {
-  adsNoStock: ['Get', 'Aiming Down Sight kills with the No Stock attachment option selected'],
+  adsNoStock: ['Get', 'Aiming Down Sight Kills with the No Stock attachment option selected'],
+  adsFoldedStock: ['Get', 'Aiming Down Sight Kills with the Folded Stock selected'],
   adsLaser: ['Get', 'Kills while Aiming Down Sights and using a Laser attachment'],
-  scoutLongshot: ['Get', 'Longshot kills while using the Scout Combat Optic'],
+  scoutLongshot: ['Get', 'Longshot Kills while using the Scout Combat Optic'],
   behindEnemy: ['Get', 'Kills while behind the enemy'],
   akimboReflex: ['Get', 'Kills using the Akimbo weapon perk and a Reflex Optic'],
   aerialVehicle: ['Destroy', 'Aerial Vehicles'],
   sliding: ['Get', 'Kills while sliding'],
-  quickscope: ['Get', 'Quickscope kills'],
+  quickscope: ['Get', 'Quickscope Kills'],
   buzzkill: ['Get', 'Buzzkills (End Enemy Streaks)'],
   crouching: ['Get', 'Kills while crouching'],
   inSmoke: ['Get', 'Kills while in smoke'],
@@ -260,12 +261,11 @@ const challengeTypes = {
   longshot: ['Get', 'Longshot Kills'],
   pointBlankHeadshot: ['Get', 'Point Blank Headshot Kills'],
   slidingHeadshot: ['Get', 'Headshot Kills while sliding'],
-  inSmokeHeadshot: ['Get', 'Headshot kills while in smoke'],
-  crouchingHeadshot: ['Get', 'Headshot kills while crouching'],
+  inSmokeHeadshot: ['Get', 'Headshot Kills while in smoke'],
+  crouchingHeadshot: ['Get', 'Headshot Kills while crouching'],
   mountedLongshot: ['Get', 'Mounted Longshot Kills'],
   threeStreakTracker: ['Get', 'Kills without dying and while using the Tracker Perk 10 times'],
   doubleKillTracker: ['Get', 'Double Kills while using the Tracker Perk'],
-
 }
 
 export default new Vuex.Store({
@@ -689,7 +689,7 @@ export default new Vuex.Store({
               'RAM-7': challengeReq(challengeTypes.adsLaser, 75),
               'Grau 5.56': challengeReq(challengeTypes.adsNoStock, 75),
               'CR-56 AMAX': challengeReq(challengeTypes.adsNoStock, 75),
-              'AN-94': challengeReq(challengeTypes.adsNoStock, 75),
+              'AN-94': challengeReq(challengeTypes.adsFoldedStock, 75),
               'AS VAL': challengeReq(challengeTypes.adsNoStock, 75),
             },
             'Submachine Gun': {
@@ -717,6 +717,7 @@ export default new Vuex.Store({
               'MG34': challengeReq(challengeTypes.adsNoStock, 50),
               'Holger-26': challengeReq(challengeTypes.adsNoStock, 50),
               'Bruen Mk9': challengeReq(challengeTypes.adsNoStock, 50),
+              'FiNN': challengeReq(challengeTypes.adsNoStock, 50),
             },
             'Marksman Rifle': challengeReq(challengeTypes.scoutLongshot, 5),
             'Sniper Rifle': challengeReq(challengeTypes.scoutLongshot, 5),
@@ -1281,6 +1282,21 @@ export default new Vuex.Store({
           category: 'Light Machine Gun',
           alias: 'Foxtrot',
           name: 'Bruen Mk9',
+          required: false,
+          progress: {
+            ...defaultProgress
+          },
+          mastery: {
+            ...defaultMastery
+          },
+          challenges: {
+            ...defaultChallenges('Light Machine Gun')
+          }
+        },
+        {
+          category: 'Light Machine Gun',
+          alias: 'Golf',
+          name: 'FiNN',
           required: false,
           progress: {
             ...defaultProgress
