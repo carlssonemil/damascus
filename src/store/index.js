@@ -535,7 +535,8 @@ export default new Vuex.Store({
             'RAM-7': 'Kill 15 enemies in a match 150 times',
             'Grau 5.56': 'Kill 15 enemies in a match 200 times',
             'CR-56 AMAX': 'Kill 15 enemies in a match 200 times',
-            'AN-94': 'Kill 15 enemies in a match 200 times'
+            'AN-94': 'Kill 15 enemies in a match 200 times',
+            'AS VAL': 'Kill 15 enemies in a match 200 times'
           },
           'Submachine Gun': 'Kill 15 enemies in a match 150 times',
           'Shotgun': 'Kill 15 enemies in a match 150 times',
@@ -688,7 +689,8 @@ export default new Vuex.Store({
               'RAM-7': challengeReq(challengeTypes.adsLaser, 75),
               'Grau 5.56': challengeReq(challengeTypes.adsNoStock, 75),
               'CR-56 AMAX': challengeReq(challengeTypes.adsNoStock, 75),
-              'AN-94': challengeReq(challengeTypes.adsNoStock, 75), // assumed
+              'AN-94': challengeReq(challengeTypes.adsNoStock, 75),
+              'AS VAL': challengeReq(challengeTypes.adsNoStock, 75),
             },
             'Submachine Gun': {
               'AUG': challengeReq(challengeTypes.adsLaser, 50),
@@ -699,7 +701,7 @@ export default new Vuex.Store({
               'MP7': challengeReq(challengeTypes.adsNoStock, 50),
               'Striker 45': challengeReq(challengeTypes.adsLaser, 50),
               'Fennec': challengeReq(challengeTypes.adsLaser, 50),
-              'ISO': challengeReq(challengeTypes.adsLaser, 50), // assumed
+              'ISO': challengeReq(challengeTypes.adsLaser, 50),
             },
             'Shotgun': {
               'Model 680': challengeReq(challengeTypes.adsNoStock, 50),
@@ -739,7 +741,7 @@ export default new Vuex.Store({
               'Combat Knife': challengeReq(challengeTypes.sliding, 25),
               'Riot Shield': challengeReq(challengeTypes.buzzkill, 25),
               'Kali Sticks': challengeReq(challengeTypes.sliding, 25),
-              'Dual Kodachis': challengeReq(challengeTypes.sliding, 25), // assumed
+              'Dual Kodachis': challengeReq(challengeTypes.sliding, 25),
             },
             'Handgun': challengeReq(challengeTypes.sliding, 30),
             'Launcher': challengeReq(challengeTypes.buzzkill, 10),
@@ -964,6 +966,21 @@ export default new Vuex.Store({
           category: 'Assault Rifle',
           alias: 'Lima',
           name: 'AN-94',
+          required: false,
+          progress: {
+            ...defaultProgress
+          },
+          mastery: {
+            ...defaultMastery
+          },
+          challenges: {
+            ...defaultChallenges('Assault Rifle')
+          }
+        },
+        {
+          category: 'Assault Rifle',
+          alias: 'Mike',
+          name: 'AS VAL',
           required: false,
           progress: {
             ...defaultProgress
@@ -1399,6 +1416,21 @@ export default new Vuex.Store({
           category: 'Sniper Rifle',
           alias: 'Delta',
           name: 'Rytek AMR',
+          required: false,
+          progress: {
+            ...defaultProgress
+          },
+          mastery: {
+            ...defaultMastery
+          },
+          challenges: {
+            ...defaultChallenges('Sniper Rifle')
+          }
+        },
+        {
+          category: 'Sniper Rifle',
+          alias: 'Echo',
+          name: 'SP-R 208',
           required: false,
           progress: {
             ...defaultProgress
