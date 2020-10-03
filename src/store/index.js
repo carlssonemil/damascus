@@ -426,7 +426,8 @@ export default new Vuex.Store({
             'MK2 Carbine': '50 Longshot Kills',
             'Kar98k': '50 Longshot Kills',
             'Crossbow': '50 Longshot Kills',
-            'SKS': '25 Double Kills'
+            'SKS': '25 Double Kills',
+            'SP-R 208': '50 Longshot Kills'
           },
           'Sniper Rifle': '50 Longshot Kills',
           'Melee': {
@@ -1384,6 +1385,21 @@ export default new Vuex.Store({
           }
         },
         {
+          category: 'Marksman Rifle',
+          alias: 'Foxtrot',
+          name: 'SP-R 208',
+          required: false,
+          progress: {
+            ...defaultProgress
+          },
+          mastery: {
+            ...defaultMastery
+          },
+          challenges: {
+            ...defaultChallenges('Marksman Rifle')
+          }
+        },
+        {
           category: 'Sniper Rifle',
           alias: 'Alpha',
           name: 'Dragunov',
@@ -1432,21 +1448,6 @@ export default new Vuex.Store({
           category: 'Sniper Rifle',
           alias: 'Delta',
           name: 'Rytek AMR',
-          required: false,
-          progress: {
-            ...defaultProgress
-          },
-          mastery: {
-            ...defaultMastery
-          },
-          challenges: {
-            ...defaultChallenges('Sniper Rifle')
-          }
-        },
-        {
-          category: 'Sniper Rifle',
-          alias: 'Echo',
-          name: 'SP-R 208',
           required: false,
           progress: {
             ...defaultProgress
