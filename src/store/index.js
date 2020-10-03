@@ -736,7 +736,8 @@ export default new Vuex.Store({
               'MK2 Carbine': challengeReq(challengeTypes.quickscope, 75),
               'Kar98k': challengeReq(challengeTypes.quickscope, 75),
               'Crossbow': challengeReq(challengeTypes.quickscope, 25),
-              'SKS': challengeReq(challengeTypes.quickscope, 75)
+              'SKS': challengeReq(challengeTypes.quickscope, 75),
+              'SP-R 208': challengeReq(challengeTypes.quickscope, 75)
             },
             'Sniper Rifle': challengeReq(challengeTypes.quickscope, 75),
             'Melee': {
@@ -764,7 +765,8 @@ export default new Vuex.Store({
               'MK2 Carbine': challengeReq(challengeTypes.hipfire, 10),
               'Kar98k': challengeReq(challengeTypes.hipfire, 10),
               'Crossbow': challengeReq(challengeTypes.hipfire, 75),
-              'SKS': challengeReq(challengeTypes.hipfire, 75)
+              'SKS': challengeReq(challengeTypes.hipfire, 75),
+              'SP-R 208': challengeReq(challengeTypes.hipfire, 75)
             },
             'Sniper Rifle': challengeReq(challengeTypes.hipfire, 10),
             'Melee': challengeReq(challengeTypes.inSmoke, 75),
