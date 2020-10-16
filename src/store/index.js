@@ -394,7 +394,8 @@ export default new Vuex.Store({
             'R9-0': '50 Headshot Kills',
             '725': '50 Longshot Kills',
             'Origin 12': '50 Headshot Kills',
-            'VLK Rogue': '50 Headshot Kills'
+            'VLK Rogue': '50 Headshot Kills',
+            'JAK-12': '50 Headshot Kills'
           },
           'Light Machine Gun': '45 Longshot Kills',
           'Marksman Rifle': '150 Kills while using all attachments',
@@ -710,6 +711,7 @@ export default new Vuex.Store({
               '725': challengeReq(challengeTypes.adsLaser, 50),
               'Origin 12': challengeReq(challengeTypes.adsNoStock, 50),
               'VLK Rogue': challengeReq(challengeTypes.adsNoStock, 50),
+              'JAK-12': challengeReq(challengeTypes.adsNoStock, 50),
             },
             'Light Machine Gun': {
               'PKM': challengeReq(challengeTypes.adsNoStock, 50),
@@ -758,6 +760,7 @@ export default new Vuex.Store({
               '725': challengeReq(challengeTypes.sniperScope, 75),
               'Origin 12': challengeReq(challengeTypes.scoutOptic, 75),
               'VLK Rogue': challengeReq(challengeTypes.scoutOptic, 75),
+              'JAK-12': challengeReq(challengeTypes.scoutOptic, 75),
             },
             'Light Machine Gun': challengeReq(challengeTypes.hipfire, 25),
             'Marksman Rifle': {
@@ -1195,6 +1198,21 @@ export default new Vuex.Store({
           category: 'Shotgun',
           alias: 'Echo',
           name: 'VLK Rogue',
+          required: false,
+          progress: {
+            ...defaultProgress
+          },
+          mastery: {
+            ...defaultMastery
+          },
+          challenges: {
+            ...defaultChallenges('Shotgun')
+          }
+        },
+        {
+          category: 'Shotgun',
+          alias: 'Foxtrot',
+          name: 'JAK-12',
           required: false,
           progress: {
             ...defaultProgress
