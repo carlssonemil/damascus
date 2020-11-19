@@ -398,7 +398,14 @@ export default new Vuex.Store({
             'JAK-12': '50 Headshot Kills'
           },
           'Light Machine Gun': '45 Longshot Kills',
-          'Marksman Rifle': '150 Kills while using all attachments',
+          'Marksman Rifle': {
+            'EBR-14': '150 Kills while using all attachments',
+            'MK2 Carbine': '150 Kills while using all attachments',
+            'Kar98k': '150 Kills while using all attachments',
+            'Crossbow': '150 Kills while using all attachments',
+            'SKS': '150 Kills while using all attachments',
+            'SP-R 208': '50 Longshot Kills'
+          },
           'Sniper Rifle': '150 Kills while using all attachments',
           'Melee': '50 Crouching Kills',
           'Handgun': '30 Longshot Kills',
@@ -428,7 +435,7 @@ export default new Vuex.Store({
             'Kar98k': '50 Longshot Kills',
             'Crossbow': '50 Longshot Kills',
             'SKS': '25 Double Kills',
-            'SP-R 208': '50 Longshot Kills'
+            'SP-R 208': '25 Double Kills'
           },
           'Sniper Rifle': '50 Longshot Kills',
           'Melee': {
@@ -458,7 +465,14 @@ export default new Vuex.Store({
           },
           'Shotgun': '25 Double Kills',
           'Light Machine Gun': '180 Kills while using all attachments',
-          'Marksman Rifle': '50 Mounted Kills',
+          'Marksman Rifle': {
+            'EBR-14': '50 Mounted Kills',
+            'MK2 Carbine': '50 Mounted Kills',
+            'Kar98k': '50 Mounted Kills',
+            'Crossbow': '50 Mounted Kills',
+            'SKS': '50 Mounted Kills',
+            'SP-R 208': '150 Kills while using all attachments'
+          },
           'Sniper Rifle': '50 Mounted Kills',
           'Melee': '50 Kills near smoke',
           'Handgun': '110 Kills while using all attachments',
@@ -482,7 +496,14 @@ export default new Vuex.Store({
           },
           'Shotgun': '30 Kills shortly after reload',
           'Light Machine Gun': '30 Double Kills',
-          'Marksman Rifle': '25 Double Kills',
+          'Marksman Rifle': {
+            'EBR-14': '25 Double Kills',
+            'MK2 Carbine': '25 Double Kills',
+            'Kar98k': '25 Double Kills',
+            'Crossbow': '25 Double Kills',
+            'SKS': '25 Double Kills',
+            'SP-R 208': '50 Mounted Kills'
+          },
           'Sniper Rifle': '25 Double Kills',
           'Melee': '10 Buzzkills',
           'Handgun': '25 Kills shortly after reload',
