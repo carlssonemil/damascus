@@ -15,6 +15,9 @@
       <h4>Open source</h4>
       <p>Built with <a href="https://vuejs.org/">Vue</a>, hosted on <a href="https://vercel.com/">Vercel</a> and analytics by <a href="https://plausible.io/">Plausible</a>. The code to this site is available on <a href="https://github.com/carlssonemil/damascus">GitHub</a>.</p>
     
+      <h4>DM Ultra & Dark Aether</h4>
+      <p>Looking for a camouflage tracker for <i>Call of Duty: Black Ops Cold War (2020)</i>? <a href="https://coldwar.now.sh">Check it out here</a>.</p>
+
       <h4>Support me</h4>
       <p>You can support me by <a href="https://www.buymeacoffee.com/emilcarlsson">buying me a beer</a> or subscribe to my <a href="https://www.patreon.com/emilcarlsson">Patreon</a>.</p>
     </div>
