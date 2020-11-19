@@ -2,7 +2,8 @@
   <div id="app" :style="{ overflowY: mobileNav ? 'hidden' : null }">
     <transition name="slidedown">
       <div class="notice" v-if="showNotice">
-        <p>If you like this site, show your appreciation by <a href="https://www.buymeacoffee.com/emilcarlsson">buying me a beer</a> 🍺</p>
+        <p>Looking for a camouflage tracker for <em>Black Ops Cold War</em>? <a href="https://coldwar.now.sh">Check it out here!</a> 😎</p>
+        <!--<p>If you like this site, show your appreciation by <a href="https://www.buymeacoffee.com/emilcarlsson">buying me a beer</a> 🍺</p>-->
         <eva-icon name="close" fill="white" width="16" height="16" @click="showNotice = false"></eva-icon>
       </div>
     </transition>
