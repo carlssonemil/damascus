@@ -173,6 +173,24 @@ nav.mobile {
     }
   }
 
+  .info {
+    align-items: center;
+    border: 1px solid $elevation-5-color;
+    border-radius: $border-radius;
+    display: flex;
+    font-size: 14px;
+    justify-content: center;
+    margin-top: 25px;
+    padding: 20px;
+    width: 100%;
+
+    a {
+      color: $blue;
+      font-size: 14px !important;
+      opacity: 1;
+    }
+  }
+
   .footer {
     align-items: flex-start;
     display: flex;
