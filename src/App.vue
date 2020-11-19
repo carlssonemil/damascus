@@ -107,7 +107,7 @@ export default {
   mounted() {
     setTimeout(() => {
       this.showNotice = true;
-    }, 15000);
+    }, 1000);
   }
 }
 </script>
