@@ -79,7 +79,7 @@
 
     <Debug v-if="!production" />
 
-    <Popup>
+    <Popup :id="'forced-url-change'">
       <p>Due to a forced URL change by our hosting provider, all stored progress has unfortunately been reset. Since the progress is stored locally in your browser and tied directly to the URL there is no currently known solution to recover the stored data. We're sorry for the inconvenience.</p>
     </Popup>
   </div>

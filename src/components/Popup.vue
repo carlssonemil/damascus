@@ -1,10 +1,8 @@
 <template>
   <transition name="fade">
-      <div class="popup">
+      <div class="popup" v-if="show">
         <div class="modal">
-          <div class="header" v-if="title">
-            <h4>{{ title }}</h4>
-          </div>
+          <eva-icon class="close-icon" name="close" fill="white" @click="hide()"></eva-icon>
           <div class="content">
             <slot></slot>
           </div>
@@ -15,7 +13,27 @@
 
 <script>
   export default {
-    props: ['title']
+    props: ['id'],
+
+    data() {
+      return {
+        show: false
+      }
+    },
+
+    methods: {
+      hide() {
+        this.show = false;
+        
+        localStorage.setItem(this.id, JSON.stringify({
+          hide: true
+        }));
+      }
+    },
+
+    beforeMount() {
+      this.show = !JSON.parse(localStorage.getItem(this.id));
+    }
   }
 </script>
 
@@ -30,15 +48,33 @@
   z-index: 99;
 
   .modal {
-    //background: $elevation-3-color;
     background: $red;
     border-radius: $border-radius;
-    padding: 20px;
+    padding: 25px;
+    position: relative;
     width: 100%;
     z-index: 1;
 
+    .close-icon {
+      cursor: pointer;
+      opacity: .75;
+      position: absolute;
+      right: 10px;
+      top: 12.5px;
+      transition: $transition;
+
+      @media (max-width: $tablet) {
+        opacity: 1;
+      }
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+
     .content {
       line-height: 1.4;
+      padding-right: 20px;
     }
   }
 }
