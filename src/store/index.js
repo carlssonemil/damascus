@@ -1651,6 +1651,21 @@ export default new Vuex.Store({
           }
         },
         {
+          category: 'Handgun',
+          alias: 'Golf',
+          name: 'Sykov',
+          required: false,
+          progress: {
+            ...defaultProgress
+          },
+          mastery: {
+            ...defaultMastery
+          },
+          challenges: {
+            ...defaultChallenges('Handgun')
+          }
+        },
+        {
           category: 'Launcher',
           alias: 'Alpha',
           name: 'PILA',
