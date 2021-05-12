@@ -79,20 +79,20 @@
 
     <Debug v-if="!production" />
 
-    <Popup :id="'forced-url-change'">
+    <!--<Popup :id="'forced-url-change'">
       <p>Due to a forced URL change by our hosting provider, all stored progress has unfortunately been reset. Since the progress is stored locally in your browser and tied directly to the URL there is no currently known solution to recover the stored data. We're sorry for the inconvenience.</p>
-    </Popup>
+    </Popup>-->
   </div>
 </template>
 
 <script>
 import Debug from '@/components/Debug.vue'
-import Popup from '@/components/Popup.vue'
+//import Popup from '@/components/Popup.vue'
 
 export default {
   components: {
     Debug,
-    Popup
+    //Popup
   },
 
   data() {
