@@ -806,7 +806,7 @@ export default new Vuex.Store({
             'Sniper Rifle': challengeReq(challengeTypes.mountedLongshot, 25, 2),
             'Melee': {
               'Combat Knife': challengeReq(challengeTypes.doubleKillTracker, 10),
-              'Riot Shield': challengeReq(challengeTypes.threeStreakTracker, 10),
+              'Riot Shield': challengeReq(challengeTypes.threeStreakTracker, 3),
               'Kali Sticks': challengeReq(challengeTypes.doubleKillTracker, 10),
               'Dual Kodachis': challengeReq(challengeTypes.doubleKillTracker, 10)
             },
