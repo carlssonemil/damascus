@@ -2,7 +2,7 @@
   <div id="app" :style="{ overflowY: mobileNav ? 'hidden' : null }">
     <transition name="slidedown">
       <div class="notice" v-if="showNotice">
-        <p>If you like this site, show your appreciation by <a href="https://www.buymeacoffee.com/emilcarlsson">buying me a beer</a> 🍺</p>
+        <p>If you like this tracker, show your appreciation by <a href="https://www.buymeacoffee.com/emilcarlsson">buying the creator a beer</a> 🍺</p>
         <eva-icon name="close" fill="white" width="16" height="16" @click="showNotice = false"></eva-icon>
       </div>
     </transition>
@@ -43,14 +43,14 @@
         </div>
         <div class="footer">
           <router-link to="/settings">Settings</router-link>
-          <router-link to="/about">About</router-link>
+          <!--<router-link to="/about">About</router-link>-->
           <a href="https://github.com/carlssonemil/damascus">GitHub</a>
 
           <div class="info">
-            <p>Looking for a camouflage tracker for <em>Black Ops Cold War</em>? <a href="https://coldwar.now.sh">Check it out here!</a> 😎</p>
+            <p>Looking for a camouflage tracker for <em>Black Ops Cold War</em>? <a href="https://www.downsights.com/cold-war-tracker/">Check it out here!</a> 😎</p>
           </div>
 
-          <a href="https://www.buymeacoffee.com/emilcarlsson" class="button">Support me by buying me a beer 🍺</a>
+          <a href="https://www.buymeacoffee.com/emilcarlsson" class="button">Support the creator by buying him a beer 🍺</a>
         </div>
       </nav>
     </transition>
@@ -63,7 +63,7 @@
       <div>Made by <a href="https://emilcarlsson.se/">Emil Carlsson</a></div>
       
       <div>
-        <router-link to="/about">About</router-link>
+        <!--<router-link to="/about">About</router-link>-->
         <a href="https://github.com/carlssonemil/damascus">GitHub</a>
       </div>
     </footer>
