@@ -1156,6 +1156,21 @@ export default new Vuex.Store({
           }
         },
         {
+          category: 'Submachine Gun',
+          alias: 'Juliet',
+          name: 'CX-9',
+          required: false,
+          progress: {
+            ...defaultProgress
+          },
+          mastery: {
+            ...defaultMastery
+          },
+          challenges: {
+            ...defaultChallenges('Submachine Gun')
+          }
+        },
+        {
           category: 'Shotgun',
           alias: 'Alpha',
           name: 'Model 680',
