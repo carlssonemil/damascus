@@ -291,7 +291,8 @@ export default new Vuex.Store({
             'MP7': '500 Kills',
             'Striker 45': '500 Kills',
             'Fennec': '250 Kills',
-            'ISO': '250 Kills'
+            'ISO': '250 Kills',
+            'CX-9': '250 Kills'
           },
           'Shotgun': '400 Kills',
           'Light Machine Gun': '525 Kills',
@@ -315,7 +316,8 @@ export default new Vuex.Store({
             'MP7': '100 Headshot Kills',
             'Striker 45': '100 Headshot Kills',
             'Fennec': '50 Headshot Kills',
-            'ISO': '50 Headshot Kills'
+            'ISO': '50 Headshot Kills',
+            'CX-9': '50 Headshot Kills'
           },
           'Shotgun': '75 Crouching Kills',
           'Light Machine Gun': '75 Headshot Kills',
@@ -339,7 +341,8 @@ export default new Vuex.Store({
             'MP7': '110 Crouching Kills',
             'Striker 45': '110 Crouching Kills',
             'Fennec': '40 Crouching Kills',
-            'ISO': '40 Crouching Kills'
+            'ISO': '40 Crouching Kills',
+            'CX-9': '40 Crouching Kills'
           },
           'Shotgun': '75 Hipfire Kills',
           'Light Machine Gun': '65 Crouching Kills',
@@ -363,7 +366,8 @@ export default new Vuex.Store({
             'MP7': '100 Hipfire Kills',
             'Striker 45': '100 Hipfire Kills',
             'Fennec': '30 Hipfire Kills',
-            'ISO': '30 Hipfire Kills'
+            'ISO': '30 Hipfire Kills',
+            'CX-9': '30 Hipfire Kills'
           },
           'Shotgun': '50 Point Blank Kills',
           'Light Machine Gun': '45 Hipfire Kills',
@@ -387,7 +391,8 @@ export default new Vuex.Store({
             'MP7': '50 Longshot Kills',
             'Striker 45': '50 Longshot Kills',
             'Fennec': '30 Longshot Kills',
-            'ISO': '30 Longshot Kills'
+            'ISO': '30 Longshot Kills',
+            'CX-9': '30 Longshot Kills'
           },
           'Shotgun': {
             'Model 680': '50 Headshot Kills',
@@ -425,7 +430,8 @@ export default new Vuex.Store({
             'MP7': '50 Mounted Kills',
             'Striker 45': '50 Mounted Kills',
             'Fennec': '25 Double Kills',
-            'ISO': '25 Double Kills'
+            'ISO': '25 Double Kills',
+            'CX-9': '25 Double Kills'
           },
           'Shotgun': '225 Kills while using all attachments',
           'Light Machine Gun': '45 Mounted Kills',
@@ -461,7 +467,8 @@ export default new Vuex.Store({
             'MP7': '250 Kills while using all attachments',
             'Striker 45': '250 Kills while using all attachments',
             'Fennec': '110 Kills while using all attachments',
-            'ISO': '110 Kills while using all attachments'
+            'ISO': '110 Kills while using all attachments',
+            'CX-9': '110 Kills while using all attachments'
           },
           'Shotgun': '25 Double Kills',
           'Light Machine Gun': '180 Kills while using all attachments',
@@ -492,7 +499,8 @@ export default new Vuex.Store({
             'MP7': '40 Kills shortly after reload',
             'Striker 45': '40 Kills shortly after reload',
             'Fennec': '25 Kills shortly after reload',
-            'ISO': '25 Kills shortly after reload'
+            'ISO': '25 Kills shortly after reload',
+            'CX-9': '25 Kills shortly after reload'
           },
           'Shotgun': '30 Kills shortly after reload',
           'Light Machine Gun': '30 Double Kills',
