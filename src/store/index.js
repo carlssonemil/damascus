@@ -1374,6 +1374,21 @@ export default new Vuex.Store({
           }
         },
         {
+          category: 'Light Machine Gun',
+          alias: 'Hotel',
+          name: 'RAAL MG',
+          required: false,
+          progress: {
+            ...defaultProgress
+          },
+          mastery: {
+            ...defaultMastery
+          },
+          challenges: {
+            ...defaultChallenges('Light Machine Gun')
+          }
+        },
+        {
           category: 'Marksman Rifle',
           alias: 'Alpha',
           name: 'EBR-14',
