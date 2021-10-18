@@ -481,7 +481,12 @@ export default new Vuex.Store({
             'SP-R 208': '150 Kills while using all attachments'
           },
           'Sniper Rifle': '50 Mounted Kills',
-          'Melee': '50 Kills near smoke',
+          'Melee': {
+            'Riot Shield': '50 Kills near smoke',
+            'Combat Knife': '25 Kills near smoke',
+            'Kali Sticks': '50 Kills near smoke',
+            'Dual Kodachis': '50 Kills near smoke'
+          },
           'Handgun': '110 Kills while using all attachments',
           'Launcher': '50 Supportstreaks destroyed'
         }
