@@ -69,6 +69,12 @@ p {
   }
 }
 
+a {
+  @media (max-width: $tablet) {
+    font-size: 16px;
+  }
+}
+
 .features {
   display: grid;
   gap: 25px;
