@@ -17,6 +17,9 @@
     
       <h4>DM Ultra & Dark Aether</h4>
       <p>Looking for a camouflage tracker for <i>Call of Duty: Black Ops Cold War (2020)</i>? <a href="https://coldwar.vercel.app">Check it out here</a>.</p>
+    
+      <h4>Atomic & Dark Aether</h4>
+      <p>Looking for a camouflage tracker for <i>Call of Duty: Vanguard (2021)</i>? <a href="https://vanguard.emca.app">Check it out here</a>.</p>
 
       <h4>Support me</h4>
       <p>You can support me by <a href="https://www.buymeacoffee.com/emilcarlsson">buying me a beer</a>! 🍺</p>
