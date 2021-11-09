@@ -12,13 +12,17 @@
     </div>
 
     <div class="checkbox" v-if="'hideCompleted' in filters">
-      <input id="hideCompleted" type="checkbox" v-model="filters.hideCompleted" @change="filterChange()">
-      <label for="hideCompleted">Hide completed</label>
+      <label for="hideCompleted" :class="{ checked: filters.hideCompleted }">
+        <input id="hideCompleted" type="checkbox" v-model="filters.hideCompleted" @change="filterChange()">
+        <span>Hide completed</span>
+      </label>
     </div>
 
     <div class="checkbox" v-if="'hideNonRequired' in filters">
-      <input id="hideNonRequired" type="checkbox" v-model="filters.hideNonRequired" @change="filterChange()">
-      <label for="hideNonRequired">Hide non required</label>
+      <label for="hideNonRequired" :class="{ checked: filters.hideNonRequired }">
+        <input id="hideNonRequired" type="checkbox" v-model="filters.hideNonRequired" @change="filterChange()">
+        <span>Hide non required</span>
+      </label>
     </div>
 
     <div class="symbols" v-if="showSymbols">
