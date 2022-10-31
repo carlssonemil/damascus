@@ -20,6 +20,9 @@
     
       <h4>Atomic & Dark Aether</h4>
       <p>Looking for a camouflage tracker for <i>Call of Duty: Vanguard (2021)</i>? <a href="https://vanguard.emca.app">Check it out here</a>.</p>
+          
+      <h4>Orion</h4>
+      <p>Looking for a camouflage tracker for <i>Call of Duty: Modern Warfare 2 (2022)</i>? <a href="https://orion.emca.app">Check it out here</a>.</p>
 
       <h4>Support me</h4>
       <p>You can support me by <a href="https://www.buymeacoffee.com/emilcarlsson">buying me a beer</a>! 🍺</p>
@@ -50,7 +53,7 @@ export default {
           description: 'Export your progress to another device or browser.',
           icon: 'external-link-outline'
         }
-      ]
+      ],
     }
   },
 

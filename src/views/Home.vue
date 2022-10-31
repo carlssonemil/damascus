@@ -1,6 +1,9 @@
 <template>
   <transition name="fade">
     <div class="home container" v-show="show">
+      <Alert style="margin-bottom: 50px;">
+        Looking for the latest Modern Warfare 2 camouflage tracker? <a href="https://orion.emca.app">You can find it here</a>. ✌
+      </Alert>
       <Filters :type="'weapons'" :showSymbols="['damascus']" />
       <Weapons :weapons="weapons" :mode="'Camouflages'" />
       <TotalProgress :view="'Camouflages'" />
@@ -9,6 +12,7 @@
 </template>
 
 <script>
+import Alert from '@/components/Alert.vue'
 import Filters from '@/components/Filters.vue'
 import TotalProgress from '@/components/TotalProgress.vue'
 import Weapons from '@/components/Weapons.vue'
@@ -17,6 +21,7 @@ export default {
   name: 'Home',
 
   components: {
+    Alert,
     Filters,
     TotalProgress,
     Weapons
