@@ -34,12 +34,12 @@
       content: '';
       display: block;
       height: $check-size;
-      left: calc(50% - #{ $check-size / 2 });
+      left: calc(50% - #{ calc($check-size / 2) });
       opacity: 0;
       position: absolute;
       top: 50%;
       transform: rotate(45deg) translate(-50%, -50%);
-      width: $check-size / 2;
+      width: calc($check-size / 2);
     }
 
     &:checked {
